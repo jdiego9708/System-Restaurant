@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CapaDatos" GeneratedClassName="ConfigCapaDatos">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConexionBD" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=172;Initial Catalog=Mistico;User ID=sa;Password=*</Value>
+    </Setting>
+    <Setting Name="ConexionLocalBD" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Mistico;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</Value>
+    </Setting>
+    <Setting Name="ConexionActual" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ConexionLocalBD</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
