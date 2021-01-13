@@ -28,24 +28,27 @@ namespace CapaPresentacion.Formularios
             this.txtCodigo.Focus();
         }
 
-        private void TxtCodigo_TextChanged(object sender, EventArgs e)
+        private async void TxtCodigo_TextChanged(object sender, EventArgs e)
         {
             TextBox txt = (TextBox)sender;
             try
             {
                 if (txt.TextLength == 4)
                 {
-                    string rpta;
-                    DataTable tabla =
-                        NEmpleados.Login("CODIGO MAESTRO", txt.Text, "", out rpta);
+                    if (!int.TryParse(txt.Text, out int codigo))
+                    {
+                        Mensajes.MensajeInformacion("¡Solo números!", "Entendido");
+                        return;
+                    }
+
+                    var (rpta, empleado, dtEmpleado) = await NEmpleados.ClaveMaestra(codigo);
                     if (rpta.Equals("OK"))
                     {
-                        this.Id_empleado = Convert.ToInt32(tabla.Rows[0]["Id_empleado"]);
-                        this.Nombre_empleado = Convert.ToString(tabla.Rows[0]["Nombre_empleado"]);
-                        this.Cargo_empleado = Convert.ToString(tabla.Rows[0]["Cargo_empleado"]);
-
+                        this.Id_empleado = empleado.Id_empleado;
+                        this.Nombre_empleado = empleado.Nombre_empleado;
+                        this.Cargo_empleado = empleado.Cargo_empleado;
                         this.DialogResult = DialogResult.OK;
-                        this.Tag = tabla;
+                        this.Tag = dtEmpleado;
                         this.Close();
                     }
                     else if (rpta.Equals(""))
@@ -64,7 +67,7 @@ namespace CapaPresentacion.Formularios
             }
         }
 
-        private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        private async void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox txt = (TextBox)sender;
             if (Char.IsDigit(e.KeyChar))
@@ -76,13 +79,20 @@ namespace CapaPresentacion.Formularios
                 e.Handled = false;
                 if ((int)e.KeyChar == (int)Keys.Enter)
                 {
-                    string rpta;
-                    DataTable tabla =
-                        NEmpleados.Login("CODIGO MAESTRO", this.txtCodigo.Text, "", out rpta);
+                    if (!int.TryParse(txt.Text, out int codigo))
+                    {
+                        Mensajes.MensajeInformacion("¡Solo números!", "Entendido");
+                        return;
+                    }
+
+                    var (rpta, empleado, dtEmpleado) = await NEmpleados.ClaveMaestra(codigo);
                     if (rpta.Equals("OK"))
                     {
+                        this.Id_empleado = empleado.Id_empleado;
+                        this.Nombre_empleado = empleado.Nombre_empleado;
+                        this.Cargo_empleado = empleado.Cargo_empleado;
                         this.DialogResult = DialogResult.OK;
-                        this.Tag = tabla;
+                        this.Tag = dtEmpleado;
                         this.Close();
                     }
                     else if (rpta.Equals(""))

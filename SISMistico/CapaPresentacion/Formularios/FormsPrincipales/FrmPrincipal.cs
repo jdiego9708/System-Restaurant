@@ -634,18 +634,18 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
 
             this.MenuContextuales();
 
-            VentanaInicial = new FrmVentanaInicial
-            {
-                Location = new Point(0, 0),
-                Size = new Size(this.panel1.Width / 2,
-                this.panel1.Height / 2),
-                FormBorderStyle = FormBorderStyle.None,
-                TopLevel = false,
-                Opacity = .75
-            };
-            VentanaInicial.ObtenerReservas();
-            this.panel1.Controls.Add(VentanaInicial);
-            VentanaInicial.Show();
+            //VentanaInicial = new FrmVentanaInicial
+            //{
+            //    Location = new Point(0, 0),
+            //    Size = new Size(this.panel1.Width / 2,
+            //    this.panel1.Height / 2),
+            //    FormBorderStyle = FormBorderStyle.None,
+            //    TopLevel = false,
+            //    Opacity = .75
+            //};
+            //VentanaInicial.ObtenerReservas();
+            //this.panel1.Controls.Add(VentanaInicial);
+            //VentanaInicial.Show();
         }
 
         private void MenuContextuales()

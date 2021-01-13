@@ -64,6 +64,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
@@ -182,6 +185,12 @@
       <DependentUpon>FrmAgregarDetallePlato.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FormsEmpleados\EEmpleado.cs" />
+    <Compile Include="Formularios\FormsEmpleados\EmpleadoNominaSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormsEmpleados\EmpleadoNominaSmall.Designer.cs">
+      <DependentUpon>EmpleadoNominaSmall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FormsEmpleados\FrmAgregarEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +202,12 @@
     </Compile>
     <Compile Include="Formularios\FormsEmpleados\FrmModificarClaveMaestra.Designer.cs">
       <DependentUpon>FrmModificarClaveMaestra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormsEmpleados\FrmNominaEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormsEmpleados\FrmNominaEmpleados.Designer.cs">
+      <DependentUpon>FrmNominaEmpleados.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FormsEmpleados\FrmObservarEmpleados.cs">
       <SubType>Form</SubType>
@@ -558,6 +573,10 @@
     <Compile Include="Servicios\MsgBoxUtil.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaEntidades\CapaEntidades.csproj">
+      <Project>{24a2770c-b7f5-40ae-9ca7-eed819df2bf5}</Project>
+      <Name>CapaEntidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
       <Project>{393ff5f0-9c01-42e3-a551-f86b7a58306d}</Project>
       <Name>CapaNegocio</Name>
@@ -603,11 +622,17 @@
     <EmbeddedResource Include="Formularios\FormsDetalles\FrmAgregarDetallePlato.resx">
       <DependentUpon>FrmAgregarDetallePlato.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormsEmpleados\EmpleadoNominaSmall.resx">
+      <DependentUpon>EmpleadoNominaSmall.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsEmpleados\FrmAgregarEmpleado.resx">
       <DependentUpon>FrmAgregarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsEmpleados\FrmModificarClaveMaestra.resx">
       <DependentUpon>FrmModificarClaveMaestra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormsEmpleados\FrmNominaEmpleados.resx">
+      <DependentUpon>FrmNominaEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsEmpleados\FrmObservarEmpleados.resx">
       <DependentUpon>FrmObservarEmpleados.cs</DependentUpon>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
+using CapaEntidades.Models;
 
 namespace CapaNegocio
 {
@@ -44,10 +45,26 @@ namespace CapaNegocio
 
         #region LOGIN
 
-        public static DataTable Login(string tipo_busqueda, 
+
+        public static async Task<(string rpta, List<object> objects)> Login(string usuario,
+            string pass, string fecha)
+        {
+            DEmpleados DEmpleados = new DEmpleados();
+            return await DEmpleados.Login(usuario, pass, fecha);
+        }
+
+        public static async Task<(string rpta, Empleado empleado, DataTable dtEmpleado)> ClaveMaestra(int codigo)
+        {
+            DEmpleados DEmpleados = new DEmpleados();
+            return await DEmpleados.ClaveMaestra(codigo);
+        }
+
+        public static DataTable Login(string tipo_busqueda,
             string texto_busqueda1, string texto_busqueda2, out string rpta)
         {
-            return DEmpleados.Login(tipo_busqueda, texto_busqueda1, texto_busqueda2, out rpta);
+            rpta = "ok";
+            return new DataTable();
+            //return DEmpleados.Login(tipo_busqueda, texto_busqueda1, texto_busqueda2, out rpta);
         }
 
         #endregion

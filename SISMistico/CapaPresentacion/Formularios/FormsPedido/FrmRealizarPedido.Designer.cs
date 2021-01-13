@@ -111,7 +111,7 @@
             // 
             this.panelBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(193)))), ((int)(((byte)(95)))));
             this.panelBanner.Controls.Add(this.lblMesero);
             this.panelBanner.Controls.Add(this.lblMistico);
             this.panelBanner.Location = new System.Drawing.Point(0, 0);

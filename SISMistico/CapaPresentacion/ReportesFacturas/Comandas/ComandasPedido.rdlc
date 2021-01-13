@@ -127,7 +127,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Místico</Value>
+                    <Value>Tío PEPE</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>12pt</FontSize>
@@ -360,7 +360,6 @@
           </Textbox>
           <Line Name="Line4">
             <Top>3.20344cm</Top>
-            <Left>0cm</Left>
             <Height>0cm</Height>
             <Width>7cm</Width>
             <ZIndex>9</ZIndex>

@@ -52,7 +52,7 @@
             // 
             this.panelBotones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(193)))), ((int)(((byte)(95)))));
             this.panelBotones.Controls.Add(this.btnReservas);
             this.panelBotones.Controls.Add(this.label1);
             this.panelBotones.Controls.Add(this.btnInsumos);
@@ -118,11 +118,11 @@
             this.lblMistico.AutoSize = true;
             this.lblMistico.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMistico.ForeColor = System.Drawing.Color.White;
-            this.lblMistico.Location = new System.Drawing.Point(26, 9);
+            this.lblMistico.Location = new System.Drawing.Point(21, 6);
             this.lblMistico.Name = "lblMistico";
-            this.lblMistico.Size = new System.Drawing.Size(73, 21);
+            this.lblMistico.Size = new System.Drawing.Size(76, 21);
             this.lblMistico.TabIndex = 10;
-            this.lblMistico.Text = "MÍSTICO";
+            this.lblMistico.Text = "TÍO PEPE";
             // 
             // btnVentas
             // 
@@ -230,7 +230,7 @@
             // 
             this.panelBarraSuperior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBarraSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelBarraSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(193)))), ((int)(((byte)(95)))));
             this.panelBarraSuperior.Controls.Add(this.btnUsuario);
             this.panelBarraSuperior.Controls.Add(this.btnAdministracionAvanzada);
             this.panelBarraSuperior.Location = new System.Drawing.Point(124, 0);
@@ -298,7 +298,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipal";
-            this.Text = "Restaurante Místico (Formulario principal)";
+            this.Text = "Restaurante Tío Pepe (Formulario principal)";
             this.panelBotones.ResumeLayout(false);
             this.panelBotones.PerformLayout();
             this.panelBarraSuperior.ResumeLayout(false);

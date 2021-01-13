@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades.Models;
 
 namespace CapaDatos
 {
@@ -283,70 +284,190 @@ namespace CapaDatos
         #endregion
 
         #region METODO LOGIN
-        public static DataTable Login(string tipo_busqueda, string texto_busqueda1, 
-            string texto_busqueda2, out string rpta)
+        public async Task<(string rpta, List<object> objects)> Login(string usuario, string pass, string fecha)
         {
-            rpta = "OK";
-            DataTable DtResultado = new DataTable("Login");
+            string rpta = "OK";
+
+            List<object> objects = new List<object>();
+            Empleado empleado = new Empleado();
+            Turno turno = new Turno();
+
+            DataSet ds = new DataSet("Login");
             SqlConnection SqlCon = new SqlConnection();
+            SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
+            SqlCon.FireInfoMessageEventOnUserErrors = true;
             try
             {
+                StringBuilder consulta = new StringBuilder();
+                SqlCommand Sqlcmd;
                 SqlCon.ConnectionString = Conexion.Cn;
-                SqlCommand Sqlcmd = new SqlCommand
+                await SqlCon.OpenAsync();
+                Sqlcmd = new SqlCommand
                 {
                     Connection = SqlCon,
                     CommandText = "sp_Login",
                     CommandType = CommandType.StoredProcedure
                 };
 
-                SqlParameter Tipo_busqueda = new SqlParameter
+                SqlParameter Usuario = new SqlParameter
                 {
-                    ParameterName = "@Tipo_busqueda",
+                    ParameterName = "@Usuario",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
-                    Value = tipo_busqueda.Trim().ToUpper()
+                    Value = usuario.Trim()
                 };
-                Sqlcmd.Parameters.Add(Tipo_busqueda);
+                Sqlcmd.Parameters.Add(Usuario);
 
-                SqlParameter Texto_busqueda1 = new SqlParameter
+                SqlParameter Pass = new SqlParameter
                 {
-                    ParameterName = "@Texto_busqueda1",
+                    ParameterName = "@Pass",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
-                    Value = texto_busqueda1.Trim().ToUpper()
+                    Value = pass.Trim()
                 };
-                Sqlcmd.Parameters.Add(Texto_busqueda1);
+                Sqlcmd.Parameters.Add(Pass);
 
-                SqlParameter Texto_busqueda2 = new SqlParameter
+                SqlParameter Fecha = new SqlParameter
                 {
-                    ParameterName = "@Texto_busqueda2",
+                    ParameterName = "@Fecha",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
-                    Value = texto_busqueda2.Trim().ToUpper()
+                    Value = fecha.Trim()
                 };
-                Sqlcmd.Parameters.Add(Texto_busqueda2);
+                Sqlcmd.Parameters.Add(Fecha);
 
                 SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
-                SqlData.Fill(DtResultado);
+                await Task.Run(() => SqlData.Fill(ds));
 
-                if (DtResultado.Rows.Count < 1)
+                bool result = false;
+                string tipo_usuario = "";
+                //1->Primer tabla es la respuesta
+                DataTable dtRespuesta = ds.Tables[0];
+                if (dtRespuesta.Rows.Count > 0)
                 {
-                    DtResultado = null;
-                    rpta = "";
+                    //Comprobar respuesta
+                    string respuestaSQL = Convert.ToString(dtRespuesta.Rows[0]["Respuesta"]);
+                    if (respuestaSQL.Equals("OK"))
+                    {
+                        tipo_usuario = Convert.ToString(dtRespuesta.Rows[0]["Tipo_usuario"]);
+                        result = true;
+                    }
+                    else
+                        throw new Exception(respuestaSQL);
+                }
+                else
+                    throw new Exception("No se encontró la respuesta del procedimiento");
+
+                if (result)
+                {
+                    if (tipo_usuario.Equals("CAJERO") || tipo_usuario.Equals("ADMINISTRADOR"))
+                    {
+                        if (ds.Tables.Count >= 3)
+                        {
+                            DataTable dtEmpleado = ds.Tables[1];
+
+                            //Obtener la credencial
+                            if (dtEmpleado.Rows.Count > 0)
+                                empleado = new Empleado(dtEmpleado.Rows[0]);
+                            else
+                                throw new Exception("No se encontraron las credenciales");
+
+                            DataTable dtTurno = ds.Tables[2];
+
+                            //Obtener el último turno
+                            if (dtTurno.Rows.Count > 0)
+                                turno = new Turno(dtTurno.Rows[0]);
+                            else
+                                throw new Exception("No se encontró el turno");
+
+                            objects.Add(empleado);
+                            objects.Add(turno);
+                        }
+                        else
+                        {
+                            throw new Exception("Las tablas del procedimiento Login no vienen completas, son 3 y vienen: " +
+                                ds.Tables.Count);
+                        }
+                    }
+                    else if (tipo_usuario.Equals("ADMINISTRADOR"))
+                    {
+
+                    }
+                }
+                else
+                {
+                    throw new Exception("No se pudo iniciar sesión");
                 }
             }
             catch (SqlException ex)
             {
-                DtResultado = null;
                 rpta = ex.Message;
             }
             catch (Exception ex)
             {
-                DtResultado = null;
                 rpta = ex.Message;
             }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
 
-            return DtResultado;
+            return (rpta, objects);
+        }
+
+        public async Task<(string rpta, Empleado empleado, DataTable dtEmpleado)> ClaveMaestra(int codigo)
+        {
+            string rpta = "OK";
+
+            Empleado empleado = new Empleado();
+
+            DataTable dt = new DataTable("ClaveMaestra");
+            SqlConnection SqlCon = new SqlConnection();
+            SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
+            SqlCon.FireInfoMessageEventOnUserErrors = true;
+            try
+            {
+                StringBuilder consulta = new StringBuilder();
+                consulta.Append("SELECT TOP 1 * " +
+                    "FROM Empleados " +
+                    "WHERE Codigo_maestro = " + codigo);
+
+                SqlCommand Sqlcmd;
+                SqlCon.ConnectionString = Conexion.Cn;
+                await SqlCon.OpenAsync();
+                Sqlcmd = new SqlCommand
+                {
+                    Connection = SqlCon,
+                    CommandText = consulta.ToString(),
+                    CommandType = CommandType.Text,
+                };
+
+                SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
+                SqlData.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    empleado = new Empleado(dt.Rows[0]);
+                }
+                else
+                    dt = null;
+            }
+            catch (SqlException ex)
+            {
+                rpta = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return (rpta, empleado, dt);
         }
 
         #endregion

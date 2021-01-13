@@ -1,8 +1,10 @@
-﻿using CapaNegocio;
+﻿using CapaEntidades.Models;
+using CapaNegocio;
 using System;
 using System.Configuration;
 using System.Data;
 using System.ServiceProcess;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaPresentacion.Formularios.FormsPrincipales
@@ -18,29 +20,76 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             this.btnIngresar.Click += BtnIngresar_Click;
         }
 
-        private void BtnIngresar_Click(object sender, EventArgs e)
+        private void Login()
         {
-            try
+            Invoke(new MethodInvoker(async () =>
             {
-                string rpta;
-                if (this.ListaEmpleados.Text != "" & this.txtPass.Texto != null)
+                try
                 {
-                    if (ListaEmpleados.Text.Equals("NINGUNO"))
+                    if (this.ListaEmpleados.Items.Count > 0 & !string.IsNullOrEmpty(this.txtPass.Texto))
                     {
-                        if (this.txtPass.Texto.Equals("administrador"))
+                        if (int.TryParse(Convert.ToString(this.ListaEmpleados.SelectedValue), out int id_empleado))
                         {
-                            DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
-                            datos.Id_empleado = Convert.ToInt32(0);
-                            datos.Nombre_empleado = Convert.ToString("Administrador");
-                            datos.Cargo_empleado = "ADMINISTRADOR";
+                            if (id_empleado == 0)
+                            {
+                                if (this.txtPass.Texto.Equals("administrador"))
+                                {
+                                    DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
+                                    datos.Id_empleado = Convert.ToInt32(0);
+                                    datos.Nombre_empleado = Convert.ToString("Administrador");
+                                    datos.Cargo_empleado = "ADMINISTRADOR";
 
-                            FrmPrincipal frmPrincipal = new FrmPrincipal();
-                            frmPrincipal.WindowState = FormWindowState.Maximized;
-                            frmPrincipal.Show();
+                                    FrmPrincipal frmPrincipal = new FrmPrincipal();
+                                    frmPrincipal.WindowState = FormWindowState.Maximized;
+                                    frmPrincipal.Show();
 
-                            this.Hide();
+                                    this.Hide();
+                                }
+                                else if (this.txtPass.Texto.Equals("configadmin"))
+                                {
+                                    FrmAdministracionAvanzada frm = new FrmAdministracionAvanzada();
+                                    frm.StartPosition = FormStartPosition.CenterScreen;
+                                    frm.ShowDialog();
+                                }
+                            }
+                            else
+                            {
+                                var (rpta, objects) = await NEmpleados.Login(Convert.ToString(id_empleado), this.txtPass.Texto, DateTime.Now.ToString("yyyy-MM-dd"));
+                                if (rpta.Equals("OK"))
+                                {
+                                    Empleado empleado = (Empleado)objects[0];
+                                    Turno turno = (Turno)objects[1];
+
+                                    DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
+                                    datos.Id_empleado = empleado.Id_empleado;
+                                    datos.Nombre_empleado = empleado.Nombre_empleado;
+                                    datos.Cargo_empleado = empleado.Cargo_empleado;
+                                    datos.Empleado = empleado;
+                                    datos.Turno = turno;
+
+                                    FrmPrincipal frmPrincipal = new FrmPrincipal
+                                    {
+                                        WindowState = FormWindowState.Maximized
+                                    };
+                                    frmPrincipal.Show();
+
+                                    this.Hide();
+                                }
+                                else if (rpta.Equals(""))
+                                {
+                                    Mensajes.MensajeInformacion("No se encontró el usuario, intentelo de nuevo", "Entendido");
+                                }
+                                else
+                                {
+                                    throw new Exception(rpta);
+                                }
+                            }
                         }
-                        else if (this.txtPass.Texto.Equals("configadmin"))
+
+                    }
+                    else if (this.ListaEmpleados.Items.Count < 1)
+                    {
+                        if (this.txtPass.Texto.Equals("configadmin"))
                         {
                             FrmAdministracionAvanzada frm = new FrmAdministracionAvanzada();
                             frm.StartPosition = FormStartPosition.CenterScreen;
@@ -49,50 +98,20 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                     }
                     else
                     {
-                        DataTable tabla = NEmpleados.Login("LOGIN",
-                        Convert.ToString(this.ListaEmpleados.SelectedValue), this.txtPass.Texto, out rpta);
-                        if (rpta.Equals("OK"))
-                        {
-                            DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
-                            datos.Id_empleado = Convert.ToInt32(tabla.Rows[0]["Id_empleado"]);
-                            datos.Nombre_empleado = Convert.ToString(tabla.Rows[0]["Nombre_empleado"]);
-                            datos.Cargo_empleado = Convert.ToString(tabla.Rows[0]["Cargo_empleado"]);
-
-                            FrmPrincipal frmPrincipal = new FrmPrincipal();
-                            frmPrincipal.WindowState = FormWindowState.Maximized;
-                            frmPrincipal.Show();
-
-                            this.Hide();
-                        }
-                        else if (rpta.Equals(""))
-                        {
-                            Mensajes.MensajeInformacion("No se encontró el usuario, intentelo de nuevo", "Entendido");
-                        }
-                        else
-                        {
-                            throw new Exception(rpta);
-                        }
+                        Mensajes.MensajeErrorForm("La contraseña es obligatoria");
                     }
                 }
-                else if (this.ListaEmpleados.Text.Equals(""))
+                catch (Exception ex)
                 {
-                    if (this.txtPass.Texto.Equals("configadmin"))
-                    {
-                        FrmAdministracionAvanzada frm = new FrmAdministracionAvanzada();
-                        frm.StartPosition = FormStartPosition.CenterScreen;
-                        frm.ShowDialog();
-                    }
+                    Mensajes.MensajeErrorCompleto(this.Name, "BtnIngresar_Click",
+                        "Hubo un error al ingresar", ex.Message);
                 }
-                else
-                {
-                    Mensajes.MensajeErrorForm("La contraseña es obligatoria");
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensajes.MensajeErrorCompleto(this.Name, "BtnIngresar_Click",
-                    "Hubo un error al ingresar", ex.Message);
-            }
+            }));
+        }
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+            Login();
         }
 
         private void BtnCerrar_Click(object sender, EventArgs e)
@@ -146,7 +165,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                     }
                     catch (Exception ex)
                     {
-                        Mensajes.MensajeErrorCompleto(this.Name,"Iniciar servicio",
+                        Mensajes.MensajeErrorCompleto(this.Name, "Iniciar servicio",
                             "Error al iniciar el servicio: ", ex.Message);
                     }
                 }
@@ -164,72 +183,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             {
                 try
                 {
-                    string rpta;
-                    if (this.ListaEmpleados.Text != "" & this.txtPass.Texto != null)
-                    {
-                        if (ListaEmpleados.Text.Equals("NINGUNO"))
-                        {
-                            if (this.txtPass.Texto.Equals("administrador"))
-                            {
-                                DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
-                                datos.Id_empleado = Convert.ToInt32(0);
-                                datos.Nombre_empleado = Convert.ToString("Administrador");
-                                datos.Cargo_empleado = "ADMINISTRADOR";
-
-                                FrmPrincipal frmPrincipal = new FrmPrincipal();
-                                frmPrincipal.WindowState = FormWindowState.Maximized;
-                                frmPrincipal.Show();
-
-                                this.Hide();
-                            }
-                            else if (this.txtPass.Texto.Equals("configadmin"))
-                            {
-                                FrmAdministracionAvanzada frm = new FrmAdministracionAvanzada();
-                                frm.StartPosition = FormStartPosition.CenterScreen;
-                                frm.ShowDialog();
-                            }
-                        }
-                        else
-                        {
-                            DataTable tabla = NEmpleados.Login("LOGIN",
-                            Convert.ToString(this.ListaEmpleados.SelectedValue), this.txtPass.Texto, out rpta);
-                            if (rpta.Equals("OK"))
-                            {
-                                DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
-                                datos.Id_empleado = Convert.ToInt32(tabla.Rows[0]["Id_empleado"]);
-                                datos.Nombre_empleado = Convert.ToString(tabla.Rows[0]["Nombre_empleado"]);
-                                datos.Cargo_empleado = Convert.ToString(tabla.Rows[0]["Cargo_empleado"]);
-
-                                FrmPrincipal frmPrincipal = new FrmPrincipal();
-                                frmPrincipal.WindowState = FormWindowState.Maximized;
-                                frmPrincipal.Show();
-
-                                this.Hide();
-                            }
-                            else if (rpta.Equals(""))
-                            {
-                                Mensajes.MensajeInformacion("No se encontró el usuario, intentelo de nuevo", "Entendido");
-                            }
-                            else
-                            {
-                                throw new Exception(rpta);
-                            }
-                        }
-                    }
-                    else if (this.ListaEmpleados.Text.Equals(""))
-                    {
-                        if (this.txtPass.Texto.Equals("configadmin"))
-                        {
-                            FrmAdministracionAvanzada frm = new FrmAdministracionAvanzada();
-                            frm.StartPosition = FormStartPosition.CenterScreen;
-                            frm.ShowDialog();
-                        }
-                    }
-                    else
-                    {
-                        Mensajes.MensajeErrorForm("La contraseña es obligatoria");
-                    }
-
+                    Task.Run(() => this.Login());
                 }
                 catch (Exception ex)
                 {

@@ -42,7 +42,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(193)))), ((int)(((byte)(95)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -56,13 +56,13 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(186, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 37);
+            this.label1.Size = new System.Drawing.Size(122, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Místico";
+            this.label1.Text = "Tío PEPE";
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(193)))), ((int)(((byte)(95)))));
             this.panel2.Location = new System.Drawing.Point(0, 296);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(491, 32);
@@ -81,6 +81,7 @@
             this.txtPass.TabIndex = 4;
             this.txtPass.Texto = null;
             this.txtPass.Texto_inicial = null;
+            this.txtPass.Visible_px = false;
             // 
             // btnIngresar
             // 
