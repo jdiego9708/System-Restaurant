@@ -230,7 +230,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
                                 if (plato && bebida)
                                 {
-                                    imprimir = 2;
+                                    imprimir = 1;
                                 }
                                 else
                                 {
@@ -366,7 +366,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                         {
                             if (plato && bebida)
                             {
-                                imprimir = 2;
+                                imprimir = 1;
                             }
                             else
                             {

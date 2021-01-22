@@ -48,6 +48,8 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="DBebidas.cs" />
     <Compile Include="DClientes.cs" />
+    <Compile Include="DIngresos.cs" />
+    <Compile Include="DEgresos.cs" />
     <Compile Include="DNomina.cs" />
     <Compile Include="DEmpleados.cs" />
     <Compile Include="DErrores.cs" />

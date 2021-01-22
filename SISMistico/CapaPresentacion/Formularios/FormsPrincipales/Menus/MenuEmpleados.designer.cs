@@ -38,6 +38,7 @@
             this.btnCambiarClaveUsuario = new System.Windows.Forms.Button();
             this.btnComandasEliminadas = new System.Windows.Forms.Button();
             this.btnNotas = new System.Windows.Forms.Button();
+            this.btnNomina = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEditarEmpleado
@@ -193,11 +194,29 @@
             this.btnNotas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNotas.UseVisualStyleBackColor = true;
             // 
+            // btnNomina
+            // 
+            this.btnNomina.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNomina.FlatAppearance.BorderSize = 0;
+            this.btnNomina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNomina.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNomina.ForeColor = System.Drawing.Color.White;
+            this.btnNomina.Image = ((System.Drawing.Image)(resources.GetObject("btnNomina.Image")));
+            this.btnNomina.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNomina.Location = new System.Drawing.Point(1, 390);
+            this.btnNomina.Name = "btnNomina";
+            this.btnNomina.Size = new System.Drawing.Size(191, 49);
+            this.btnNomina.TabIndex = 11;
+            this.btnNomina.Text = "Nómina";
+            this.btnNomina.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNomina.UseVisualStyleBackColor = true;
+            // 
             // MenuEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(152)))), ((int)(((byte)(202)))));
+            this.Controls.Add(this.btnNomina);
             this.Controls.Add(this.btnNotas);
             this.Controls.Add(this.btnComandasEliminadas);
             this.Controls.Add(this.btnCambiarClaveUsuario);
@@ -211,7 +230,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuEmpleados";
-            this.Size = new System.Drawing.Size(195, 397);
+            this.Size = new System.Drawing.Size(195, 443);
             this.ResumeLayout(false);
 
         }
@@ -226,5 +245,6 @@
         public System.Windows.Forms.Button btnCambiarClaveUsuario;
         public System.Windows.Forms.Button btnComandasEliminadas;
         public System.Windows.Forms.Button btnNotas;
+        public System.Windows.Forms.Button btnNomina;
     }
 }

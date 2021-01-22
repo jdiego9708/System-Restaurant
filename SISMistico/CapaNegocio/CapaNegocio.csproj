@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="NBebidas.cs" />
     <Compile Include="NClientes.cs" />
+    <Compile Include="NEgresos.cs" />
+    <Compile Include="NIngresos.cs" />
     <Compile Include="NNomina.cs" />
     <Compile Include="NEmpleados.cs" />
     <Compile Include="NInsumos.cs" />

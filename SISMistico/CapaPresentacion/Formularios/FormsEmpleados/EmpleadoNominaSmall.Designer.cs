@@ -44,6 +44,9 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtEgresos = new System.Windows.Forms.TextBox();
             this.lblEstado = new System.Windows.Forms.Label();
+            this.btnObservacion = new System.Windows.Forms.Button();
+            this.btnCalcular = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.gbNombre.SuspendLayout();
             this.gbTotalPropinas.SuspendLayout();
             this.gbSalario.SuspendLayout();
@@ -74,6 +77,7 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(534, 19);
             this.txtNombre.TabIndex = 0;
+            this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // gbTotalPropinas
             // 
@@ -98,6 +102,7 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             this.txtTotalPropinas.ReadOnly = true;
             this.txtTotalPropinas.Size = new System.Drawing.Size(120, 20);
             this.txtTotalPropinas.TabIndex = 0;
+            this.txtTotalPropinas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // gbSalario
             // 
@@ -119,9 +124,9 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             this.txtSalario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSalario.Location = new System.Drawing.Point(6, 22);
             this.txtSalario.Name = "txtSalario";
-            this.txtSalario.ReadOnly = true;
             this.txtSalario.Size = new System.Drawing.Size(120, 20);
             this.txtSalario.TabIndex = 0;
+            this.txtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel1
             // 
@@ -137,7 +142,7 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(5, 126);
+            this.lblTotal.Location = new System.Drawing.Point(137, 129);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(48, 21);
             this.lblTotal.TabIndex = 24;
@@ -159,7 +164,6 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             this.btnPagar.Size = new System.Drawing.Size(35, 35);
             this.btnPagar.TabIndex = 23;
             this.btnPagar.UseVisualStyleBackColor = true;
-            this.btnPagar.Visible = false;
             // 
             // groupBox1
             // 
@@ -181,9 +185,9 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             this.txtOtrosIngresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtOtrosIngresos.Location = new System.Drawing.Point(6, 22);
             this.txtOtrosIngresos.Name = "txtOtrosIngresos";
-            this.txtOtrosIngresos.ReadOnly = true;
             this.txtOtrosIngresos.Size = new System.Drawing.Size(120, 20);
             this.txtOtrosIngresos.TabIndex = 0;
+            this.txtOtrosIngresos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox2
             // 
@@ -205,25 +209,79 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             this.txtEgresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtEgresos.Location = new System.Drawing.Point(6, 22);
             this.txtEgresos.Name = "txtEgresos";
-            this.txtEgresos.ReadOnly = true;
             this.txtEgresos.Size = new System.Drawing.Size(120, 20);
             this.txtEgresos.TabIndex = 0;
+            this.txtEgresos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(358, 128);
+            this.lblEstado.Location = new System.Drawing.Point(5, 129);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(53, 19);
             this.lblEstado.TabIndex = 26;
             this.lblEstado.Text = "Estado";
+            // 
+            // btnObservacion
+            // 
+            this.btnObservacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnObservacion.BackgroundImage")));
+            this.btnObservacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnObservacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnObservacion.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnObservacion.FlatAppearance.BorderSize = 0;
+            this.btnObservacion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnObservacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnObservacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnObservacion.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnObservacion.Location = new System.Drawing.Point(432, 120);
+            this.btnObservacion.Name = "btnObservacion";
+            this.btnObservacion.Size = new System.Drawing.Size(35, 35);
+            this.btnObservacion.TabIndex = 27;
+            this.btnObservacion.UseVisualStyleBackColor = true;
+            // 
+            // btnCalcular
+            // 
+            this.btnCalcular.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCalcular.BackgroundImage")));
+            this.btnCalcular.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCalcular.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCalcular.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnCalcular.FlatAppearance.BorderSize = 0;
+            this.btnCalcular.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnCalcular.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalcular.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcular.Location = new System.Drawing.Point(391, 120);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(35, 35);
+            this.btnCalcular.TabIndex = 28;
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnImprimir.BackgroundImage")));
+            this.btnImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimir.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Location = new System.Drawing.Point(473, 120);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(35, 35);
+            this.btnImprimir.TabIndex = 29;
+            this.btnImprimir.UseVisualStyleBackColor = true;
             // 
             // EmpleadoNominaSmall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnImprimir);
+            this.Controls.Add(this.btnCalcular);
+            this.Controls.Add(this.btnObservacion);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -269,5 +327,8 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtEgresos;
         private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Button btnObservacion;
+        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

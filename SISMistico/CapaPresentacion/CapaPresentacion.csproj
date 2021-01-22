@@ -438,6 +438,12 @@
     <Compile Include="Formularios\FormsReservas\ReservaMesaSmall.Designer.cs">
       <DependentUpon>ReservaMesaSmall.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportesFacturas\NominaEmpleado\FrmReporteNominaEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesFacturas\NominaEmpleado\FrmReporteNominaEmpleado.Designer.cs">
+      <DependentUpon>FrmReporteNominaEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\ControladorImpresion.cs" />
     <Compile Include="Servicios\EnviarEmailErrores2.cs" />
     <Compile Include="Formularios\FormsPrincipales\FrmIniciarSesion.cs">
@@ -791,6 +797,10 @@
     <EmbeddedResource Include="ReportesFacturas\FacturaFinal\FrmFacturaFinal.resx">
       <DependentUpon>FrmFacturaFinal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportesFacturas\NominaEmpleado\FrmReporteNominaEmpleado.resx">
+      <DependentUpon>FrmReporteNominaEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesFacturas\NominaEmpleado\rptNominaEmpleado.rdlc" />
     <EmbeddedResource Include="Servicios\FormsCorreoTicket\FrmEmailTicket.resx">
       <DependentUpon>FrmEmailTicket.cs</DependentUpon>
     </EmbeddedResource>

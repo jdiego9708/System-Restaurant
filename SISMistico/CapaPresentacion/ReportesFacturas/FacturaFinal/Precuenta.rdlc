@@ -142,7 +142,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Height>0.6cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -236,7 +236,7 @@
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>0.67056cm</Top>
             <Height>2.26688cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -269,7 +269,7 @@
             </Paragraphs>
             <Top>3.00799cm</Top>
             <Height>0.52063cm</Height>
-            <Width>5.095cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -300,9 +300,10 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>3.63445cm</Top>
+            <Top>3.52862cm</Top>
+            <Left>0.03528cm</Left>
             <Height>0.52063cm</Height>
-            <Width>3.53395cm</Width>
+            <Width>3.93083cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -317,7 +318,7 @@
           <Line Name="Line1">
             <Top>2.97271cm</Top>
             <Height>0cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -328,7 +329,7 @@
           <Line Name="Line2">
             <Top>0.67056cm</Top>
             <Height>0cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -338,8 +339,9 @@
           </Line>
           <Line Name="Line3">
             <Top>4.22564cm</Top>
+            <Left>0.03528cm</Left>
             <Height>0cm</Height>
-            <Width>7cm</Width>
+            <Width>7.75576cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -366,9 +368,9 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.33147cm</Top>
+            <Top>4.2962cm</Top>
             <Height>0.52063cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -399,9 +401,9 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.88738cm</Top>
+            <Top>4.8521cm</Top>
             <Height>0.52063cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -434,7 +436,7 @@
             </Paragraphs>
             <Top>5.40801cm</Top>
             <Height>0.52063cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -449,7 +451,7 @@
           <Line Name="Line4">
             <Top>6.11443cm</Top>
             <Height>0cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -461,16 +463,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.83604cm</Width>
+                  <Width>3.40048cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.61896cm</Width>
+                  <Width>1.69834cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.24854cm</Width>
+                  <Width>0.9134cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.29646cm</Width>
+                  <Width>1.77882cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -524,7 +526,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox10</rd:DefaultName>
@@ -556,7 +560,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -588,7 +594,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox12</rd:DefaultName>
@@ -652,14 +660,16 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Precio.Value</Value>
+                                  <Value>="$" &amp; Fields!Precio.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Precio</rd:DefaultName>
@@ -692,7 +702,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Cantidad</rd:DefaultName>
@@ -718,14 +730,16 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Total.Value</Value>
+                                  <Value>="$" &amp; Fields!Total.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Total</rd:DefaultName>
@@ -767,7 +781,7 @@
             <DataSetName>DetallePedido</DataSetName>
             <Top>6.29082cm</Top>
             <Height>1.2cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -784,7 +798,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Total parcial: " &amp; Parameters!Total_parcial.Value</Value>
+                    <Value>="Total parcial: $" &amp; Parameters!Total_parcial.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                     </Style>
@@ -795,7 +809,7 @@
             </Paragraphs>
             <Top>7.66721cm</Top>
             <Height>0.6cm</Height>
-            <Width>4.455cm</Width>
+            <Width>7.23542cm</Width>
             <ZIndex>12</ZIndex>
             <Style>
               <Border>
@@ -810,7 +824,7 @@
           <Line Name="Line5">
             <Top>7.59665cm</Top>
             <Height>0cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -836,7 +850,7 @@
             </Paragraphs>
             <Top>8.33776cm</Top>
             <Height>0.6cm</Height>
-            <Width>4.455cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
@@ -866,7 +880,7 @@
             </Paragraphs>
             <Top>8.97304cm</Top>
             <Height>0.6cm</Height>
-            <Width>4.455cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -897,7 +911,7 @@
             <rd:DefaultName>Textbox17</rd:DefaultName>
             <Top>9.57304cm</Top>
             <Height>0.6cm</Height>
-            <Width>4.455cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>16</ZIndex>
             <Style>
               <Border>
@@ -921,6 +935,7 @@
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>11pt</FontSize>
                       <FontWeight>SemiBold</FontWeight>
+                      <Format>N2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -930,7 +945,7 @@
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>10.60662cm</Top>
             <Height>0.6cm</Height>
-            <Width>4.455cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -945,7 +960,7 @@
           <Line Name="Line6">
             <Top>11.38301cm</Top>
             <Height>0cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
@@ -1021,7 +1036,7 @@
             <rd:DefaultName>Textbox17</rd:DefaultName>
             <Top>11.41829cm</Top>
             <Height>4.70104cm</Height>
-            <Width>7cm</Width>
+            <Width>7.79104cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -1052,10 +1067,10 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>3.63445cm</Top>
-            <Left>3.56923cm</Left>
+            <Top>3.52862cm</Top>
+            <Left>4.03666cm</Left>
             <Height>0.52063cm</Height>
-            <Width>2.8675cm</Width>
+            <Width>3.75438cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -1068,10 +1083,10 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>6.34619in</Height>
+        <Height>16.11933cm</Height>
         <Style />
       </Body>
-      <Width>7cm</Width>
+      <Width>7.79104cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

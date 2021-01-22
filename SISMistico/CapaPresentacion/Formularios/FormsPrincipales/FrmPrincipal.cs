@@ -250,8 +250,41 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             menuEmpleados.btnCambiarClaveUsuario.Click += BtnCambiarClaveUsuario_Click;
             menuEmpleados.btnComandasEliminadas.Click += BtnComandasEliminadas_Click;
             menuEmpleados.btnNotas.Click += BtnNotas_Click;
+            menuEmpleados.btnNomina.Click += BtnNomina_Click;
             container = new PoperContainer(menuEmpleados);
             container.Show(this.btnEmpleados);
+        }
+
+        private void BtnNomina_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmNominaEmpleados frm = new FrmNominaEmpleados
+                {
+                    TopLevel = false
+                };
+                Form FormComprobado = this.ComprobarExistencia(frm);
+                if (FormComprobado != null)
+                {
+                    frm.WindowState = FormWindowState.Maximized;
+                    frm.Activate();
+                }
+                else
+                {
+                    frm.WindowState = FormWindowState.Maximized;
+                    frm.FormBorderStyle = FormBorderStyle.Fixed3D;
+                    this.panel1.Controls.Add(frm);
+                    this.panel1.Tag = frm;
+                    frm.Show();
+                }
+                frm.BringToFront();
+                frm.Activate();
+            }
+            catch (Exception ex)
+            {
+                Mensajes.MensajeErrorCompleto(this.Name, "BtnNomina_Click",
+                    "Hubo un error con el menu observar la nómina de empleados", ex.Message);
+            }
         }
 
         private void BtnNotas_Click(object sender, EventArgs e)

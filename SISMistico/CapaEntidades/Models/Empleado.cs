@@ -85,7 +85,7 @@ namespace CapaEntidades.Models
         public EmpleadoNominaBinding(DataRow row)
         {
             try
-            {
+            {                
                 this.Id_nomina_empleado = Convert.ToInt32(row["Id_nomina_empleado"]);
                 this.Id_empleado = Convert.ToInt32(row["Id_empleado"]);
                 this.Empleado = new Empleado(row);

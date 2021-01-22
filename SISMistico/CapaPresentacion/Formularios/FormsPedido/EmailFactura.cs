@@ -66,7 +66,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                     StringBuilder contentEmail = new StringBuilder();
 
                     headerEmail.Append("<h2>");
-                    headerEmail.Append("FACTURA MÍSTICO - FECHA: " + DateTime.Now.ToLongDateString() + " HORA: " + DateTime.Now.ToLongTimeString());
+                    headerEmail.Append("FACTURA TIO PEPE - FECHA: " + DateTime.Now.ToLongDateString() + " HORA: " + DateTime.Now.ToLongTimeString());
                     headerEmail.Append("</h2>");
 
                     contentEmail.Append("<table style='font-family: arial; font-size: 12px; border: 1px solid silver;' cellpadding='7' cellspacing='7'>");
@@ -204,13 +204,15 @@ namespace CapaPresentacion.Formularios.FormsPedido
                     contentEmail.Append("Autorización resolución DIAN 18762002374004 del 2017//02//27");
                     contentEmail.Append("</p>");
 
+                    contentEmail.Append("<p>Juan Diego Duque - jdiego9708@gmail.com - Copyright 2021</p>");
+
                     HTMLTemplateMail = concatTemplateEmailWithHeaderBody(headerEmail.ToString(), contentEmail.ToString());
 
                     MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["eMailFrom"], correo);
-                    mail.From = new MailAddress(ConfigurationManager.AppSettings["eMailFrom"], "Mistico", System.Text.Encoding.UTF8);
+                    mail.From = new MailAddress(ConfigurationManager.AppSettings["eMailFrom"], "Restaurante Tio Pepe", System.Text.Encoding.UTF8);
                     mail.IsBodyHtml = true;
                     string fecha = DateTime.Now.ToString("G");
-                    mail.Subject = "Factura MÍSTICO" + " - " + fecha;
+                    mail.Subject = "Factura TIO PEPE" + " - " + fecha;
                     mail.Body = HTMLTemplateMail;
                     //Línea para enviar una copia del correo
                     //mail.Bcc.Add(ConfigurationManager.AppSettings["eMail"].ToString());

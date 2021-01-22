@@ -10,7 +10,7 @@ using CapaEntidades.Models;
 
 namespace CapaDatos
 {
-    public class DNomina
+    public class DEgresos
     {
         #region MENSAJE SQL
         private void SqlCon_InfoMessage(object sender, SqlInfoMessageEventArgs e)
@@ -36,17 +36,17 @@ namespace CapaDatos
         #endregion
 
         #region CONSTRUCTOR VACIO
-        public DNomina() { }
+        public DEgresos() { }
         #endregion
 
-        #region METODO INSERTAR NOMINA
-        public async Task<(string rpta, int id_empleado)> InsertarNomina(EmpleadoNominaBinding empleadoNomina)
+        #region METODO INSERTAR EGRESO
+        public async Task<(string rpta, int id_egreso)> InsertarEgreso(Egresos egreso)
         {
             int contador = 0;
-            int id_nomina = 0;
-            string consulta = "INSERT INTO Nomina_empleado VALUES (@Id_empleado, @Fecha_nomina, @Salario, " +
-                "@Propinas, @Otros_ingresos, @Egresos, @Total_nomina, @Estado_nomina) " +
-                "SET @Id_nomina_empleado = SCOPE_IDENTITY(); ";
+            int id_egreso = 0;
+            string consulta = "INSERT INTO Egresos VALUES (@Id_empleado, @Fecha_egreso, @Valor_egreso, " +
+                "@Descripcion_egreso, @Estado_egreso) " +
+                "SET @Id_egreso = SCOPE_IDENTITY(); ";
 
             //asignamos a una cadena string la variable rpta y la iniciamos en vacía
             string rpta = "";
@@ -66,84 +66,58 @@ namespace CapaDatos
                     CommandType = CommandType.Text,
                 };
 
-                SqlParameter Id_nomina_empleado = new SqlParameter
+                SqlParameter Id_egreso = new SqlParameter
                 {
-                    ParameterName = "@Id_nomina_empleado",
+                    ParameterName = "@Id_egreso",
                     SqlDbType = SqlDbType.Int,
                     Direction = ParameterDirection.Output,
                 };
-                SqlCmd.Parameters.Add(Id_nomina_empleado);
+                SqlCmd.Parameters.Add(Id_egreso);
 
                 SqlParameter Id_empleado = new SqlParameter
                 {
                     ParameterName = "@Id_empleado",
                     SqlDbType = SqlDbType.Int,
-                    Value = empleadoNomina.Id_empleado,
+                    Value = egreso.Id_empleado,
                 };
                 SqlCmd.Parameters.Add(Id_empleado);
 
-                SqlParameter Fecha_nomina = new SqlParameter
+                SqlParameter Fecha_egreso = new SqlParameter
                 {
-                    ParameterName = "@Fecha_nomina",
+                    ParameterName = "@Fecha_egreso",
                     SqlDbType = SqlDbType.Date,
-                    Value = empleadoNomina.Fecha_nomina,
+                    Value = egreso.Fecha_egreso,
                 };
-                SqlCmd.Parameters.Add(Fecha_nomina);
+                SqlCmd.Parameters.Add(Fecha_egreso);
                 contador += 1;
 
-                SqlParameter Salario = new SqlParameter
+                SqlParameter Valor_egreso = new SqlParameter
                 {
-                    ParameterName = "@Salario",
+                    ParameterName = "@Valor_egreso",
                     SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Salario,
+                    Value = egreso.Valor_egreso,
                 };
-                SqlCmd.Parameters.Add(Salario);
+                SqlCmd.Parameters.Add(Valor_egreso);
                 contador += 1;
 
-                SqlParameter Propinas = new SqlParameter
+                SqlParameter Descripcion_egreso = new SqlParameter
                 {
-                    ParameterName = "@Propinas",
-                    SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Propinas,
+                    ParameterName = "@Descripcion_egreso",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 200,
+                    Value = egreso.Descripcion_egreso,
                 };
-                SqlCmd.Parameters.Add(Propinas);
+                SqlCmd.Parameters.Add(Descripcion_egreso);
                 contador += 1;
-
-                SqlParameter Otros_ingresos = new SqlParameter
+              
+                SqlParameter Estado_egreso = new SqlParameter
                 {
-                    ParameterName = "@Otros_ingresos",
-                    SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Salario,
-                };
-                SqlCmd.Parameters.Add(Otros_ingresos);
-                contador += 1;
-
-                SqlParameter Egresos = new SqlParameter
-                {
-                    ParameterName = "@Egresos",
-                    SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Egresos,
-                };
-                SqlCmd.Parameters.Add(Egresos);
-                contador += 1;
-
-                SqlParameter Total_nomina = new SqlParameter
-                {
-                    ParameterName = "@Total_nomina",
-                    SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Total_nomina,
-                };
-                SqlCmd.Parameters.Add(Total_nomina);
-                contador += 1;
-                
-                SqlParameter Estado_nomina = new SqlParameter
-                {
-                    ParameterName = "@Estado_nomina",
+                    ParameterName = "@Estado_egreso",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
-                    Value = empleadoNomina.Estado_nomina,
+                    Value = egreso.Estado_egreso,
                 };
-                SqlCmd.Parameters.Add(Estado_nomina);
+                SqlCmd.Parameters.Add(Estado_egreso);
 
                 //Ejecutamos nuestro comando
                 //Se puede ejecutar este metodo pero ya tenemos el mensaje que devuelve sql
@@ -158,7 +132,7 @@ namespace CapaDatos
                 }
                 else
                 {
-                    id_nomina = Convert.ToInt32(SqlCmd.Parameters["@Id_nomina_empleado"].Value);
+                    id_egreso = Convert.ToInt32(SqlCmd.Parameters["@Id_egreso"].Value);
                 }
             }
             //Mostramos posible error que tengamos
@@ -176,24 +150,21 @@ namespace CapaDatos
                 if (SqlCon.State == ConnectionState.Open)
                     SqlCon.Close();
             }
-            return (rpta, id_nomina);
+            return (rpta, id_egreso);
         }
         #endregion
 
-        #region METODO EDITAR NOMINA
-        public async Task<string> EditarNomina(int id_nomina_empleado, EmpleadoNominaBinding empleadoNomina)
+        #region METODO EDITAR EGRESO
+        public async Task<string> EditarEgreso(int id_egreso, Egresos egreso)
         {
             int contador = 0;
-            string consulta = "UPDATE Nomina_empleado SET " +
+            string consulta = "UPDATE Egresos SET " +
                 "Id_empleado = @Id_empleado, " +
-                "Fecha_nomina = @Fecha_nomina, " +
-                "Salario = @Salario, " +
-                "Propinas = @Propinas, " +
-                "Otros_ingresos = @Otros_ingresos, " +
-                "Egresos = @Egresos, " +
-                "Total_nomina = @Total_nomina, " +
-                "Estado_nomina = @Estado_nomina " +
-                "WHERE Id_nomina_empleado = @Id_nomina_empleado ";
+                "Fecha_egreso = @Fecha_egreso, " +
+                "Valor_egreso= @Valor_egreso, " +
+                "Descripcion_egreso = @Descripcion_egreso, " +
+                "Estado_egreso = @Estado_egreso " +
+                "WHERE Id_egreso = @Id_egreso ";
 
             //asignamos a una cadena string la variable rpta y la iniciamos en vacía
             string rpta = "";
@@ -213,88 +184,62 @@ namespace CapaDatos
                     CommandType = CommandType.Text,
                 };
 
-                SqlParameter Id_nomina_empleado = new SqlParameter
+                SqlParameter Id_egreso = new SqlParameter
                 {
-                    ParameterName = "@Id_nomina_empleado",
+                    ParameterName = "@Id_egreso",
                     SqlDbType = SqlDbType.Int,
-                    Value = id_nomina_empleado,
+                    Value = id_egreso,
                 };
-                SqlCmd.Parameters.Add(Id_nomina_empleado);
+                SqlCmd.Parameters.Add(Id_egreso);
 
                 SqlParameter Id_empleado = new SqlParameter
                 {
                     ParameterName = "@Id_empleado",
                     SqlDbType = SqlDbType.Int,
-                    Value = empleadoNomina.Id_empleado,
+                    Value = egreso.Id_empleado,
                 };
                 SqlCmd.Parameters.Add(Id_empleado);
 
-                SqlParameter Fecha_nomina = new SqlParameter
+                SqlParameter Fecha_egreso = new SqlParameter
                 {
-                    ParameterName = "@Fecha_nomina",
+                    ParameterName = "@Fecha_egreso",
                     SqlDbType = SqlDbType.Date,
-                    Value = empleadoNomina.Fecha_nomina,
+                    Value = egreso.Fecha_egreso,
                 };
-                SqlCmd.Parameters.Add(Fecha_nomina);
+                SqlCmd.Parameters.Add(Fecha_egreso);
                 contador += 1;
 
-                SqlParameter Salario = new SqlParameter
+                SqlParameter Valor_egreso = new SqlParameter
                 {
-                    ParameterName = "@Salario",
+                    ParameterName = "@Valor_egreso",
                     SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Salario,
+                    Value = egreso.Valor_egreso,
                 };
-                SqlCmd.Parameters.Add(Salario);
+                SqlCmd.Parameters.Add(Valor_egreso);
                 contador += 1;
 
-                SqlParameter Propinas = new SqlParameter
+                SqlParameter Descripcion_egreso = new SqlParameter
                 {
-                    ParameterName = "@Propinas",
-                    SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Propinas,
+                    ParameterName = "@Descripcion_egreso",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 200,
+                    Value = egreso.Descripcion_egreso,
                 };
-                SqlCmd.Parameters.Add(Propinas);
+                SqlCmd.Parameters.Add(Descripcion_egreso);
                 contador += 1;
 
-                SqlParameter Otros_ingresos = new SqlParameter
+                SqlParameter Estado_egreso = new SqlParameter
                 {
-                    ParameterName = "@Otros_ingresos",
-                    SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Salario,
-                };
-                SqlCmd.Parameters.Add(Otros_ingresos);
-                contador += 1;
-
-                SqlParameter Egresos = new SqlParameter
-                {
-                    ParameterName = "@Egresos",
-                    SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Egresos,
-                };
-                SqlCmd.Parameters.Add(Egresos);
-                contador += 1;
-
-                SqlParameter Total_nomina = new SqlParameter
-                {
-                    ParameterName = "@Total_nomina",
-                    SqlDbType = SqlDbType.Decimal,
-                    Value = empleadoNomina.Total_nomina,
-                };
-                SqlCmd.Parameters.Add(Total_nomina);
-                contador += 1;
-
-                SqlParameter Password = new SqlParameter
-                {
-                    ParameterName = "@Estado_nomina",
+                    ParameterName = "@Estado_egreso",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
-                    Value = empleadoNomina.Estado_nomina,
+                    Value = egreso.Estado_egreso,
                 };
-                SqlCmd.Parameters.Add(Password);
+                SqlCmd.Parameters.Add(Estado_egreso);
 
                 //Ejecutamos nuestro comando
                 //Se puede ejecutar este metodo pero ya tenemos el mensaje que devuelve sql
-                rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "NO se actualizó el registro";
+                rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "NO se Ingreso el Registro";
 
                 if (!rpta.Equals("OK"))
                 {
@@ -323,11 +268,11 @@ namespace CapaDatos
         }
         #endregion
 
-        #region METODO BUSCAR NOMINA
-        public async Task<(string rpta, DataTable dtNominaEmpleado)> BuscarNomina(string tipo_busqueda, string texto_busqueda)
+        #region METODO BUSCAR EGRESOS
+        public async Task<(string rpta, DataTable dtEgresos)> BuscarEgreso(string tipo_busqueda, string texto_busqueda)
         {
             string rpta = "OK";
-            DataTable dtNomina = new DataTable("NominaEmpleado");
+            DataTable dtNomina = new DataTable("Egresos");
             SqlConnection SqlCon = new SqlConnection();
             SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
             SqlCon.FireInfoMessageEventOnUserErrors = true;
@@ -338,7 +283,7 @@ namespace CapaDatos
                 SqlCommand Sqlcmd = new SqlCommand
                 {
                     Connection = SqlCon,
-                    CommandText = "sp_Buscar_nomina",
+                    CommandText = "sp_Buscar_egreso",
                     CommandType = CommandType.StoredProcedure,
                 };
 
