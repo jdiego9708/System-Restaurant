@@ -15,6 +15,7 @@ using System.Linq;
 using System.Windows.Forms;
 using CapaNegocio;
 using CapaPresentacion.Formularios.FormsNotas;
+using CapaPresentacion.Formularios.FormsMovimientos;
 
 namespace CapaPresentacion.Formularios.FormsPrincipales
 {
@@ -45,7 +46,53 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             this.opcionesUsuario.btnCerrarSesion.Click += BtnCerrarSesion_Click;
             this.opcionesUsuario.btnFunciones.Click += BtnFunciones_Click;
             this.btnReservas.Click += BtnReservas_Click;
+            this.btnAdministracion.Click += BtnAdministracion_Click;
         }
+
+        private void BtnAdministracion_Click(object sender, EventArgs e)
+        {
+            MenuAdministracion menuAdmin = new MenuAdministracion();
+            menuAdmin.btnEstadisticasDiarias.Click += BtnEstadisticasDiarias_Click;
+            menuAdmin.btnObservarMovimientos.Click += BtnObservarMovimientos_Click;
+            container = new PoperContainer(menuAdmin);
+            container.Show(this.btnAdministracion);
+        }
+
+        private void BtnObservarMovimientos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmObservarMovimientos frm = new FrmObservarMovimientos();
+                frm.TopLevel = false;
+                frm.WindowState = FormWindowState.Maximized;
+                frm.MaximizeBox = false;
+                Form FormComprobado = this.ComprobarExistencia(frm);
+                if (FormComprobado != null)
+                {
+                    frm.Activate();
+                }
+                else
+                {
+                    frm.FormBorderStyle = FormBorderStyle.Fixed3D;
+                    this.panel1.Controls.Add(frm);
+                    this.panel1.Tag = frm;
+                    frm.Show();
+                }
+                frm.BringToFront();
+                frm.Activate();
+            }
+            catch (Exception ex)
+            {
+                Mensajes.MensajeErrorCompleto(this.Name, "BtnObservarMovimientos_Click",
+                    "Hubo un error con el menu observar movimientos", ex.Message);
+            }
+        }
+
+        private void BtnEstadisticasDiarias_Click(object sender, EventArgs e)
+        {
+            
+        }
+
 
         private void BtnFunciones_Click(object sender, EventArgs e)
         {

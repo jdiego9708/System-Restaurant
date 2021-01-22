@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.panelBotones = new System.Windows.Forms.Panel();
+            this.btnAdministracion = new System.Windows.Forms.Button();
             this.btnReservas = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnInsumos = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@
             this.panelBotones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(193)))), ((int)(((byte)(95)))));
+            this.panelBotones.Controls.Add(this.btnAdministracion);
             this.panelBotones.Controls.Add(this.btnReservas);
             this.panelBotones.Controls.Add(this.label1);
             this.panelBotones.Controls.Add(this.btnInsumos);
@@ -68,6 +70,23 @@
             this.panelBotones.Size = new System.Drawing.Size(124, 428);
             this.panelBotones.TabIndex = 0;
             // 
+            // btnAdministracion
+            // 
+            this.btnAdministracion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdministracion.FlatAppearance.BorderSize = 0;
+            this.btnAdministracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdministracion.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdministracion.ForeColor = System.Drawing.Color.White;
+            this.btnAdministracion.Image = ((System.Drawing.Image)(resources.GetObject("btnAdministracion.Image")));
+            this.btnAdministracion.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdministracion.Location = new System.Drawing.Point(0, 282);
+            this.btnAdministracion.Name = "btnAdministracion";
+            this.btnAdministracion.Size = new System.Drawing.Size(124, 33);
+            this.btnAdministracion.TabIndex = 14;
+            this.btnAdministracion.Text = "Administración";
+            this.btnAdministracion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdministracion.UseVisualStyleBackColor = true;
+            // 
             // btnReservas
             // 
             this.btnReservas.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -77,13 +96,14 @@
             this.btnReservas.ForeColor = System.Drawing.Color.White;
             this.btnReservas.Image = ((System.Drawing.Image)(resources.GetObject("btnReservas.Image")));
             this.btnReservas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReservas.Location = new System.Drawing.Point(0, 283);
+            this.btnReservas.Location = new System.Drawing.Point(0, 346);
             this.btnReservas.Name = "btnReservas";
             this.btnReservas.Size = new System.Drawing.Size(124, 33);
             this.btnReservas.TabIndex = 13;
             this.btnReservas.Text = "Reservas";
             this.btnReservas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReservas.UseVisualStyleBackColor = true;
+            this.btnReservas.Visible = false;
             // 
             // label1
             // 
@@ -323,5 +343,6 @@
         private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnReservas;
+        private System.Windows.Forms.Button btnAdministracion;
     }
 }

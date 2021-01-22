@@ -53,6 +53,10 @@ namespace CapaPresentacion.Formularios.FormsClientes
             this.txtNombre.Text = datos[1];
             this.txtTelefono.Text = datos[2];
             this.txtCorreo.Text = datos[3];
+            this.txtDireccion.Text = datos[4];
+            this.txtReferencia.Text = datos[5];
+            this.txtObservaciones.Text = datos[6];
+            this.estado = datos[7];   
         }
 
         private string[] Variables()
@@ -64,7 +68,8 @@ namespace CapaPresentacion.Formularios.FormsClientes
                 variables = new string[]
                 {
                     Convert.ToString(this.Tag), this.txtNombre.Text,
-                    this.txtTelefono.Text, this.txtCorreo.Text
+                    this.txtTelefono.Text, this.txtCorreo.Text, this.txtDireccion.Text, 
+                    this.txtReferencia.Text, this.txtObservaciones.Text, this.estado
                 };
             }
             else
@@ -72,7 +77,8 @@ namespace CapaPresentacion.Formularios.FormsClientes
                 variables = new string[]
                 {
                     this.txtNombre.Text,
-                    this.txtTelefono.Text, this.txtCorreo.Text,
+                    this.txtTelefono.Text, this.txtCorreo.Text, this.txtDireccion.Text,
+                    this.txtReferencia.Text, this.txtObservaciones.Text, "ACTIVO"
                 };
             }
             return variables;
@@ -187,6 +193,7 @@ namespace CapaPresentacion.Formularios.FormsClientes
         }
 
         private bool IsEditar = false;
+        private string estado;
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {

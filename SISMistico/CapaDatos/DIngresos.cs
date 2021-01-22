@@ -150,7 +150,7 @@ namespace CapaDatos
                 if (SqlCon.State == ConnectionState.Open)
                     SqlCon.Close();
             }
-            return (rpta, id_egreso);
+            return (rpta, id_ingreso);
         }
         #endregion
 

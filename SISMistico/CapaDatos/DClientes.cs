@@ -114,6 +114,46 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(Correo_electronico);
                 contador += 1;
 
+                SqlParameter Direccion_cliente = new SqlParameter
+                {
+                    ParameterName = "@Direccion_cliente",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 100,
+                    Value = DClientes.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Direccion_cliente);
+                contador += 1;
+
+                SqlParameter Referencia_ubicacion = new SqlParameter
+                {
+                    ParameterName = "@Referencia_ubicacion",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 100,
+                    Value = DClientes.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Referencia_ubicacion);
+                contador += 1;
+
+                SqlParameter Otras_observaciones = new SqlParameter
+                {
+                    ParameterName = "@Otras_observaciones",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 200,
+                    Value = DClientes.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Otras_observaciones);
+                contador += 1;
+
+                SqlParameter Estado_cliente = new SqlParameter
+                {
+                    ParameterName = "@Estado_cliente",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = DClientes.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Estado_cliente);
+                contador += 1;
+
                 //Ejecutamos nuestro comando
                 //Se puede ejecutar este metodo pero ya tenemos el mensaje que devuelve sql
                 rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "NO";
@@ -206,6 +246,37 @@ namespace CapaDatos
                 };
                 SqlCmd.Parameters.Add(Correo_electronico);
                 contador += 1;
+
+                SqlParameter Referencia_ubicacion = new SqlParameter
+                {
+                    ParameterName = "@Referencia_ubicacion",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 100,
+                    Value = DClientes.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Referencia_ubicacion);
+                contador += 1;
+
+                SqlParameter Otras_observaciones = new SqlParameter
+                {
+                    ParameterName = "@Otras_observaciones",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 200,
+                    Value = DClientes.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Otras_observaciones);
+                contador += 1;
+
+                SqlParameter Estado_cliente = new SqlParameter
+                {
+                    ParameterName = "@Estado_cliente",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = DClientes.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Estado_cliente);
+                contador += 1;
+
 
                 //Ejecutamos nuestro comando
                 //Se puede ejecutar este metodo pero ya tenemos el mensaje que devuelve sql

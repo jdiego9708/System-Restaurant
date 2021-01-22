@@ -31,6 +31,19 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.txtNumeroMesas.KeyPress += TxtNumeroMesas_KeyPress;
             this.txtNumeroMesas.LostFocus += TxtNumeroMesas_LostFocus;
             this.txtNumeroMesas.GotFocus += TxtNumeroMesas_GotFocus;
+            this.btnDomicilio.Click += BtnDomicilio_Click;
+        }
+
+        private void BtnDomicilio_Click(object sender, EventArgs e)
+        {
+            FrmRealizarPedido FrmPedido = new FrmRealizarPedido
+            {
+                StartPosition = FormStartPosition.CenterScreen,
+                Id_mesa = 0,
+                Numero_mesa = 0,
+                WindowState = FormWindowState.Maximized
+            };
+            FrmPedido.ShowDialog();
         }
 
         private void TxtNumeroMesas_LostFocus(object sender, EventArgs e)

@@ -519,8 +519,13 @@ namespace CapaPresentacion.Formularios.FormsPedido
             {
                 this.comandas.ObtenerReporte();
 
-                this.lblMistico.Text =
+                if (this.IsDomicilio)
+                    this.lblMistico.Text =
+                    "Realizar un nuevo domicilio";
+                else
+                    this.lblMistico.Text =
                     "Realizar un nuevo pedido para la mesa " + this.Numero_mesa;
+
                 if (this.IsEditar)
                 {
                     try
@@ -612,6 +617,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
         private int _id_mesa;
         private int _numero_mesa;
         private bool _isEditar;
+        private bool _isDomicilio;
         private int _id_empleado;
         private string _nombre_empleado;
         private string _cargo_empleado;
@@ -624,5 +630,6 @@ namespace CapaPresentacion.Formularios.FormsPedido
         public int Id_empleado { get => _id_empleado; set => _id_empleado = value; }
         public string Nombre_empleado { get => _nombre_empleado; set => _nombre_empleado = value; }
         public string Cargo_empleado { get => _cargo_empleado; set => _cargo_empleado = value; }
+        public bool IsDomicilio { get => _isDomicilio; set => _isDomicilio = value; }
     }
 }
