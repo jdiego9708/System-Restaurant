@@ -14,7 +14,7 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Application Files\SISMistico_1_0_0_41\SISMistico.exe.manifest" size="53478">
+    <dependentAssembly dependencyType="install" codebase="Application Files\SISMistico_1_0_0_42\SISMistico.exe.manifest" size="53478">
       <assemblyIdentity name="SISMistico.exe" version="1.0.0.38" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
