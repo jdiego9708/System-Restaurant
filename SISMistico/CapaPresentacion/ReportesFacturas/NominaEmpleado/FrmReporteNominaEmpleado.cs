@@ -36,7 +36,7 @@ namespace CapaPresentacion.ReportesFacturas.NominaEmpleado
             this.reportViewer1 = new ReportViewer();
             this.Controls.Add(this.reportViewer1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource =
-                "CapaPresentacion.ReportesFacturas.NominaEmpleado.rptNominaEmpleado.rdlc";
+            "CapaPresentacion.ReportesFacturas.NominaEmpleado.rptNominaEmpleado.rdlc";
         }
 
         public void ImprimirFactura(int Repetir)

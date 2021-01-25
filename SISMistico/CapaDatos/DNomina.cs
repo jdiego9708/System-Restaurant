@@ -381,5 +381,62 @@ namespace CapaDatos
         }
 
         #endregion
+
+        #region METODO ESTADÍSTICAS DIARIAS
+        public async Task<(string rpta, DataTable dtEstadistica)> BuscarEstadistica(int id_turno, string fecha)
+        {
+            string rpta = "OK";
+            DataTable dtNomina = new DataTable("EstadisticaDiaria");
+            SqlConnection SqlCon = new SqlConnection();
+            SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
+            SqlCon.FireInfoMessageEventOnUserErrors = true;
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                await SqlCon.OpenAsync();
+                SqlCommand Sqlcmd = new SqlCommand
+                {
+                    Connection = SqlCon,
+                    CommandText = "sp_Estadisticas_diarias",
+                    CommandType = CommandType.StoredProcedure,
+                };
+
+                SqlParameter Id_turno = new SqlParameter
+                {
+                    ParameterName = "@Id_turno",
+                    SqlDbType = SqlDbType.Int,
+                    Value = id_turno,
+                };
+                Sqlcmd.Parameters.Add(Id_turno);
+
+                SqlParameter Fecha = new SqlParameter
+                {
+                    ParameterName = "@Fecha",
+                    SqlDbType = SqlDbType.Date,
+                    Value = fecha.Trim(),
+                };
+                Sqlcmd.Parameters.Add(Fecha);
+
+                SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
+                SqlData.Fill(dtNomina);
+            }
+            catch (SqlException ex)
+            {
+                rpta = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return (rpta, dtNomina);
+        }
+
+        #endregion
     }
 }

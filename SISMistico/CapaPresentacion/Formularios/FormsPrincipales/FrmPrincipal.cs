@@ -16,6 +16,9 @@ using System.Windows.Forms;
 using CapaNegocio;
 using CapaPresentacion.Formularios.FormsNotas;
 using CapaPresentacion.Formularios.FormsMovimientos;
+using CapaPresentacion.Formularios.FormsEstadisticas;
+using CapaEntidades.Models;
+using System.Text;
 
 namespace CapaPresentacion.Formularios.FormsPrincipales
 {
@@ -88,9 +91,68 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             }
         }
 
-        private void BtnEstadisticasDiarias_Click(object sender, EventArgs e)
+        private async void BtnEstadisticasDiarias_Click(object sender, EventArgs e)
         {
-            
+            DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
+
+            string informacionEmpleado = "Información de empleado que genera el reporte " +
+                datos.Nombre_empleado + " - Teléfono: " + datos.Empleado.Telefono_empleado;
+            string cantidadPedidos = "";
+            DataTable dtPedidos = NPedido.BuscarPedidos("FECHA PEDIDO", DateTime.Now.ToString("yyyy-MM-dd"));
+            if (dtPedidos == null)
+                cantidadPedidos = "No hay ventas el día de hoy";
+            else
+                cantidadPedidos = "Cantidad de ventas el día de hoy: " + dtPedidos.Rows.Count + "";
+
+            string id_turno = "0";
+            StringBuilder resumenResultados = new StringBuilder();
+            var (rpta, dtEstadistica) = 
+                await NNomina.EstadisticasDiarias(datos.Turno.Id_turno, DateTime.Now.ToString("yyyy-MM-dd"));
+            if (dtEstadistica != null)
+            {
+                Turno turno = new Turno(dtEstadistica.Rows[0]);
+                id_turno = "identificación del turno: " + turno.Id_turno.ToString();
+                resumenResultados.Append("Valor inicial: ").Append(turno.Valor_inicial.ToString("C")).Append(Environment.NewLine);
+                resumenResultados.Append("Total ingresos: ").Append(turno.Total_ingresos.ToString("C")).Append(Environment.NewLine);
+                resumenResultados.Append("Total egresos: ").Append(turno.Total_egresos.ToString("C")).Append(Environment.NewLine);
+                resumenResultados.Append("Total ventas: ").Append(turno.Total_ventas.ToString("C")).Append(Environment.NewLine);
+                resumenResultados.Append("Total nomina: ").Append(turno.Total_nomina.ToString("C")).Append(Environment.NewLine);
+                resumenResultados.Append("Total diario: ").Append(turno.Total_turno.ToString("C")).Append(Environment.NewLine);
+            }
+            else
+            {
+                resumenResultados.Append("Hubo un error al encontrar los datos de estadísticas diarias");
+            }
+
+            StringBuilder infoEgresos = new StringBuilder();
+
+            var (rptae, dtEgresos) = await NEgresos.BuscarEgresos("FECHA", DateTime.Now.ToString("yyyy-MM-dd"));
+            if (dtEgresos != null)
+            {
+                infoEgresos.Append("Descripción de los egresos: ");
+                foreach (DataRow row in dtEgresos.Rows)
+                {
+                    Egresos egreso = new Egresos(row);
+                    infoEgresos.Append("Fecha: ").Append(egreso.Fecha_egreso.ToLongDateString()).Append(" - ");
+                    infoEgresos.Append("Valor: ").Append(egreso.Valor_egreso.ToString("C")).Append(" - ");
+                    infoEgresos.Append("Descripción: ").Append(egreso.Descripcion_egreso).Append(" - ");
+                }
+            }
+            else
+                infoEgresos.Append("No hay descrición adicional");
+
+            FrmReporteDiario frmReporteDiario = new FrmReporteDiario
+            {
+                WindowState = FormWindowState.Maximized,
+                InformacionEmpleado = informacionEmpleado,
+                CantidadPedidos = cantidadPedidos,
+                ResumenResultados = resumenResultados.ToString(),
+                InformacionEgresos = infoEgresos.ToString(),
+                IdentificacionTurno = id_turno,
+                FechaHora = DateTime.Now.ToLongDateString(),
+            };
+            frmReporteDiario.ObtenerReporte();
+            frmReporteDiario.ShowDialog();
         }
 
 

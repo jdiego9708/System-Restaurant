@@ -40,5 +40,15 @@ namespace CapaNegocio
         }
 
         #endregion
+
+        #region BUSCAR ESTADISTICA DIARIA
+
+        public static async Task<(string rpta, DataTable dtEstadistica)> EstadisticasDiarias(int id_turno, string fecha)
+        {
+            DNomina DNomina = new DNomina();
+            return await DNomina.BuscarEstadistica(id_turno, fecha);
+        }
+
+        #endregion
     }
 }

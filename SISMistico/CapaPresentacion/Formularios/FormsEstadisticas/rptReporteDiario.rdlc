@@ -12,7 +12,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Informacion Empleado que genera el reporte</Value>
+                    <Value>=Parameters!InformacionEmpleado.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>SemiBold</FontWeight>
@@ -26,6 +26,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.07056cm</Top>
+            <Left>0cm</Left>
             <Height>0.61736cm</Height>
             <Width>21cm</Width>
             <Style>
@@ -45,77 +46,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Resumen de resultados </Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontWeight>SemiBold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Valor inicial</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontWeight>SemiBold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Total ingresos</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontWeight>SemiBold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Total egresos</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontWeight>SemiBold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Total turno</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontWeight>SemiBold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value />
+                    <Value>=Parameters!ResumenResultados.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>SemiBold</FontWeight>
@@ -128,8 +59,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>1.51694cm</Top>
-            <Height>4.03049cm</Height>
+            <Top>1.61327cm</Top>
+            <Left>0cm</Left>
+            <Height>3.64312cm</Height>
             <Width>21cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -149,7 +81,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Información de egresos</Value>
+                    <Value>=Parameters!InformacionEgresos.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>SemiBold</FontWeight>
@@ -163,6 +95,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>5.65326cm</Top>
+            <Left>0cm</Left>
             <Height>1.24354cm</Height>
             <Width>21cm</Width>
             <ZIndex>2</ZIndex>
@@ -183,7 +116,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Cantidad de pedidos</Value>
+                    <Value>=Parameters!CantidadPedidos.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>SemiBold</FontWeight>
@@ -197,6 +130,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.72319cm</Top>
+            <Left>0cm</Left>
             <Height>0.61736cm</Height>
             <Width>21cm</Width>
             <ZIndex>3</ZIndex>
@@ -212,6 +146,7 @@
           </Textbox>
           <Line Name="Line1">
             <Top>1.43688cm</Top>
+            <Left>0cm</Left>
             <Height>0cm</Height>
             <Width>21cm</Width>
             <ZIndex>4</ZIndex>
@@ -223,6 +158,7 @@
           </Line>
           <Line Name="Line2">
             <Top>5.58271cm</Top>
+            <Left>0cm</Left>
             <Height>0cm</Height>
             <Width>21cm</Width>
             <ZIndex>5</ZIndex>
@@ -234,6 +170,7 @@
           </Line>
           <Line Name="Line3">
             <Top>7.03792cm</Top>
+            <Left>0cm</Left>
             <Height>0cm</Height>
             <Width>21cm</Width>
             <ZIndex>6</ZIndex>
@@ -339,6 +276,18 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Line Name="Line6">
+            <Top>0.03528cm</Top>
+            <Left>0cm</Left>
+            <Height>0cm</Height>
+            <Width>21cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
         </ReportItems>
         <Height>3.9375in</Height>
         <Style />
@@ -346,128 +295,141 @@
       <Width>21cm</Width>
       <Page>
         <PageHeader>
-          <Height>2.87266cm</Height>
+          <Height>1.97625cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Image Name="Logo1">
-              <Source>Embedded</Source>
-              <Value>PCx512</Value>
-              <Sizing>FitProportional</Sizing>
-              <Top>0.57891cm</Top>
-              <Left>0.52599cm</Left>
-              <Height>1.5cm</Height>
-              <Width>1.5cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
-            <Textbox Name="Textbox1">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>SISTEMA DE CONTROL RESTAURANTE TÍO PEPE - REPORTE DIARIO</Value>
+            <Rectangle Name="Rectangle1">
+              <ReportItems>
+                <Textbox Name="Textbox11">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Parameters!FechaHora.Value</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontWeight>SemiBold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
                       <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>12pt</FontSize>
-                        <FontWeight>SemiBold</FontWeight>
+                        <TextAlign>Right</TextAlign>
                       </Style>
-                    </TextRun>
-                  </TextRuns>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox1</rd:DefaultName>
+                  <Top>1.35889cm</Top>
+                  <Left>0cm</Left>
+                  <Height>0.61736cm</Height>
+                  <Width>21cm</Width>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
                   </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.57891cm</Top>
-              <Height>0.78521cm</Height>
+                </Textbox>
+                <Textbox Name="Textbox12">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Parameters!IdentificacionTurno.Value</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontWeight>SemiBold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox1</rd:DefaultName>
+                  <Top>0.74153cm</Top>
+                  <Left>12.03854cm</Left>
+                  <Height>0.61736cm</Height>
+                  <Width>8.96146cm</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox13">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>SISTEMA DE CONTROL RESTAURANTE TÍO PEPE - REPORTE DIARIO</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>SemiBold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox1</rd:DefaultName>
+                  <Left>0cm</Left>
+                  <Height>0.74153cm</Height>
+                  <Width>21cm</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Image Name="Logo2">
+                  <Source>Embedded</Source>
+                  <Value>PCx512</Value>
+                  <Sizing>FitProportional</Sizing>
+                  <Left>0.52599cm</Left>
+                  <Height>1.5cm</Height>
+                  <Width>1.5cm</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Height>1.97625cm</Height>
               <Width>21cm</Width>
-              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
+                <BackgroundColor>LightGreen</BackgroundColor>
               </Style>
-            </Textbox>
-            <Textbox Name="Textbox2">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Fecha</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontWeight>SemiBold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.22002cm</Top>
-              <Height>0.61736cm</Height>
-              <Width>21cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox5">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Identificación del turno</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontWeight>SemiBold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.46155cm</Top>
-              <Left>16.13958cm</Left>
-              <Height>0.61736cm</Height>
-              <Width>4.86042cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
+            </Rectangle>
           </ReportItems>
           <Style>
             <Border>
@@ -503,6 +465,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>1.92264cm</Top>
+              <Left>0cm</Left>
               <Height>0.61736cm</Height>
               <Width>21cm</Width>
               <Style>
