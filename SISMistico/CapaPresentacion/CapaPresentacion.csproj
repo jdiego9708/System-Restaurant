@@ -320,12 +320,24 @@
     <Compile Include="Formularios\FormsPedido\DescuentosOpcionesPedido.Designer.cs">
       <DependentUpon>DescuentosOpcionesPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FormsPedido\DomicilioSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormsPedido\DomicilioSmall.Designer.cs">
+      <DependentUpon>DomicilioSmall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FormsPedido\EmailFactura.cs" />
     <Compile Include="Formularios\FormsPedido\FrmDeletePedido.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FormsPedido\FrmDeletePedido.Designer.cs">
       <DependentUpon>FrmDeletePedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormsPedido\FrmDomicilios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormsPedido\FrmDomicilios.Designer.cs">
+      <DependentUpon>FrmDomicilios.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FormsPedido\FrmObservacionPedido.cs">
       <SubType>Form</SubType>
@@ -356,6 +368,12 @@
     </Compile>
     <Compile Include="Formularios\FormsPedido\FrmObservarMesas.Designer.cs">
       <DependentUpon>FrmObservarMesas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormsPedido\FrmPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormsPedido\FrmPedido.Designer.cs">
+      <DependentUpon>FrmPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FormsPedido\FrmRealizarPedido.cs">
       <SubType>Form</SubType>
@@ -725,8 +743,14 @@
     <EmbeddedResource Include="Formularios\FormsPedido\DescuentosOpcionesPedido.resx">
       <DependentUpon>DescuentosOpcionesPedido.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormsPedido\DomicilioSmall.resx">
+      <DependentUpon>DomicilioSmall.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsPedido\FrmDeletePedido.resx">
       <DependentUpon>FrmDeletePedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormsPedido\FrmDomicilios.resx">
+      <DependentUpon>FrmDomicilios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsPedido\FrmObservacionPedido.resx">
       <DependentUpon>FrmObservacionPedido.cs</DependentUpon>
@@ -742,6 +766,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsPedido\FrmObservarMesas.resx">
       <DependentUpon>FrmObservarMesas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormsPedido\FrmPedido.resx">
+      <DependentUpon>FrmPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsPedido\FrmRealizarPedido.resx">
       <DependentUpon>FrmRealizarPedido.cs</DependentUpon>
@@ -919,7 +946,9 @@
   <ItemGroup>
     <None Include="Resources\lightbrown_coffee_2.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\No hay domicilios.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -21,6 +21,15 @@ namespace CapaNegocio
 
         #endregion
 
+        #region CANCELAR DOMICILIO
+        public static string CancelarDomicilio(int id_pedido, string observaciones)
+        {
+            DPedidos DPedidos = new DPedidos();
+            return DPedidos.CancelarDomicilio(id_pedido, observaciones);
+        }
+
+        #endregion
+
         #region CAMBIAR ESTADO PEDIDO
         public static string CambiarEstadoPedido(List<string> variables)
         {

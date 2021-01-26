@@ -142,4 +142,7 @@
   <data name="NotFileCoffe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lightbrown_coffee_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="No_hay_domicilios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\No hay domicilios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

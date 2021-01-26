@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtObservacion = new System.Windows.Forms.TextBox();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -71,17 +72,35 @@
             this.btnCerrar.TabIndex = 2;
             this.btnCerrar.UseVisualStyleBackColor = true;
             // 
+            // btnSave
+            // 
+            this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.Gray;
+            this.btnSave.Location = new System.Drawing.Point(333, 113);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(35, 35);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Visible = false;
+            // 
             // Observacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.txtObservacion);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Observacion";
-            this.Size = new System.Drawing.Size(370, 117);
+            this.Size = new System.Drawing.Size(370, 150);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,5 +111,6 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox txtObservacion;
         public System.Windows.Forms.Button btnCerrar;
+        public System.Windows.Forms.Button btnSave;
     }
 }

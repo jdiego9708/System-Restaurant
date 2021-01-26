@@ -24,6 +24,7 @@ namespace CapaPresentacion.Formularios.FormsClientes
         }
 
         public event EventHandler onChangedEmail;
+        public event EventHandler OnClienteSuccess;
         private bool _isPedido;
         public bool IsPedido { get => _isPedido; set => _isPedido = value; }
 
@@ -174,6 +175,7 @@ namespace CapaPresentacion.Formularios.FormsClientes
                     {
                         if (this.FrmObservarClientes != null)
                         {
+                            this.OnClienteSuccess?.Invoke(sender, e);
                             this.FrmObservarClientes.Actualizar();
                         }
                         Mensajes.MensajeOkForm("Se " + mensaje + " el cliente correctamente");

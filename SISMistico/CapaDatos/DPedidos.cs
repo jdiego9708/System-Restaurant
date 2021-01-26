@@ -125,6 +125,42 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(Id_usuario);
                 contador += 1;
 
+                SqlParameter Fecha_pedido = new SqlParameter
+                {
+                    ParameterName = "@Fecha_pedido",
+                    SqlDbType = SqlDbType.Date,
+                    Value = DateTime.Now.ToString("yyyy-MM-dd"),
+                };
+                SqlCmd.Parameters.Add(Fecha_pedido);
+
+                SqlParameter Hora_pedido = new SqlParameter
+                {
+                    ParameterName = "@Hora_pedido",
+                    SqlDbType = SqlDbType.Time,
+                    Value = DateTime.Now.ToString("HH:mm"),
+                };
+                SqlCmd.Parameters.Add(Hora_pedido);
+
+                SqlParameter Tipo_pedido = new SqlParameter
+                {
+                    ParameterName = "@Tipo_pedido",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = Variables[contador]
+                };
+                SqlCmd.Parameters.Add(Tipo_pedido);
+                contador += 1;
+
+                SqlParameter Observaciones_pedido = new SqlParameter
+                {
+                    ParameterName = "@Observaciones_pedido",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 200,
+                    Value = Variables[contador]
+                };
+                SqlCmd.Parameters.Add(Observaciones_pedido);
+                contador += 1;
+
                 SqlParameter Detalles_pedido = new SqlParameter("@Detalle_pedido", TablaDetalle);
                 //Detalles_pedido.ParameterName = "@Detalle_pedido";
                 //Detalles_pedido.Value = TablaDetalle;
@@ -144,6 +180,76 @@ namespace CapaDatos
                 else
                 {
                     id_pedido = Convert.ToInt32(SqlCmd.Parameters["@Id_pedido"].Value);
+                }
+            }
+            //Mostramos posible error que tengamos
+            catch (SqlException ex)
+            {
+                rpta = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                //Si la cadena SqlCon esta abierta la cerramos
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+            return rpta;
+        }
+        #endregion
+
+        #region METODO CANCELAR DOMICILIO
+        public string CancelarDomicilio(int id_pedido, string observaciones)
+        {
+            //asignamos a una cadena string la variable rpta y la iniciamos en vacía
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
+            SqlCon.FireInfoMessageEventOnUserErrors = true;
+            //Capturador de errores
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+                //establecer comando
+                SqlCommand SqlCmd = new SqlCommand
+                {
+                    Connection = SqlCon,
+                    CommandText = "sp_Cancelar_pedido",
+                    //Indicamos que es un procedimiento almacenado
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                SqlParameter Id_pedido = new SqlParameter
+                {
+                    ParameterName = "@Id_pedido",
+                    SqlDbType = SqlDbType.Int,
+                    Value = id_pedido,
+                };
+                SqlCmd.Parameters.Add(Id_pedido);
+
+                SqlParameter Observaciones = new SqlParameter
+                {
+                    ParameterName = "@Observaciones",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 200,
+                    Value = observaciones,
+                };
+                SqlCmd.Parameters.Add(Observaciones);
+
+                //Ejecutamos nuestro comando
+                //Se puede ejecutar este metodo pero ya tenemos el mensaje que devuelve sql
+                rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "NO se Ingreso el Registro";
+
+                if (rpta != "OK")
+                {
+                    if (this.Mensaje_respuesta != null)
+                    {
+                        rpta = this.Mensaje_respuesta;
+                    }
                 }
             }
             //Mostramos posible error que tengamos

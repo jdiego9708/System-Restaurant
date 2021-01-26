@@ -47,11 +47,14 @@
             // 
             // dgvClientes
             // 
+            this.dgvClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClientes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Location = new System.Drawing.Point(12, 66);
             this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(598, 291);
+            this.dgvClientes.Size = new System.Drawing.Size(910, 451);
             this.dgvClientes.TabIndex = 2;
             // 
             // btnAgregarCliente
@@ -67,6 +70,8 @@
             // 
             // txtBusqueda
             // 
+            this.txtBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBusqueda.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.txtBusqueda.BackColor = System.Drawing.Color.White;
             this.txtBusqueda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -74,18 +79,18 @@
             this.txtBusqueda.Location = new System.Drawing.Point(50, 13);
             this.txtBusqueda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(560, 20);
+            this.txtBusqueda.Size = new System.Drawing.Size(872, 20);
             this.txtBusqueda.TabIndex = 5;
-            this.txtBusqueda.Texto = null;
-            this.txtBusqueda.Texto_inicial = null;
-            this.txtBusqueda.Visible_px = false;
+            this.txtBusqueda.Texto = "Búsqueda";
+            this.txtBusqueda.Texto_inicial = "Búsqueda";
+            this.txtBusqueda.Visible_px = true;
             // 
             // FrmObservarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(622, 369);
+            this.ClientSize = new System.Drawing.Size(934, 529);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnAgregarCliente);
             this.Controls.Add(this.dgvClientes);

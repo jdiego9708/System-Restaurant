@@ -686,7 +686,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First("Total parcial: $" &amp; FormatCurrency(Fields!Total_parcial.Value), "DatosPrincipales")</Value>
+                <Value>=First("Total parcial: $" &amp; Fields!Total_parcial.Value, "DatosPrincipales")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                 </Style>
@@ -1174,7 +1174,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Valor_pago.Value</Value>
+                              <Value>="$" &amp; Fields!Valor_pago.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1198,6 +1198,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>

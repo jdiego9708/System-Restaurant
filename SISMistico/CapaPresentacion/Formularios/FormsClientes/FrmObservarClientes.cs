@@ -8,15 +8,11 @@ namespace CapaPresentacion.Formularios.FormsClientes
 {
     public partial class FrmObservarClientes : Form
     {
-        ContextMenuAgregarCliente ContextMenuAgregarCliente;
         PoperContainer PoperContainer;
 
         public FrmObservarClientes()
         {
             InitializeComponent();
-
-            ContextMenuAgregarCliente = new ContextMenuAgregarCliente();
-            PoperContainer = new PoperContainer(ContextMenuAgregarCliente);
 
             this.Load += FrmObservarClientes_Load;
             this.dgvClientes.DoubleClick += DgvClientes_DoubleClick;
@@ -58,9 +54,23 @@ namespace CapaPresentacion.Formularios.FormsClientes
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.ContextMenuAgregarCliente.FrmObservarClientes = this;
-                PoperContainer.Show(btnAgregarCliente);
+                FrmAgregarCliente Frm = new FrmAgregarCliente
+                {
+                    FrmObservarClientes = this,
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill
+                };
+                Frm.OnClienteSuccess += Frm_OnClienteSuccess;
+                this.PoperContainer = new PoperContainer(Frm);
+                this.PoperContainer.Show(btnAgregarCliente);
+                Frm.Show();
             }
+        }
+
+        private void Frm_OnClienteSuccess(object sender, EventArgs e)
+        {
+            this.PoperContainer.Close();
         }
 
         public ContextMenuDatosPedido menuPedido;

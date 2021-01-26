@@ -33,6 +33,8 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.dgvProductosEditar.DoubleClick += DgvProductosEditar_DoubleClick;
         }
 
+        public event EventHandler OnPedidoDomicilioSuccess;
+
         private FrmComandas comandas = new FrmComandas();
 
         private void BtnQuitarProductosEditado_Click(object sender, EventArgs e)
@@ -201,8 +203,11 @@ namespace CapaPresentacion.Formularios.FormsPedido
                             TablaDetallePedido);
                         if (rpta.Equals("OK"))
                         {
-                            FrmObservarMesas FrmObservarMesas = FrmObservarMesas.GetInstancia();
-                            FrmObservarMesas.ObtenerPedido(id_pedido, this.Numero_mesa, "PENDIENTE");
+                            if (!this.IsDomicilio)
+                            {
+                                FrmObservarMesas FrmObservarMesas = FrmObservarMesas.GetInstancia();
+                                FrmObservarMesas.ObtenerPedido(id_pedido, this.Numero_mesa, "PENDIENTE");
+                            }
 
                             this.comandas.Id_pedido = id_pedido;
                             this.comandas.AsignarTablas();
@@ -239,6 +244,13 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
                                 comandas.ImprimirFactura(imprimir);
                             }
+
+                            if (this.IsDomicilio)
+                            {
+                                this.OnPedidoDomicilioSuccess?.Invoke(id_pedido, e);
+                            }
+
+
                             this.Close();
                         }
                         else
@@ -260,10 +272,21 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
         private List<string> Variables()
         {
+            string tipo_pedido = string.Empty;
+
+            if (this.IsDomicilio)
+            {
+                tipo_pedido = "DOMICILIO";
+            }
+            else
+            {
+                tipo_pedido = "MESA";
+            }
+
             return new List<string>
             {
                 Convert.ToString(this.Id_mesa), Convert.ToString(this.Id_empleado),
-                Convert.ToString(this.contextMenuDatosPedido.txtCliente.Tag), "0"
+                Convert.ToString(this.contextMenuDatosPedido.txtCliente.Tag), "0", tipo_pedido, "",
             };
         }
 

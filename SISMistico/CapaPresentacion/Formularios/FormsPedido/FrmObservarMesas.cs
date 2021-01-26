@@ -1,4 +1,5 @@
-﻿using CapaNegocio;
+﻿using CapaEntidades.Models;
+using CapaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -34,16 +35,40 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.btnDomicilio.Click += BtnDomicilio_Click;
         }
 
+
         private void BtnDomicilio_Click(object sender, EventArgs e)
         {
-            FrmRealizarPedido FrmPedido = new FrmRealizarPedido
+            if (this.PedidosDomicilios.Count > 0)
             {
-                StartPosition = FormStartPosition.CenterScreen,
-                Id_mesa = 0,
-                Numero_mesa = 0,
-                WindowState = FormWindowState.Maximized
-            };
-            FrmPedido.ShowDialog();
+                FrmDomicilios frmDomicilios = new FrmDomicilios
+                {
+                    WindowState = FormWindowState.Maximized,
+                };
+                frmDomicilios.Show();
+            }
+            else
+            {
+                FrmRealizarPedido FrmPedido = new FrmRealizarPedido
+                {
+                    StartPosition = FormStartPosition.CenterScreen,
+                    Id_mesa = 0,
+                    Numero_mesa = 0,
+                    WindowState = FormWindowState.Maximized,
+                    IsDomicilio = true,
+                };
+                FrmPedido.OnPedidoDomicilioSuccess += FrmPedido_OnPedidoDomicilioSuccess;
+                FrmPedido.ShowDialog();
+            }
+        }
+
+        private void FrmPedido_OnPedidoDomicilioSuccess(object sender, EventArgs e)
+        {
+            int id_pedido = (int)sender;
+
+            if (this.PedidosDomicilios == null)
+                this.PedidosDomicilios = new List<Pedido>();
+
+            this.CargarDomicilios(DateTime.Now.ToString("yyyy-MM-dd"));
         }
 
         private void TxtNumeroMesas_LostFocus(object sender, EventArgs e)
@@ -171,6 +196,34 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.Numero_mesas = 12;
             this.txtNumeroMesas.Text = Numero_mesas.ToString();
             this.CargarMesas(Numero_mesas);
+            this.CargarDomicilios(DateTime.Now.ToString("yyyy-MM-dd"));
+        }
+
+        public void CargarDomicilios(string fecha)
+        {
+            this.PedidosDomicilios = new List<Pedido>();
+            DataTable dtPedidos = NPedido.BuscarPedidos("DOMICILIOS COMPLETO", fecha);
+            if (dtPedidos != null)
+            {
+                int contadorPendientes = 0;
+                int contadorOtros = 0;
+                foreach (DataRow row in dtPedidos.Rows)
+                {
+                    Pedido pedido = new Pedido(row);
+                    if (pedido.Estado_pedido.Equals("PENDIENTE"))
+                    {
+                        this.PedidosDomicilios.Add(pedido);
+                        contadorPendientes += 1;
+                    }
+                    else
+                    {
+                        this.PedidosDomicilios.Add(pedido);
+                        contadorOtros += 1;
+                    }
+                }
+
+                this.btnDomicilio.Text = "Domicilios P:(" + contadorPendientes + ") T:(" + this.PedidosDomicilios.Count + ")"; 
+            }
         }
 
         private void CargarMesas(int numero_mesas)
@@ -323,6 +376,19 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
         int numero_mesas;
 
+        private List<Pedido> _pedidosDomicilios;
         public int Numero_mesas { get => numero_mesas; set => numero_mesas = value; }
+        public List<Pedido> PedidosDomicilios
+        {
+            get => _pedidosDomicilios;
+            set
+            {
+                _pedidosDomicilios = value;
+                if (value.Count > 0)
+                    this.btnDomicilio.Text = "Domicilios (" + value.Count + ")";
+                else
+                    this.btnDomicilio.Text = "Domicilio";
+            }
+        }
     }
 }

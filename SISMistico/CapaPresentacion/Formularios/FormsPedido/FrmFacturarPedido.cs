@@ -106,6 +106,8 @@ namespace CapaPresentacion.Formularios.FormsPedido
             return vs;
         }
 
+        public event EventHandler OnFacturarPedidoSuccess;
+
         private void BtnTerminar_Click(object sender, EventArgs e)
         {
             MensajeEspera.ShowWait("Facturando y terminando");
@@ -155,6 +157,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
                             MensajeEspera.CloseForm();
                             Mensajes.MensajeOkForm("Se realizó la precuenta correctamente");
+                            this.OnFacturarPedidoSuccess?.Invoke(this.Id_pedido, e);
                             this.Close();
                         }
                         else
@@ -197,6 +200,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
                                 MensajeEspera.CloseForm();
                                 Mensajes.MensajeOkForm("Se realizó la facturación correctamente");
+                                this.OnFacturarPedidoSuccess?.Invoke(this.Id_pedido, e);
                                 this.Close();
                             }
                             else
@@ -255,7 +259,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.opcionesPedido.Total_parcial = this.Total_parcial;
             this.opcionesPedido.frmFacturarPedido = this;
             this.panelDescuentos.Controls.Add(this.opcionesPedido);
-
+            this.Show();
         }
 
         private void BtnDescuentos_Click(object sender, EventArgs e)

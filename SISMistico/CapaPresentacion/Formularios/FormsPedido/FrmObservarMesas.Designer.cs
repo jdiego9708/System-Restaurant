@@ -76,7 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDetallePedido.Location = new System.Drawing.Point(751, 44);
             this.panelDetallePedido.Name = "panelDetallePedido";
-            this.panelDetallePedido.Size = new System.Drawing.Size(275, 579);
+            this.panelDetallePedido.Size = new System.Drawing.Size(325, 579);
             this.panelDetallePedido.TabIndex = 5;
             // 
             // panel1
@@ -179,7 +179,7 @@
             this.btnDomicilio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDomicilio.Location = new System.Drawing.Point(840, 5);
             this.btnDomicilio.Name = "btnDomicilio";
-            this.btnDomicilio.Size = new System.Drawing.Size(129, 35);
+            this.btnDomicilio.Size = new System.Drawing.Size(236, 35);
             this.btnDomicilio.TabIndex = 32;
             this.btnDomicilio.Text = "Domicilio";
             this.btnDomicilio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -190,7 +190,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1038, 635);
+            this.ClientSize = new System.Drawing.Size(1088, 635);
             this.Controls.Add(this.btnDomicilio);
             this.Controls.Add(this.btnPedidoLlevar);
             this.Controls.Add(this.btnCargar);
