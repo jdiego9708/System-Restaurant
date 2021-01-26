@@ -54,11 +54,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(186, 18);
+            this.label1.Location = new System.Drawing.Point(110, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 37);
+            this.label1.Size = new System.Drawing.Size(275, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tío PEPE";
+            this.label1.Text = "Restaurante Tío PEPE";
             // 
             // panel2
             // 
