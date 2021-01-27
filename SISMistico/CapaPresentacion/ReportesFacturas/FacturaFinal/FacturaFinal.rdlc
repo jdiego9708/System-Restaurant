@@ -23,7 +23,6 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Left>0cm</Left>
         <Height>0.6cm</Height>
         <Width>7.8cm</Width>
         <Style>
@@ -43,7 +42,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Nit</Value>
+                <Value>Nit 1037646184</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -118,7 +117,6 @@
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
         <Top>0.67056cm</Top>
-        <Left>0cm</Left>
         <Height>1.88764cm</Height>
         <Width>7.8cm</Width>
         <ZIndex>1</ZIndex>
@@ -345,7 +343,6 @@
       </Textbox>
       <Line Name="Line4">
         <Top>4.40231cm</Top>
-        <Left>0cm</Left>
         <Height>0cm</Height>
         <Width>7.77354cm</Width>
         <ZIndex>10</ZIndex>
@@ -684,7 +681,6 @@
         </TablixRowHierarchy>
         <DataSetName>DetallePedido</DataSetName>
         <Top>4.43759cm</Top>
-        <Left>0cm</Left>
         <Height>1.2cm</Height>
         <Width>7.77354cm</Width>
         <ZIndex>11</ZIndex>
@@ -853,7 +849,6 @@
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
         <Top>7.04925cm</Top>
-        <Left>0cm</Left>
         <Height>0.6cm</Height>
         <Width>7.77354cm</Width>
         <ZIndex>17</ZIndex>
@@ -1022,7 +1017,6 @@
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
         <Top>10.43731cm</Top>
-        <Left>0cm</Left>
         <Height>3.29875cm</Height>
         <Width>7.77354cm</Width>
         <ZIndex>22</ZIndex>
@@ -1383,10 +1377,14 @@
           <DataField>Observaciones</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Id_mesa">
+          <DataField>Id_mesa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsReportes</rd:DataSetName>
-        <rd:SchemaPath>D:\JUAN DIEGO\Documentos\OneDrive\PROYECTOS\EN CURSO\Mistico\SISMistico\CapaPresentacion\dsReportes.xsd</rd:SchemaPath>
+        <rd:SchemaPath>F:\JUAN DIEGO\Repositorios\System-Restaurant\SISMistico\CapaPresentacion\dsReportes.xsd</rd:SchemaPath>
         <rd:TableName>dtVenta</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
