@@ -93,12 +93,14 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
 
         private async void BtnEstadisticasDiarias_Click(object sender, EventArgs e)
         {
+            MensajeEspera.ShowWait("Cargando...");
+
             DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
 
             string informacionEmpleado = "Información de empleado que genera el reporte " +
                 datos.Nombre_empleado + " - Teléfono: " + datos.Empleado.Telefono_empleado;
             string cantidadPedidos = "";
-            DataTable dtPedidos = NPedido.BuscarPedidos("FECHA PEDIDO", DateTime.Now.ToString("yyyy-MM-dd"));
+            DataTable dtPedidos = NPedido.BuscarPedidos("FECHA", DateTime.Now.ToString("yyyy-MM-dd"));
             if (dtPedidos == null)
                 cantidadPedidos = "No hay ventas el día de hoy";
             else
@@ -111,7 +113,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             if (dtEstadistica != null)
             {
                 Turno turno = new Turno(dtEstadistica.Rows[0]);
-                id_turno = "identificación del turno: " + turno.Id_turno.ToString();
+                id_turno = "Identificación del turno: " + turno.Id_turno.ToString();
                 resumenResultados.Append("Valor inicial: ").Append(turno.Valor_inicial.ToString("C")).Append(Environment.NewLine);
                 resumenResultados.Append("Total ingresos: ").Append(turno.Total_ingresos.ToString("C")).Append(Environment.NewLine);
                 resumenResultados.Append("Total egresos: ").Append(turno.Total_egresos.ToString("C")).Append(Environment.NewLine);
@@ -129,13 +131,15 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             var (rptae, dtEgresos) = await NEgresos.BuscarEgresos("FECHA", DateTime.Now.ToString("yyyy-MM-dd"));
             if (dtEgresos != null)
             {
-                infoEgresos.Append("Descripción de los egresos: ");
+                infoEgresos.Append("Descripción de los egresos: ").Append(Environment.NewLine);
+                int contador = 0;
                 foreach (DataRow row in dtEgresos.Rows)
                 {
+                    contador += 1;
                     Egresos egreso = new Egresos(row);
-                    infoEgresos.Append("Fecha: ").Append(egreso.Fecha_egreso.ToLongDateString()).Append(" - ");
+                    infoEgresos.Append(contador + ") Fecha: ").Append(egreso.Fecha_egreso.ToLongDateString()).Append(" - ");
                     infoEgresos.Append("Valor: ").Append(egreso.Valor_egreso.ToString("C")).Append(" - ");
-                    infoEgresos.Append("Descripción: ").Append(egreso.Descripcion_egreso).Append(" - ");
+                    infoEgresos.Append("Observaciones: ").Append(egreso.Descripcion_egreso).Append(" - ");
                 }
             }
             else
@@ -152,7 +156,8 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                 FechaHora = DateTime.Now.ToLongDateString(),
             };
             frmReporteDiario.ObtenerReporte();
-            frmReporteDiario.ShowDialog();
+            frmReporteDiario.Show();
+            MensajeEspera.CloseForm();
         }
 
 

@@ -21,12 +21,24 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.txtDebito.KeyPress += Txt_KeyPress;
             this.txtDebito.GotFocus += Txt_GotFocus;
             this.txtDebito.LostFocus += Txt_LostFocus;
+
+            this.txtPrecioDesechables.KeyPress += Txt_KeyPress;
+            this.txtPrecioDesechables.GotFocus += Txt_GotFocus;
+            this.txtPrecioDesechables.LostFocus += Txt_LostFocus;
+
             this.txtEfectivo.KeyPress += Txt_KeyPress;
             this.txtEfectivo.GotFocus += Txt_GotFocus;
             this.txtEfectivo.LostFocus += Txt_LostFocus;
             this.txtDebito.TextChanged += TxtDebito_TextChanged;
             this.txtEfectivo.TextChanged += TxtEfectivo_TextChanged;
             this.btnDefault.Click += BtnDefault_Click;
+
+            this.chkDesechables.CheckedChanged += ChkDesechables_CheckedChanged;
+        }
+
+        private void ChkDesechables_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void BtnDefault_Click(object sender, EventArgs e)
@@ -296,12 +308,17 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
         private void OperacionSumarPrecios()
         {
+            decimal desechables;
+
+            if (!decimal.TryParse(this.txtPrecioDesechables.Tag.ToString(), out desechables))
+                desechables = 0;
+
             decimal desc = Convert.ToDecimal(this.ListaDescuentos.SelectedValue);
             decimal descuento = desc / 100;
             int propina = Convert.ToInt32(this.txtPropina.Tag);
             int subtotal = this.Total_parcial + propina;
 
-            decimal total_con_descuento = subtotal - (subtotal * descuento);
+            decimal total_con_descuento = subtotal - (subtotal * descuento) + desechables;
 
             this.lblSubtotal.Text = subtotal.ToString("C");
             this.lblSubtotal.Tag = subtotal;

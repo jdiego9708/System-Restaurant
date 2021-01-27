@@ -48,6 +48,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDefault = new System.Windows.Forms.Button();
             this.txtDebito = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEfectivo = new System.Windows.Forms.TextBox();
@@ -55,7 +56,8 @@
             this.chkEfectivo = new System.Windows.Forms.CheckBox();
             this.rdCredito = new System.Windows.Forms.RadioButton();
             this.rdDebito = new System.Windows.Forms.RadioButton();
-            this.btnDefault = new System.Windows.Forms.Button();
+            this.chkDesechables = new System.Windows.Forms.CheckBox();
+            this.txtPrecioDesechables = new System.Windows.Forms.TextBox();
             this.gbCupon.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -126,11 +128,11 @@
             // lblTotalParcial
             // 
             this.lblTotalParcial.AutoSize = true;
-            this.lblTotalParcial.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalParcial.Location = new System.Drawing.Point(104, 3);
+            this.lblTotalParcial.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalParcial.Location = new System.Drawing.Point(98, 5);
             this.lblTotalParcial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalParcial.Name = "lblTotalParcial";
-            this.lblTotalParcial.Size = new System.Drawing.Size(83, 17);
+            this.lblTotalParcial.Size = new System.Drawing.Size(96, 20);
             this.lblTotalParcial.TabIndex = 21;
             this.lblTotalParcial.Text = "Total parcial:";
             // 
@@ -257,6 +259,21 @@
             this.panel1.Size = new System.Drawing.Size(416, 155);
             this.panel1.TabIndex = 0;
             // 
+            // btnDefault
+            // 
+            this.btnDefault.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnDefault.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnDefault.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefault.Location = new System.Drawing.Point(92, 113);
+            this.btnDefault.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDefault.Name = "btnDefault";
+            this.btnDefault.Size = new System.Drawing.Size(182, 34);
+            this.btnDefault.TabIndex = 15;
+            this.btnDefault.Text = "Valores por defecto";
+            this.btnDefault.UseVisualStyleBackColor = true;
+            // 
             // txtDebito
             // 
             this.txtDebito.Location = new System.Drawing.Point(232, 76);
@@ -333,20 +350,26 @@
             this.rdDebito.Text = "Tarjeta débito";
             this.rdDebito.UseVisualStyleBackColor = true;
             // 
-            // btnDefault
+            // chkDesechables
             // 
-            this.btnDefault.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDefault.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnDefault.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnDefault.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefault.Location = new System.Drawing.Point(92, 113);
-            this.btnDefault.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(182, 34);
-            this.btnDefault.TabIndex = 15;
-            this.btnDefault.Text = "Valores por defecto";
-            this.btnDefault.UseVisualStyleBackColor = true;
+            this.chkDesechables.AutoSize = true;
+            this.chkDesechables.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkDesechables.Location = new System.Drawing.Point(7, 27);
+            this.chkDesechables.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.chkDesechables.Name = "chkDesechables";
+            this.chkDesechables.Size = new System.Drawing.Size(165, 25);
+            this.chkDesechables.TabIndex = 34;
+            this.chkDesechables.Text = "Cobrar desechables";
+            this.chkDesechables.UseVisualStyleBackColor = true;
+            // 
+            // txtPrecioDesechables
+            // 
+            this.txtPrecioDesechables.Location = new System.Drawing.Point(7, 50);
+            this.txtPrecioDesechables.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtPrecioDesechables.Name = "txtPrecioDesechables";
+            this.txtPrecioDesechables.Size = new System.Drawing.Size(125, 29);
+            this.txtPrecioDesechables.TabIndex = 35;
+            this.txtPrecioDesechables.Tag = "PROPINA";
             // 
             // DescuentosOpcionesPedido
             // 
@@ -354,6 +377,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.txtPrecioDesechables);
+            this.Controls.Add(this.chkDesechables);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblPropinaSugerida);
@@ -414,5 +439,7 @@
         public System.Windows.Forms.Label lblPropinaSugerida;
         public System.Windows.Forms.TextBox txtObservaciones;
         public System.Windows.Forms.Button btnDefault;
+        private System.Windows.Forms.CheckBox chkDesechables;
+        public System.Windows.Forms.TextBox txtPrecioDesechables;
     }
 }
