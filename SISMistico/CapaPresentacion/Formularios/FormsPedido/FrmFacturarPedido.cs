@@ -170,7 +170,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                             {
                                 FrmObservarMesas frm = FrmObservarMesas.GetInstancia();
                                 frm.LiberarMesa(this.Id_mesa);
-
+                                MensajeEspera.CloseForm();
                                 frmFacturaFinal.Id_pedido = this.Id_pedido;
                                 frmFacturaFinal.AsignarTablas();
                                 MensajeEspera.CloseForm();

@@ -127,7 +127,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Tío PEPE</Value>
+                    <Value>Restaurante Tío PEPE - Comanda</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>12pt</FontSize>
@@ -267,7 +267,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First("Mesa: " &amp; Fields!Num_mesa.Value, "DatosPedido")</Value>
+                    <Value>=First(Fields!Mesa.Value, "DatosPedido")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>SemiBold</FontWeight>
@@ -386,8 +386,7 @@
                     <Value>="Hora: " &amp; Parameters!parameterHora.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
+                      <FontWeight>SemiBold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
