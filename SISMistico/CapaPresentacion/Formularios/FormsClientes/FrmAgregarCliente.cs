@@ -30,7 +30,7 @@ namespace CapaPresentacion.Formularios.FormsClientes
 
         private void FrmAgregarCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.IsEditar)
+            if (this.IsEditar && this.IsPedido)
             {
                 e.Cancel = true;
             }

@@ -39,7 +39,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(295, 256);
+            this.panel1.Size = new System.Drawing.Size(369, 434);
             this.panel1.TabIndex = 0;
             // 
             // DatosUsuario
@@ -51,7 +51,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DatosUsuario";
-            this.Size = new System.Drawing.Size(298, 256);
+            this.Size = new System.Drawing.Size(372, 434);
             this.ResumeLayout(false);
 
         }

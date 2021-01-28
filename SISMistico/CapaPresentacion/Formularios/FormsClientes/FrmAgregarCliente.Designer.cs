@@ -117,7 +117,6 @@
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNombre.Location = new System.Drawing.Point(6, 23);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(303, 20);
             this.txtNombre.TabIndex = 0;
             this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -143,7 +142,6 @@
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTelefono.Location = new System.Drawing.Point(6, 23);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.ReadOnly = true;
             this.txtTelefono.Size = new System.Drawing.Size(115, 20);
             this.txtTelefono.TabIndex = 0;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -169,7 +167,6 @@
             this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCorreo.Location = new System.Drawing.Point(6, 23);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.ReadOnly = true;
             this.txtCorreo.Size = new System.Drawing.Size(169, 20);
             this.txtCorreo.TabIndex = 0;
             this.txtCorreo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -195,7 +192,6 @@
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDireccion.Location = new System.Drawing.Point(6, 23);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.ReadOnly = true;
             this.txtDireccion.Size = new System.Drawing.Size(303, 20);
             this.txtDireccion.TabIndex = 0;
             this.txtDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -221,7 +217,6 @@
             this.txtReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtReferencia.Location = new System.Drawing.Point(6, 23);
             this.txtReferencia.Name = "txtReferencia";
-            this.txtReferencia.ReadOnly = true;
             this.txtReferencia.Size = new System.Drawing.Size(303, 20);
             this.txtReferencia.TabIndex = 0;
             this.txtReferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -248,7 +243,6 @@
             this.txtObservaciones.Location = new System.Drawing.Point(6, 23);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.ReadOnly = true;
             this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservaciones.Size = new System.Drawing.Size(303, 47);
             this.txtObservaciones.TabIndex = 0;

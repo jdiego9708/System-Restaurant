@@ -247,6 +247,16 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(Correo_electronico);
                 contador += 1;
 
+                SqlParameter Direccion_cliente = new SqlParameter
+                {
+                    ParameterName = "@Direccion_cliente",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 100,
+                    Value = DClientes.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Direccion_cliente);
+                contador += 1;
+
                 SqlParameter Referencia_ubicacion = new SqlParameter
                 {
                     ParameterName = "@Referencia_ubicacion",
