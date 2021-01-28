@@ -100,8 +100,9 @@ namespace CapaPresentacion.Formularios.FormsPedido
                 Convert.ToString(this.lblSubTotal.Tag),
                 Convert.ToString(this.opcionesPedido.ListaDescuentos.SelectedValue),
                 Convert.ToString(this.opcionesPedido.txtCupon.Text),
+                Convert.ToString(this.opcionesPedido.txtPrecioDesechables.Tag),
                 Convert.ToString(this.Total_final),
-                Convert.ToString(this.opcionesPedido.txtObservaciones.Text)
+                Convert.ToString(this.opcionesPedido.txtObservaciones.Text),
             };
             return vs;
         }
@@ -172,7 +173,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
                                 frmFacturaFinal.Id_pedido = this.Id_pedido;
                                 frmFacturaFinal.AsignarTablas();
-
+                                MensajeEspera.CloseForm();
                                 string metodo = this.ObtenerValorPanel(this.panelTipoPedido);
                                 if (metodo.Equals("IMPRIMIR"))
                                 {
@@ -184,6 +185,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                                         EmailFactura.SendEmailFactura(this.Id_pedido, this.Correo_electronico);
                                     if (!rpta_email.Equals("OK"))
                                     {
+                                        MensajeEspera.CloseForm();
                                         Mensajes.MensajeErrorForm("Hubo un error al enviar el correo electrónico");
                                     }
                                 }
@@ -194,6 +196,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                                         EmailFactura.SendEmailFactura(this.Id_pedido, this.Correo_electronico);
                                     if (!rpta_email.Equals("OK"))
                                     {
+                                        MensajeEspera.CloseForm();
                                         Mensajes.MensajeErrorForm("Hubo un error al enviar el correo electrónico");
                                     }
                                 }
@@ -256,6 +259,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.frmFacturaFinal.AsignarReporte();
 
             this.btnTerminar.Enabled = true;
+            this.opcionesPedido.IsDomicilio = this.IsDomicilio;
             this.opcionesPedido.Total_parcial = this.Total_parcial;
             this.opcionesPedido.frmFacturarPedido = this;
             this.panelDescuentos.Controls.Add(this.opcionesPedido);
@@ -397,5 +401,14 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.lblTotal.Tag = total_parcial;
         }
 
+        private bool _isDomicilio;
+        public bool IsDomicilio
+        {
+            get => _isDomicilio;
+            set
+            {
+                _isDomicilio = value;
+            }
+        }
     }
 }

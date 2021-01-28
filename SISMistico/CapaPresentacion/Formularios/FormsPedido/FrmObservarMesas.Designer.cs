@@ -40,7 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCargar = new System.Windows.Forms.Button();
-            this.btnPedidoLlevar = new System.Windows.Forms.Button();
             this.btnDomicilio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -145,26 +144,6 @@
             this.btnCargar.Text = "Cargar mesas";
             this.btnCargar.UseVisualStyleBackColor = true;
             // 
-            // btnPedidoLlevar
-            // 
-            this.btnPedidoLlevar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPedidoLlevar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPedidoLlevar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnPedidoLlevar.FlatAppearance.BorderSize = 0;
-            this.btnPedidoLlevar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.btnPedidoLlevar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnPedidoLlevar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPedidoLlevar.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedidoLlevar.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidoLlevar.Image")));
-            this.btnPedidoLlevar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPedidoLlevar.Location = new System.Drawing.Point(654, 4);
-            this.btnPedidoLlevar.Name = "btnPedidoLlevar";
-            this.btnPedidoLlevar.Size = new System.Drawing.Size(180, 35);
-            this.btnPedidoLlevar.TabIndex = 31;
-            this.btnPedidoLlevar.Text = "Pedido para llevar";
-            this.btnPedidoLlevar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPedidoLlevar.UseVisualStyleBackColor = true;
-            // 
             // btnDomicilio
             // 
             this.btnDomicilio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -177,9 +156,9 @@
             this.btnDomicilio.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDomicilio.Image = ((System.Drawing.Image)(resources.GetObject("btnDomicilio.Image")));
             this.btnDomicilio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDomicilio.Location = new System.Drawing.Point(840, 5);
+            this.btnDomicilio.Location = new System.Drawing.Point(652, 5);
             this.btnDomicilio.Name = "btnDomicilio";
-            this.btnDomicilio.Size = new System.Drawing.Size(236, 35);
+            this.btnDomicilio.Size = new System.Drawing.Size(200, 35);
             this.btnDomicilio.TabIndex = 32;
             this.btnDomicilio.Text = "Domicilio";
             this.btnDomicilio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -192,7 +171,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1088, 635);
             this.Controls.Add(this.btnDomicilio);
-            this.Controls.Add(this.btnPedidoLlevar);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -229,7 +207,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
         public System.Windows.Forms.Button btnCargar;
-        private System.Windows.Forms.Button btnPedidoLlevar;
         private System.Windows.Forms.Button btnDomicilio;
     }
 }

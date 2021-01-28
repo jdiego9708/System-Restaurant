@@ -18,6 +18,12 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             this.ListaEmpleados.SelectedIndexChanged += ListaEmpleados_SelectedIndexChanged;
             this.btnCerrar.Click += BtnCerrar_Click;
             this.btnIngresar.Click += BtnIngresar_Click;
+            this.FormClosing += FrmIniciarSesion_FormClosing;
+        }
+
+        private void FrmIniciarSesion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void Login()

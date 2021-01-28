@@ -26,6 +26,10 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.txtPrecioDesechables.GotFocus += Txt_GotFocus;
             this.txtPrecioDesechables.LostFocus += Txt_LostFocus;
 
+            this.txtDomicilio.KeyPress += Txt_KeyPress;
+            this.txtDomicilio.GotFocus += Txt_GotFocus;
+            this.txtDomicilio.LostFocus += Txt_LostFocus;
+
             this.txtEfectivo.KeyPress += Txt_KeyPress;
             this.txtEfectivo.GotFocus += Txt_GotFocus;
             this.txtEfectivo.LostFocus += Txt_LostFocus;
@@ -34,11 +38,25 @@ namespace CapaPresentacion.Formularios.FormsPedido
             this.btnDefault.Click += BtnDefault_Click;
 
             this.chkDesechables.CheckedChanged += ChkDesechables_CheckedChanged;
+            this.chkDomicilio.CheckedChanged += ChkDomicilio_CheckedChanged;
+        }
+
+        private void ChkDomicilio_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            if (chk.Checked)
+                this.txtDomicilio.Visible = true;
+            else
+                this.txtDomicilio.Visible = false;
         }
 
         private void ChkDesechables_CheckedChanged(object sender, EventArgs e)
         {
-            
+            CheckBox chk = (CheckBox)sender;
+            if (chk.Checked)
+                this.txtPrecioDesechables.Visible = true;
+            else
+                this.txtPrecioDesechables.Visible = false;
         }
 
         private void BtnDefault_Click(object sender, EventArgs e)
@@ -308,17 +326,19 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
         private void OperacionSumarPrecios()
         {
-            decimal desechables;
 
-            if (!decimal.TryParse(this.txtPrecioDesechables.Tag.ToString(), out desechables))
+            if (!decimal.TryParse(this.txtPrecioDesechables.Tag.ToString(), out decimal desechables))
                 desechables = 0;
+
+            if (!decimal.TryParse(this.txtDomicilio.Tag.ToString(), out decimal domicilio))
+                domicilio = 0;
 
             decimal desc = Convert.ToDecimal(this.ListaDescuentos.SelectedValue);
             decimal descuento = desc / 100;
             int propina = Convert.ToInt32(this.txtPropina.Tag);
-            int subtotal = this.Total_parcial + propina;
+            int subtotal = this.Total_parcial + propina + Convert.ToInt32(desechables) + Convert.ToInt32(domicilio);
 
-            decimal total_con_descuento = subtotal - (subtotal * descuento) + desechables;
+            decimal total_con_descuento = subtotal - (subtotal * descuento);
 
             this.lblSubtotal.Text = subtotal.ToString("C");
             this.lblSubtotal.Tag = subtotal;
@@ -384,10 +404,28 @@ namespace CapaPresentacion.Formularios.FormsPedido
         private DataTable dtCuenta;
         private double total;
         private int total_parcial;
+        private bool _isDomicilio;
+        public bool IsDomicilio
+        {
+            get => _isDomicilio;
+            set
+            {
+                _isDomicilio = value;
+                if (value)
+                {
+                    this.chkDomicilio.Checked = true;
+                }
+                else
+                {
+                    this.chkDomicilio.Checked = false;
+                }
+            }
+        }
 
         public FrmFacturarPedido frmFacturarPedido;
         public DataTable DtCuenta { get => dtCuenta; set => dtCuenta = value; }
         public double Total { get => total; set => total = value; }
         public int Total_parcial { get => total_parcial; set => total_parcial = value; }
+
     }
 }

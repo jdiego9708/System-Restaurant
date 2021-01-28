@@ -98,16 +98,15 @@ namespace CapaPresentacion.Formularios.FormsPedido
             Pedido pedido = (Pedido)sender;
             if (pedido.Estado_pedido.Equals("PENDIENTE"))
             {
-                MensajeEspera.ShowWait("Imprimiendo...");
                 FrmFacturarPedido facturarPedido = new FrmFacturarPedido
                 {
                     StartPosition = FormStartPosition.CenterScreen,
-                    IsPrecuenta = false
+                    IsPrecuenta = false,
+                    IsDomicilio = true,
                 };
                 facturarPedido.ObtenerPedido(pedido.Id_pedido);
                 facturarPedido.OnFacturarPedidoSuccess += FacturarPedido_OnFacturarPedidoSuccess;
                 facturarPedido.Show();
-                MensajeEspera.CloseForm();
             }
         }
 
@@ -145,6 +144,9 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
         private void FrmPedido_OnPedidoDomicilioSuccess(object sender, EventArgs e)
         {
+            this.rdEnCurso.Checked = true;
+            this.BuscarPedidos("DOMICILIOS PENDIENTES", DateTime.Now.ToString("yyyy-MM-dd"));
+
             FrmObservarMesas frmObservarMesas = FrmObservarMesas.GetInstancia();
             if (frmObservarMesas != null)
             {

@@ -41,7 +41,7 @@ namespace CapaDatos
             id_venta = 0;
             int contador = 0;
             string consulta = "INSERT INTO Ventas VALUES (@Id_pedido, @Fecha_venta, @Hora_venta, @Total_parcial, " +
-                "@Propina, @Subtotal, @Descuento, @Bono_cupon, @Total_final, @Observaciones, @Estado); " +
+                "@Propina, @Subtotal, @Descuento, @Bono_cupon, @Desechables, @Total_final, @Observaciones, @Estado); " +
                 "SELECT CAST (SCOPE_IDENTITY() AS int)";
             //asignamos a una cadena string la variable rpta y la iniciamos en vacía
             string rpta = "";
@@ -137,6 +137,15 @@ namespace CapaDatos
                     Value = Variables[contador].Trim()
                 };
                 SqlCmd.Parameters.Add(Bono_cupon);
+                contador += 1;
+
+                SqlParameter Desechables = new SqlParameter
+                {
+                    ParameterName = "@Desechables",
+                    SqlDbType = SqlDbType.Decimal,
+                    Value = Convert.ToDecimal(Variables[contador])
+                };
+                SqlCmd.Parameters.Add(Desechables);
                 contador += 1;
 
                 SqlParameter Total_final = new SqlParameter

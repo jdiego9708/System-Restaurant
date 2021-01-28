@@ -58,6 +58,8 @@
             this.rdDebito = new System.Windows.Forms.RadioButton();
             this.chkDesechables = new System.Windows.Forms.CheckBox();
             this.txtPrecioDesechables = new System.Windows.Forms.TextBox();
+            this.txtDomicilio = new System.Windows.Forms.TextBox();
+            this.chkDomicilio = new System.Windows.Forms.CheckBox();
             this.gbCupon.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -66,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 123);
+            this.label1.Location = new System.Drawing.Point(2, 137);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 21);
@@ -80,7 +82,7 @@
             this.ListaDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ListaDescuentos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListaDescuentos.FormattingEnabled = true;
-            this.ListaDescuentos.Location = new System.Drawing.Point(5, 148);
+            this.ListaDescuentos.Location = new System.Drawing.Point(5, 162);
             this.ListaDescuentos.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ListaDescuentos.Name = "ListaDescuentos";
             this.ListaDescuentos.Size = new System.Drawing.Size(128, 29);
@@ -108,7 +110,7 @@
             // gbCupon
             // 
             this.gbCupon.Controls.Add(this.txtCupon);
-            this.gbCupon.Location = new System.Drawing.Point(202, 125);
+            this.gbCupon.Location = new System.Drawing.Point(204, 129);
             this.gbCupon.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gbCupon.Name = "gbCupon";
             this.gbCupon.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -191,7 +193,7 @@
             // 
             this.lblSubtotal.AutoSize = true;
             this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtotal.Location = new System.Drawing.Point(160, 87);
+            this.lblSubtotal.Location = new System.Drawing.Point(291, 95);
             this.lblSubtotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(83, 17);
@@ -201,7 +203,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(88, 87);
+            this.label6.Location = new System.Drawing.Point(219, 92);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 21);
@@ -369,7 +371,30 @@
             this.txtPrecioDesechables.Name = "txtPrecioDesechables";
             this.txtPrecioDesechables.Size = new System.Drawing.Size(125, 29);
             this.txtPrecioDesechables.TabIndex = 35;
-            this.txtPrecioDesechables.Tag = "PROPINA";
+            this.txtPrecioDesechables.Tag = "0";
+            this.txtPrecioDesechables.Visible = false;
+            // 
+            // txtDomicilio
+            // 
+            this.txtDomicilio.Location = new System.Drawing.Point(7, 104);
+            this.txtDomicilio.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.Size = new System.Drawing.Size(125, 29);
+            this.txtDomicilio.TabIndex = 37;
+            this.txtDomicilio.Tag = "0";
+            this.txtDomicilio.Visible = false;
+            // 
+            // chkDomicilio
+            // 
+            this.chkDomicilio.AutoSize = true;
+            this.chkDomicilio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkDomicilio.Location = new System.Drawing.Point(7, 81);
+            this.chkDomicilio.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.chkDomicilio.Name = "chkDomicilio";
+            this.chkDomicilio.Size = new System.Drawing.Size(145, 25);
+            this.chkDomicilio.TabIndex = 36;
+            this.chkDomicilio.Text = "Cobrar domicilio";
+            this.chkDomicilio.UseVisualStyleBackColor = true;
             // 
             // DescuentosOpcionesPedido
             // 
@@ -377,6 +402,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.txtDomicilio);
+            this.Controls.Add(this.chkDomicilio);
             this.Controls.Add(this.txtPrecioDesechables);
             this.Controls.Add(this.chkDesechables);
             this.Controls.Add(this.groupBox1);
@@ -441,5 +468,7 @@
         public System.Windows.Forms.Button btnDefault;
         private System.Windows.Forms.CheckBox chkDesechables;
         public System.Windows.Forms.TextBox txtPrecioDesechables;
+        public System.Windows.Forms.TextBox txtDomicilio;
+        private System.Windows.Forms.CheckBox chkDomicilio;
     }
 }
