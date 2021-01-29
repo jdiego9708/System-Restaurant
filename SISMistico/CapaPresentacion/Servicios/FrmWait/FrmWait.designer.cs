@@ -84,6 +84,7 @@
             // 
             this.btnCerrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.BackgroundImage")));
             this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;

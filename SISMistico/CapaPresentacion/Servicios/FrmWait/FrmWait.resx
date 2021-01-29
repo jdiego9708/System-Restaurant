@@ -120,16 +120,16 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCerrar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAAIUAAACFAeLs/8EAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
-        AAABwUlEQVRIS7WVzU7DMAzH+xIcgA3xOkiAOPASfGw8CzcQsMMOO+w+4E02hASINi3SmiI2JKQ2VWZ3
-        KSSt12YMLP2ktnb+SVzHcarMj+SWG8YtxpN7jycj4FMxwm8sjE8Zl00Vbm9uKDc9Li5BSACyhhToB+9f
-        22p4tfmhOIABU03Algkbi30lQ5vL4zMIxBVRAjakkNK2kjNNrXwV8Zy0tBOPywY4zLQ8Bfqgasqxk9ex
-        3FDyOIHoGAEwIGgfSr93ow8i8XudLLY4CePiKhPHUoQPpWpB8bpJcvEFMaApG1CScZtwZrB+d6FAlS8H
-        zsmJAwfmjnLmUEI24oqB40XikXAY/KSioz3XiiMj+MF2hypf9RLiyPT3E4QxGafj8uQDJ3goOoroaUGW
-        2MXw/38ytlzCkVElZDVJFB/BDmQTXoiDVl8tenUR/iQ7aGguF9eG8w9aBbSfi0wcbX7BJBMj4PlNC66h
-        EIvV8zKW60p+bm4kdsBpc4PVkbJI7ClZ01RfWvXCaSk52vCygEAzXRZgWqDt7CqZagumcg3OxzkMhEqg
-        BTVSKMduKec2hmWGLRdEboEhgG0FwecBi+Lj71IkzXFmeNvUv+Zhoo8AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        hQAAAIUB4uz/wQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHBSURBVEhLtZXN
+        TsMwDMf7EhyADfE6SIA48BJ8bDwLNxCwww477D7gTTaEBIg2LdKaIjYkpDZVZncpJK3XZgws/aS2dv5J
+        XMdxqsyP5JYbxi3Gk3uPJyPgUzHCbyyMTxmXTRVub24oNz0uLkFIALKGFOgH71/bani1+aE4gAFTTcCW
+        CRuLfSVDm8vjMwjEFVECNqSQ0raSM02tfBXxnLS0E4/LBjjMtDwF+qBqyrGT17HcUPI4gegYATAgaB9K
+        v3ejDyLxe50stjgJ4+IqE8dShA+lakHxukly8QUxoCkbUJJxm3BmsH53oUCVLwfOyYkDB+aOcuZQQjbi
+        ioHjReKRcBj8pKKjPdeKIyP4wXaHKl/1EuLI9PcThDEZp+Py5AMneCg6iuhpQZbYxfD/fzK2XMKRUSVk
+        NUkUH8EOZBNeiINWXy16dRH+JDtoaC4X14bzD1oFtJ+LTBxtfsEkEyPg+U0LrqEQi9XzMpbrSn5ubiR2
+        wGlzg9WRskjsKVnTVF9a9cJpKTna8LKAQDNdFmBaoO3sKplqC6ZyDc7HOQyESqAFNVIox24p5zaGZYYt
+        F0RugSGAbQXB5wGL4uPvUiTNcWZ429S/5mGijwAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>
