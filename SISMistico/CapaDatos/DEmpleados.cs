@@ -360,7 +360,9 @@ namespace CapaDatos
 
                 if (result)
                 {
-                    if (tipo_usuario.Equals("CAJERO") || tipo_usuario.Equals("ADMINISTRADOR"))
+                    if (tipo_usuario.Equals("CAJERO") || 
+                        tipo_usuario.Equals("ADMINISTRADOR") || 
+                        tipo_usuario.Equals("MESERO"))
                     {
                         if (ds.Tables.Count >= 3)
                         {

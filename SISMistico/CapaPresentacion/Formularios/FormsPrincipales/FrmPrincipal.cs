@@ -753,6 +753,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                 this.btnMesasPedidos.Enabled = true;
                 this.btnVentas.Enabled = true;
                 this.btnInsumos.Enabled = true;
+                this.btnAdministracion.Enabled = true;
             }
             else if (datos.Cargo_empleado.Equals("MESERO"))
             {
@@ -763,6 +764,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                 this.btnMesasPedidos.Enabled = true;
                 this.btnVentas.Enabled = false;
                 this.btnInsumos.Enabled = false;
+                this.btnAdministracion.Enabled = false;
             }
             else if (datos.Cargo_empleado.Equals("CAJERO"))
             {
@@ -773,6 +775,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                 this.btnMesasPedidos.Enabled = true;
                 this.btnVentas.Enabled = false;
                 this.btnInsumos.Enabled = true;
+                this.btnAdministracion.Enabled = false;
             }
 
             //Id de Juan Diego Administrador
