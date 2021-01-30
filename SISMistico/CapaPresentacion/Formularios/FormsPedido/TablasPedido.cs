@@ -423,15 +423,16 @@ namespace CapaPresentacion.Formularios.FormsPedido
                     IEnumerable<EPlatos> platoComprobado = this.ComprobacionPlato(id_tipo);
                     foreach (EPlatos pl in platoComprobado)
                     {
-                        pl.Observaciones_pedido = observaciones;
-                        if (this.IsEditar)
+                        pl.Observaciones_pedido = observaciones;                        
+                    }
+
+                    if (this.IsEditar)
+                    {
+                        //1- Comprobación si existe en la lista de EPlatos
+                        IEnumerable<EPlatos> platoComprobadoEditar = this.ComprobacionPlatoEditar(id_tipo);
+                        foreach (EPlatos plEdit in platoComprobadoEditar)
                         {
-                            //1- Comprobación si existe en la lista de EPlatos
-                            IEnumerable<EPlatos> platoComprobadoEditar = this.ComprobacionPlatoEditar(id_tipo);
-                            foreach (EPlatos plEdit in platoComprobadoEditar)
-                            {
-                                plEdit.Observaciones_pedido = observaciones;
-                            }
+                            plEdit.Observaciones_pedido = observaciones;
                         }
                     }
                 }
@@ -442,14 +443,15 @@ namespace CapaPresentacion.Formularios.FormsPedido
                     foreach (EBebidas be in bebidaComprobado)
                     {
                         be.Observaciones_pedido = observaciones;
-                        if (this.IsEditar)
+                    }
+
+                    if (this.IsEditar)
+                    {
+                        //1- Comprobación si existe en la lista de EPlatos
+                        IEnumerable<EBebidas> bebidaComprobadoEditar = this.ComprobacionBebidaEditar(id_tipo);
+                        foreach (EBebidas beEdit in bebidaComprobadoEditar)
                         {
-                            //1- Comprobación si existe en la lista de EPlatos
-                            IEnumerable<EBebidas> bebidaComprobadoEditar = this.ComprobacionBebidaEditar(id_tipo);
-                            foreach (EBebidas beEdit in bebidaComprobadoEditar)
-                            {
-                                beEdit.Observaciones_pedido = observaciones;
-                            }
+                            beEdit.Observaciones_pedido = observaciones;
                         }
                     }
                 }

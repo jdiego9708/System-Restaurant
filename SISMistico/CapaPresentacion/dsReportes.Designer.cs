@@ -414,6 +414,10 @@ namespace CapaPresentacion {
             
             private global::System.Data.DataColumn columnId_mesa;
             
+            private global::System.Data.DataColumn columnDesechables;
+            
+            private global::System.Data.DataColumn columnDomicilio;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public dtVentaDataTable() {
@@ -569,6 +573,22 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DesechablesColumn {
+                get {
+                    return this.columnDesechables;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DomicilioColumn {
+                get {
+                    return this.columnDomicilio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -604,7 +624,24 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public dtVentaRow AdddtVentaRow(string Id_venta, string Id_pedido, string Num_mesa, string Nombre_empleado, string Nombre_cliente, string Fecha_venta, string Hora_venta, string Total_parcial, string Propina, string Subtotal, string Descuento, string Bono_cupon, string Total_final, string Observaciones, string Id_mesa) {
+            public dtVentaRow AdddtVentaRow(
+                        string Id_venta, 
+                        string Id_pedido, 
+                        string Num_mesa, 
+                        string Nombre_empleado, 
+                        string Nombre_cliente, 
+                        string Fecha_venta, 
+                        string Hora_venta, 
+                        string Total_parcial, 
+                        string Propina, 
+                        string Subtotal, 
+                        string Descuento, 
+                        string Bono_cupon, 
+                        string Total_final, 
+                        string Observaciones, 
+                        string Id_mesa, 
+                        string Desechables, 
+                        string Domicilio) {
                 dtVentaRow rowdtVentaRow = ((dtVentaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id_venta,
@@ -621,7 +658,9 @@ namespace CapaPresentacion {
                         Bono_cupon,
                         Total_final,
                         Observaciones,
-                        Id_mesa};
+                        Id_mesa,
+                        Desechables,
+                        Domicilio};
                 rowdtVentaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtVentaRow);
                 return rowdtVentaRow;
@@ -659,6 +698,8 @@ namespace CapaPresentacion {
                 this.columnTotal_final = base.Columns["Total_final"];
                 this.columnObservaciones = base.Columns["Observaciones"];
                 this.columnId_mesa = base.Columns["Id_mesa"];
+                this.columnDesechables = base.Columns["Desechables"];
+                this.columnDomicilio = base.Columns["Domicilio"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -694,6 +735,10 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnObservaciones);
                 this.columnId_mesa = new global::System.Data.DataColumn("Id_mesa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId_mesa);
+                this.columnDesechables = new global::System.Data.DataColumn("Desechables", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesechables);
+                this.columnDomicilio = new global::System.Data.DataColumn("Domicilio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDomicilio);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2097,6 +2142,38 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Desechables {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtVenta.DesechablesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Desechables\' de la tabla \'dtVenta\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtVenta.DesechablesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Domicilio {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtVenta.DomicilioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Domicilio\' de la tabla \'dtVenta\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtVenta.DomicilioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsId_ventaNull() {
                 return this.IsNull(this.tabledtVenta.Id_ventaColumn);
             }
@@ -2273,6 +2350,30 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetId_mesaNull() {
                 this[this.tabledtVenta.Id_mesaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDesechablesNull() {
+                return this.IsNull(this.tabledtVenta.DesechablesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDesechablesNull() {
+                this[this.tabledtVenta.DesechablesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDomicilioNull() {
+                return this.IsNull(this.tabledtVenta.DomicilioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDomicilioNull() {
+                this[this.tabledtVenta.DomicilioColumn] = global::System.Convert.DBNull;
             }
         }
         

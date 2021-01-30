@@ -45,7 +45,7 @@ namespace CapaPresentacion
             };
         }
 
-        protected override bool ProcessDialogKey(Keys keyData)
+        protected override bool ProcessDialogKey(   Keys keyData)
         {//prevent alt from closing it and allow alt+menumonic to work
             if ((keyData & Keys.Alt) == Keys.Alt)
                 return false;
@@ -88,9 +88,6 @@ namespace CapaPresentacion
             Show(control, location, ToolStripDropDownDirection.BelowRight);
         }
 
-
-
-
         private const int frames = 5;
         private const int totalduration = 100;
         private const int frameduration = totalduration / frames;
@@ -111,9 +108,6 @@ namespace CapaPresentacion
             }
             Opacity = opacity;
         }
-
-
-
 
         protected override void OnOpening(CancelEventArgs e)
         {

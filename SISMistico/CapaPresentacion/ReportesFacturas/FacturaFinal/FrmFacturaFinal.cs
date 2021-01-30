@@ -67,10 +67,11 @@ namespace CapaPresentacion
                 reportParameters[2] = new ReportParameter("Propina_pedido", variables[2]);
                 reportParameters[3] = new ReportParameter("Subtotal", variables[3]);
                 reportParameters[4] = new ReportParameter("Descuento", variables[4]);
-                reportParameters[5] = new ReportParameter("Total", variables[7]);
+                reportParameters[5] = new ReportParameter("Total", variables[8]);
                 reportParameters[6] = new ReportParameter("Cupon", variables[5]);
-                reportParameters[7] = new ReportParameter("Observaciones", variables[8]);
+                reportParameters[7] = new ReportParameter("Observaciones", variables[9]);
                 reportParameters[8] = new ReportParameter("Precio_desechable", variables[6]);
+                reportParameters[9] = new ReportParameter("PrecioDomicilio", variables[7]);
 
                 string rpta;
                 this.TablaDatosPrincipales = NPedido.BuscarPedidosYDetalle("ID PEDIDO",

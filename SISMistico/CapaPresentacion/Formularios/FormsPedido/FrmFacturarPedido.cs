@@ -101,6 +101,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                 Convert.ToString(this.opcionesPedido.ListaDescuentos.SelectedValue),
                 Convert.ToString(this.opcionesPedido.txtCupon.Text),
                 Convert.ToString(this.opcionesPedido.txtPrecioDesechables.Tag),
+                Convert.ToString(this.opcionesPedido.txtDomicilio.Tag),
                 Convert.ToString(this.Total_final),
                 Convert.ToString(this.opcionesPedido.txtObservaciones.Text),
             };

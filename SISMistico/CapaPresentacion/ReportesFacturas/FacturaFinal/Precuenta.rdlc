@@ -910,8 +910,8 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>7.52551cm</Top>
-            <Left>0.03527cm</Left>
+            <Top>8.19607cm</Top>
+            <Left>4.00138cm</Left>
             <Height>0.6cm</Height>
             <Width>3.93083cm</Width>
             <ZIndex>15</ZIndex>
@@ -977,10 +977,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>8.19607cm</Top>
-            <Left>4.00138cm</Left>
+            <Top>8.9019cm</Top>
+            <Left>0.03527cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.82493cm</Width>
+            <Width>7.75577cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -993,8 +993,7 @@
             </Style>
           </Textbox>
           <Line Name="Line6">
-            <Top>8.9019cm</Top>
-            <Left>0.03527cm</Left>
+            <Top>9.6251cm</Top>
             <Height>0cm</Height>
             <Width>7.79104cm</Width>
             <ZIndex>18</ZIndex>
@@ -1070,8 +1069,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>8.97246cm</Top>
-            <Left>0.03527cm</Left>
+            <Top>9.66038cm</Top>
             <Height>4.70104cm</Height>
             <Width>7.79104cm</Width>
             <ZIndex>19</ZIndex>
@@ -1136,7 +1134,6 @@
               </Paragraph>
             </Paragraphs>
             <Top>8.19607cm</Top>
-            <Left>0.07055cm</Left>
             <Height>0.6cm</Height>
             <Width>3.93083cm</Width>
             <ZIndex>21</ZIndex>
@@ -1150,11 +1147,42 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="txtDescuento3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Domicilio: $" &amp; Parameters!PrecioDomicilio.Value</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>7.49024cm</Top>
+            <Left>0.03527cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.96611cm</Width>
+            <ZIndex>22</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>13.6735cm</Height>
+        <Height>14.36142cm</Height>
         <Style />
       </Body>
-      <Width>7.86159cm</Width>
+      <Width>7.93221cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -1222,6 +1250,12 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="PrecioDomicilio">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1272,6 +1306,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>Precio_desechable</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>PrecioDomicilio</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
