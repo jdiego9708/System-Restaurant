@@ -57,7 +57,7 @@ namespace CapaPresentacion.Formularios.FormsClientes
             this.txtDireccion.Text = datos[4];
             this.txtReferencia.Text = datos[5];
             this.txtObservaciones.Text = datos[6];
-            this.estado = datos[7];   
+            this.estado = datos[7];
         }
 
         private string[] Variables()
@@ -69,7 +69,7 @@ namespace CapaPresentacion.Formularios.FormsClientes
                 variables = new string[]
                 {
                     Convert.ToString(this.Tag), this.txtNombre.Text,
-                    this.txtTelefono.Text, this.txtCorreo.Text, this.txtDireccion.Text, 
+                    this.txtTelefono.Text, this.txtCorreo.Text, this.txtDireccion.Text,
                     this.txtReferencia.Text, this.txtObservaciones.Text, this.estado
                 };
             }
@@ -110,40 +110,43 @@ namespace CapaPresentacion.Formularios.FormsClientes
         private bool Comprobaciones()
         {
             string error;
-            bool result = this.DireccionEmailValida(this.txtCorreo.Text, out error);
-            if (result)
-            {
-                List<Control> listaControles = new List<Control>();
-                listaControles.Add(this.txtNombre);
-                listaControles =
-                    ComprobacionesControles.ComprobacionesInsertar(listaControles);
-                if (listaControles.Count > 0)
-                {
-                    result = false;
-                    int contador = 0;
-                    foreach (Control control in listaControles)
-                    {
-                        foreach (Control con in this.Controls)
-                        {
-                            if (con.Name == control.Name)
-                            {
-                                this.errorProvider1.SetError(control, "Campo obligatorio");
-                                contador += 1;
-                                break;
-                            }
-                        }
+            bool result = true;
 
-                        if (contador > listaControles.Count)
+            if (!string.IsNullOrEmpty(this.txtCorreo.Text))
+            {
+                if (!this.DireccionEmailValida(this.txtCorreo.Text, out error))
+                {
+                    this.errorProvider1.SetError(txtCorreo, error);
+                }
+            }
+
+            List<Control> listaControles = new List<Control>();
+            listaControles.Add(this.txtNombre);
+            listaControles =
+                ComprobacionesControles.ComprobacionesInsertar(listaControles);
+            if (listaControles.Count > 0)
+            {
+                result = false;
+                int contador = 0;
+                foreach (Control control in listaControles)
+                {
+                    foreach (Control con in this.Controls)
+                    {
+                        if (con.Name == control.Name)
                         {
+                            this.errorProvider1.SetError(control, "Campo obligatorio");
+                            contador += 1;
                             break;
                         }
                     }
+
+                    if (contador > listaControles.Count)
+                    {
+                        break;
+                    }
                 }
             }
-            else
-            {
-                this.errorProvider1.SetError(txtCorreo, error);
-            }
+
             return result;
         }
 
