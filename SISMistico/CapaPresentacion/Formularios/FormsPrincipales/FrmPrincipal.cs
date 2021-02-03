@@ -120,6 +120,9 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                 resumenResultados.Append("Total ventas: ").Append(turno.Total_ventas.ToString("C")).Append(Environment.NewLine);
                 resumenResultados.Append("Total nomina: ").Append(turno.Total_nomina.ToString("C")).Append(Environment.NewLine);
                 resumenResultados.Append("Total diario: ").Append(turno.Total_turno.ToString("C")).Append(Environment.NewLine);
+
+                //PLATOS Y BEBIDAS
+
             }
             else
             {

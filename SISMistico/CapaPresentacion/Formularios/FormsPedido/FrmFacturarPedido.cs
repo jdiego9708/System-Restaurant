@@ -112,7 +112,6 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
         private void BtnTerminar_Click(object sender, EventArgs e)
         {
-            MensajeEspera.ShowWait("Facturando y terminando");
             try
             {
                 string rpta = "OK";
@@ -124,6 +123,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
                     if (detalle_pago.Rows.Count > 0)
                     {
+                        MensajeEspera.ShowWait("Facturando y terminando");
                         if (this.IsPrecuenta)
                         {
                             frmFacturaFinal.Id_pedido = this.Id_pedido;
@@ -163,8 +163,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                             this.Close();
                         }
                         else
-                        {
-                            MensajeEspera.ShowWait("Facturando y terminando");
+                        {                            
                             rpta =
                                 NVentas.InsertarVenta(variables, out id_venta, detalle_pago);
                             if (rpta.Equals("OK"))
@@ -212,9 +211,11 @@ namespace CapaPresentacion.Formularios.FormsPedido
                                 throw new Exception(rpta);
                             }
                         }
+                        MensajeEspera.CloseForm();
                     }
                     else
                     {
+                        MensajeEspera.CloseForm();
                         Mensajes.MensajeErrorForm("Debe de seleccionar un método de pago");
                     }
                 }
