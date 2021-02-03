@@ -633,7 +633,6 @@ namespace CapaDatos
 
             return DtResultado;
         }
-
         #endregion
 
         #region METODO BUSCAR PEDIDOS ELIMINADOS

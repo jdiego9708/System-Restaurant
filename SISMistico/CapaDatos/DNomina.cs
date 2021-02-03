@@ -383,10 +383,12 @@ namespace CapaDatos
         #endregion
 
         #region METODO ESTADÍSTICAS DIARIAS
-        public async Task<(string rpta, DataTable dtEstadistica)> BuscarEstadistica(int id_turno, string fecha)
+        public async Task<(string rpta, DataTable dtEstadistica, DataTable dtDetalle)> BuscarEstadistica(int id_turno, string fecha)
         {
             string rpta = "OK";
+            DataSet dsResultados = new DataSet();
             DataTable dtNomina = new DataTable("EstadisticaDiaria");
+            DataTable dtDetalles = new DataTable("Detalles");
             SqlConnection SqlCon = new SqlConnection();
             SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
             SqlCon.FireInfoMessageEventOnUserErrors = true;
@@ -418,14 +420,29 @@ namespace CapaDatos
                 Sqlcmd.Parameters.Add(Fecha);
 
                 SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
-                SqlData.Fill(dtNomina);
+                SqlData.Fill(dsResultados);
+
+                if (dsResultados.Tables.Count < 0)
+                {
+                    dtDetalles = null;
+                    dtNomina = null;
+                }
+                else
+                {
+                    dtNomina = dsResultados.Tables[0];
+                    dtDetalles = dsResultados.Tables[1];
+                }
             }
             catch (SqlException ex)
             {
+                dtDetalles = null;
+                dtNomina = null;
                 rpta = ex.Message;
             }
             catch (Exception ex)
             {
+                dtDetalles = null;
+                dtNomina = null;
                 rpta = ex.Message;
             }
             finally
@@ -434,7 +451,7 @@ namespace CapaDatos
                     SqlCon.Close();
             }
 
-            return (rpta, dtNomina);
+            return (rpta, dtNomina, dtDetalles);
         }
 
         #endregion

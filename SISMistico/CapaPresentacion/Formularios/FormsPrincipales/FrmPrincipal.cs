@@ -19,6 +19,7 @@ using CapaPresentacion.Formularios.FormsMovimientos;
 using CapaPresentacion.Formularios.FormsEstadisticas;
 using CapaEntidades.Models;
 using System.Text;
+using System.Collections.Generic;
 
 namespace CapaPresentacion.Formularios.FormsPrincipales
 {
@@ -108,7 +109,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
 
             string id_turno = "0";
             StringBuilder resumenResultados = new StringBuilder();
-            var (rpta, dtEstadistica) = 
+            var (rpta, dtEstadistica, dtDetalle) =
                 await NNomina.EstadisticasDiarias(datos.Turno.Id_turno, DateTime.Now.ToString("yyyy-MM-dd"));
             if (dtEstadistica != null)
             {
@@ -121,7 +122,49 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                 resumenResultados.Append("Total nomina: ").Append(turno.Total_nomina.ToString("C")).Append(Environment.NewLine);
                 resumenResultados.Append("Total diario: ").Append(turno.Total_turno.ToString("C")).Append(Environment.NewLine);
 
+                List<TipoResumen> resumen = new List<TipoResumen>();
                 //PLATOS Y BEBIDAS
+                foreach (DataRow row in dtDetalle.Rows)
+                {
+                    int id_tipo = Convert.ToInt32(row["Id_tipo"]);
+                    int cantidad = Convert.ToInt32(row["Cantidad"]);
+                    string nombre = Convert.ToString(row["Nombre"]);
+                    decimal precio = Convert.ToDecimal(row["Precio"]);
+
+                    List<TipoResumen> results = resumen.Where(x => x.Id_tipo == id_tipo).ToList();
+                    if (results.Count > 0)
+                    {
+                        results[0].Cantidad += cantidad;
+                        results[0].Valor_total += (precio * cantidad);
+                    }
+                    else
+                    {
+                        TipoResumen tipo = new TipoResumen
+                        {
+                            Id_tipo = id_tipo,
+                            Nombre = nombre,
+                            Cantidad = cantidad,
+                            Valor_total = precio * cantidad,
+                        };
+                        resumen.Add(tipo);
+                    }
+                }
+
+                if (resumen.Count > 0)
+                {
+                    resumenResultados.Append("Detalles del día: ").Append(Environment.NewLine);
+
+                    foreach (TipoResumen re in resumen)
+                    {
+                        resumenResultados.Append("* " + re.Nombre + " - Cantidad ").Append(re.Cantidad);
+                        resumenResultados.Append(" - Valor total: ").Append(re.Valor_total.ToString("C"));
+                        resumenResultados.Append(Environment.NewLine);
+                    }
+                }
+                else
+                {
+                    resumenResultados.Append("No se encontraron detalles");
+                }
 
             }
             else
@@ -161,6 +204,14 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             frmReporteDiario.ObtenerReporte();
             frmReporteDiario.Show();
             MensajeEspera.CloseForm();
+        }
+
+        public class TipoResumen
+        {
+            public int Id_tipo { get; set; }
+            public string Nombre { get; set; }
+            public int Cantidad { get; set; }
+            public decimal Valor_total { get; set; }
         }
 
 
@@ -805,7 +856,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
         {
             Font font = new Font("Segoe UI Semibold", 9.75F,
                 FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-         
+
             #region MENU CLIENTES
             ToolStripMenuItem AgregarCliente =
                 new ToolStripMenuItem("Nuevo cliente");
@@ -1474,7 +1525,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
                     "Hubo un error con el menu agregar plato", ex.Message);
             }
         }
-     
+
         private Form ComprobarExistencia(Form form)
         {
             if (this.container != null)
