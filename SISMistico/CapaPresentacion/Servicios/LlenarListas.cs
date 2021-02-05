@@ -45,6 +45,9 @@ namespace CapaPresentacion
             lista.Items.Add("ADMINISTRADOR");
             lista.Items.Add("MESERO");
             lista.Items.Add("CAJERO");
+            lista.Items.Add("DOMICILIARIO");
+            lista.Items.Add("COCINERO");
+            lista.Items.Add("SERVICIOS VARIOS");
             return lista;
         }
 

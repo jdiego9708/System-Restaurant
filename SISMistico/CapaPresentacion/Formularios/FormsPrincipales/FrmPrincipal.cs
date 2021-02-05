@@ -824,11 +824,33 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             {
                 this.btnEmpleados.Enabled = false;
                 this.btnClientes.Enabled = true;
-                this.btnPlatos.Enabled = true;
-                this.btnBebidas.Enabled = true;
+                this.btnPlatos.Enabled = false;
+                this.btnBebidas.Enabled = false;
                 this.btnMesasPedidos.Enabled = true;
                 this.btnVentas.Enabled = false;
-                this.btnInsumos.Enabled = true;
+                this.btnInsumos.Enabled = false;
+                this.btnAdministracion.Enabled = false;
+            }
+            else if (datos.Cargo_empleado.Equals("COCINERO"))
+            {
+                this.btnEmpleados.Enabled = false;
+                this.btnClientes.Enabled = true;
+                this.btnPlatos.Enabled = false;
+                this.btnBebidas.Enabled = false;
+                this.btnMesasPedidos.Enabled = true;
+                this.btnVentas.Enabled = false;
+                this.btnInsumos.Enabled = false;
+                this.btnAdministracion.Enabled = false;
+            }
+            else
+            {
+                this.btnEmpleados.Enabled = false;
+                this.btnClientes.Enabled = false;
+                this.btnPlatos.Enabled = false;
+                this.btnBebidas.Enabled = false;
+                this.btnMesasPedidos.Enabled = false;
+                this.btnVentas.Enabled = false;
+                this.btnInsumos.Enabled = false;
                 this.btnAdministracion.Enabled = false;
             }
 

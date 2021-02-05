@@ -362,7 +362,8 @@ namespace CapaDatos
                 {
                     if (tipo_usuario.Equals("CAJERO") || 
                         tipo_usuario.Equals("ADMINISTRADOR") || 
-                        tipo_usuario.Equals("MESERO"))
+                        tipo_usuario.Equals("MESERO") ||
+                        tipo_usuario.Equals("COCINERO"))
                     {
                         if (ds.Tables.Count >= 3)
                         {
@@ -391,9 +392,9 @@ namespace CapaDatos
                                 ds.Tables.Count);
                         }
                     }
-                    else if (tipo_usuario.Equals("ADMINISTRADOR"))
+                    else
                     {
-
+                        rpta = "No tiene acceso al sistema debido a su cargo";
                     }
                 }
                 else
