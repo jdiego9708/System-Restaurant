@@ -42,6 +42,7 @@
             this.toolTipToolBox = new System.Windows.Forms.ToolTip(this.components);
             this.panelRight = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblIdPedido = new System.Windows.Forms.Label();
             this.lblMesa = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -58,7 +59,7 @@
             this.lblCliente = new System.Windows.Forms.Label();
             this.lblEmpleado = new System.Windows.Forms.Label();
             this.lblId_venta = new System.Windows.Forms.Label();
-            this.lblIdPedido = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.panelToolBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pxMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pxMinimize)).BeginInit();
@@ -187,6 +188,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.lblIdPedido);
             this.panel1.Controls.Add(this.lblMesa);
             this.panel1.Controls.Add(this.txtObservaciones);
@@ -209,6 +211,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(655, 506);
             this.panel1.TabIndex = 7;
+            // 
+            // lblIdPedido
+            // 
+            this.lblIdPedido.AutoSize = true;
+            this.lblIdPedido.Location = new System.Drawing.Point(5, 25);
+            this.lblIdPedido.Name = "lblIdPedido";
+            this.lblIdPedido.Size = new System.Drawing.Size(119, 21);
+            this.lblIdPedido.TabIndex = 16;
+            this.lblIdPedido.Text = "Pedido número:";
             // 
             // lblMesa
             // 
@@ -353,14 +364,22 @@
             this.lblId_venta.TabIndex = 0;
             this.lblId_venta.Text = "Venta número:";
             // 
-            // lblIdPedido
+            // btnPrint
             // 
-            this.lblIdPedido.AutoSize = true;
-            this.lblIdPedido.Location = new System.Drawing.Point(5, 25);
-            this.lblIdPedido.Name = "lblIdPedido";
-            this.lblIdPedido.Size = new System.Drawing.Size(119, 21);
-            this.lblIdPedido.TabIndex = 16;
-            this.lblIdPedido.Text = "Pedido número:";
+            this.btnPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.BackgroundImage")));
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnPrint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrint.Location = new System.Drawing.Point(598, 452);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(40, 40);
+            this.btnPrint.TabIndex = 17;
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // FrmDetalleVenta
             // 
@@ -424,6 +443,7 @@
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label lblMesa;
         private System.Windows.Forms.Label lblIdPedido;
+        public System.Windows.Forms.Button btnPrint;
     }
 }
 

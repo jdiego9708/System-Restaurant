@@ -20,7 +20,20 @@ namespace CapaPresentacion.Formularios.FormsVentas
             #endregion
 
             this.Load += FrmDetalleVenta_Load;
+            this.btnPrint.Click += BtnPrint_Click;
+        }
 
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            MensajeEspera.ShowWait("Imprimiendo...");
+            FrmFacturaFinal frm = new FrmFacturaFinal
+            {
+                Id_pedido = this.Id_pedido
+            };
+            frm.AsignarReporte();
+            frm.AsignarTablas();
+            frm.ImprimirFactura(1);
+            MensajeEspera.CloseForm();
         }
 
         private void FrmDetalleVenta_Load(object sender, EventArgs e)
