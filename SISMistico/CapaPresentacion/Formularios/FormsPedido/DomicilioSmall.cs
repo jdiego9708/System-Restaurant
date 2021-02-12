@@ -154,7 +154,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
             info.Append("Hora: ").Append(pedido.Hora_pedido).Append(Environment.NewLine);
 
             //Obtener los datos principales
-            DataTable TablaDatosPrincipales = NPedido.BuscarPedidosYDetalle("ID PEDIDO",
+            DataTable TablaDatosPrincipales = NPedido.BuscarPedidosYDetalle("ID PEDIDO Y DETALLE",
                 Convert.ToString(pedido.Id_pedido), out DataTable dtDetallePedido, out string rpta);
             if (TablaDatosPrincipales != null)
             {

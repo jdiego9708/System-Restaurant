@@ -55,7 +55,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                 string rpta = "";
                 DataTable tablaDetalle;
                 TablaDatosPrincipales =
-                    NPedido.BuscarPedidosYDetalle("ID PEDIDO", Convert.ToString(this.Id_pedido),
+                    NPedido.BuscarPedidosYDetalle("ID PEDIDO Y DETALLE", Convert.ToString(this.Id_pedido),
                     out tablaDetalle, out rpta);
                 this.TablaDetalle = tablaDetalle;
 
