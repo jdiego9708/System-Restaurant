@@ -359,7 +359,15 @@ namespace CapaDatos
                     Value = texto_busqueda.Trim(),
                 };
                 Sqlcmd.Parameters.Add(Texto_busqueda);
-            
+
+                SqlParameter Fecha = new SqlParameter
+                {
+                    ParameterName = "@Fecha",
+                    SqlDbType = SqlDbType.Date,
+                    Value = DateTime.Now.ToString("yyyy-MM-dd"),
+                };
+                Sqlcmd.Parameters.Add(Fecha);
+
                 SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
                 await Task.Run(() => SqlData.Fill(dtNomina));                
             }
@@ -418,6 +426,77 @@ namespace CapaDatos
                     Value = fecha.Trim(),
                 };
                 Sqlcmd.Parameters.Add(Fecha);
+
+                SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
+                SqlData.Fill(dsResultados);
+
+                if (dsResultados.Tables.Count < 0)
+                {
+                    dtDetalles = null;
+                    dtNomina = null;
+                }
+                else
+                {
+                    dtNomina = dsResultados.Tables[0];
+                    dtDetalles = dsResultados.Tables[1];
+                }
+            }
+            catch (SqlException ex)
+            {
+                dtDetalles = null;
+                dtNomina = null;
+                rpta = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                dtDetalles = null;
+                dtNomina = null;
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return (rpta, dtNomina, dtDetalles);
+        }
+
+        public async Task<(string rpta, DataTable dtEstadistica, DataTable dtDetalle)> BuscarEstadistica(string fecha1, string fecha2)
+        {
+            string rpta = "OK";
+            DataSet dsResultados = new DataSet();
+            DataTable dtNomina = new DataTable("EstadisticaDiaria");
+            DataTable dtDetalles = new DataTable("Detalles");
+            SqlConnection SqlCon = new SqlConnection();
+            SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
+            SqlCon.FireInfoMessageEventOnUserErrors = true;
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                await SqlCon.OpenAsync();
+                SqlCommand Sqlcmd = new SqlCommand
+                {
+                    Connection = SqlCon,
+                    CommandText = "sp_Estadisticas_fechas",
+                    CommandType = CommandType.StoredProcedure,
+                };
+
+                SqlParameter Fecha1 = new SqlParameter
+                {
+                    ParameterName = "@Fecha1",
+                    SqlDbType = SqlDbType.Date,
+                    Value = fecha1,
+                };
+                Sqlcmd.Parameters.Add(Fecha1);
+
+                SqlParameter Fecha2 = new SqlParameter
+                {
+                    ParameterName = "@Fecha2",
+                    SqlDbType = SqlDbType.Date,
+                    Value = fecha2.Trim(),
+                };
+                Sqlcmd.Parameters.Add(Fecha2);
 
                 SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
                 SqlData.Fill(dsResultados);

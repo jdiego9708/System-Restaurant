@@ -488,7 +488,8 @@ namespace CapaDatos
         {
             rpta = "OK";
             DtResultadoDetalle = new DataTable("PedidosDetalle");
-            DataTable DtResultado = new DataTable("PedidosDatosPrincipales");
+            DataSet ds = new DataSet();
+            DataTable dtPedidosDatosPrincipales = new DataTable("PedidosDatosPrincipales");
             SqlConnection SqlCon = new SqlConnection();
             try
             {
@@ -510,73 +511,55 @@ namespace CapaDatos
                 };
                 Sqlcmd.Parameters.Add(Tipo_busqueda);
 
-                SqlParameter Texto_busqueda = new SqlParameter
+                SqlParameter Texto_busqueda1 = new SqlParameter
                 {
-                    ParameterName = "@Texto_busqueda",
+                    ParameterName = "@Texto_busqueda1",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
                     Value = texto_busqueda.Trim().ToUpper()
                 };
-                Sqlcmd.Parameters.Add(Texto_busqueda);
+                Sqlcmd.Parameters.Add(Texto_busqueda1);
+
+                SqlParameter Texto_busqueda2 = new SqlParameter
+                {
+                    ParameterName = "@Texto_busqueda2",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = string.Empty,
+                };
+                Sqlcmd.Parameters.Add(Texto_busqueda2);
 
                 SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
-                SqlData.Fill(DtResultado);
+                SqlData.Fill(ds);
 
-                if (DtResultado.Rows.Count < 1)
+                if (ds.Tables.Count < 1)
                 {
-                    DtResultado = null;
+                    dtPedidosDatosPrincipales = null;
+                    DtResultadoDetalle = null;
+                }
+                else
+                {
+                    dtPedidosDatosPrincipales = ds.Tables[0];
+                    DtResultadoDetalle = ds.Tables[1];
                 }
 
                 /**FIN BUSCAR PEDIDO DATOS PRINCIPALES**/
                 /**INICIO BUSCAR PEDIDO DETALLE**/
-
-                SqlCommand SqlComand = new SqlCommand
-                {
-                    Connection = SqlCon,
-                    CommandText = "sp_Buscar_pedidos",
-                    CommandType = CommandType.StoredProcedure
-                };
-
-                SqlParameter Tipo_busqueda1 = new SqlParameter
-                {
-                    ParameterName = "@Tipo_busqueda",
-                    SqlDbType = SqlDbType.VarChar,
-                    Size = 50,
-                    Value = "DETALLE PEDIDO"
-                };
-                SqlComand.Parameters.Add(Tipo_busqueda1);
-
-                SqlParameter Texto_busqueda1 = new SqlParameter
-                {
-                    ParameterName = "@Texto_busqueda",
-                    SqlDbType = SqlDbType.VarChar,
-                    Size = 50,
-                    Value = texto_busqueda.Trim().ToUpper()
-                };
-                SqlComand.Parameters.Add(Texto_busqueda1);
-
-                SqlDataAdapter SqlDataA = new SqlDataAdapter(SqlComand);
-                SqlDataA.Fill(DtResultadoDetalle);
-
-                if (DtResultadoDetalle.Rows.Count < 1)
-                {
-                    DtResultadoDetalle = null;
-                }
             }
             catch (SqlException ex)
             {
-                DtResultado = null;
+                dtPedidosDatosPrincipales = null;
                 DtResultadoDetalle = null;
                 rpta = ex.Message;
             }
             catch (Exception ex)
             {
-                DtResultado = null;
+                dtPedidosDatosPrincipales = null;
                 DtResultadoDetalle = null;
                 rpta = ex.Message;
             }
 
-            return DtResultado;
+            return dtPedidosDatosPrincipales;
         }
 
         #endregion
@@ -605,14 +588,23 @@ namespace CapaDatos
                 };
                 Sqlcmd.Parameters.Add(Tipo_busqueda);
 
-                SqlParameter Texto_busqueda = new SqlParameter
+                SqlParameter Texto_busqueda1 = new SqlParameter
                 {
-                    ParameterName = "@Texto_busqueda",
+                    ParameterName = "@Texto_busqueda1",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
                     Value = texto_busqueda.Trim().ToUpper()
                 };
-                Sqlcmd.Parameters.Add(Texto_busqueda);
+                Sqlcmd.Parameters.Add(Texto_busqueda1);
+
+                SqlParameter Texto_busqueda2 = new SqlParameter
+                {
+                    ParameterName = "@Texto_busqueda2",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = "",
+                };
+                Sqlcmd.Parameters.Add(Texto_busqueda2);
 
                 SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
                 SqlData.Fill(DtResultado);
@@ -632,6 +624,69 @@ namespace CapaDatos
             }
 
             return DtResultado;
+        }
+
+        public async static Task<(string rpta, DataTable dtPedidos)> BuscarPedidos(string tipo_busqueda, string texto_busqueda1, string texto_busqueda2)
+        {
+            string rpta = "OK";
+            DataTable DtResultado = new DataTable("Pedidos");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                await SqlCon.OpenAsync();
+                SqlCommand Sqlcmd = new SqlCommand
+                {
+                    Connection = SqlCon,
+                    CommandText = "sp_Buscar_pedidos",
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                SqlParameter Tipo_busqueda = new SqlParameter
+                {
+                    ParameterName = "@Tipo_busqueda",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = tipo_busqueda.Trim().ToUpper()
+                };
+                Sqlcmd.Parameters.Add(Tipo_busqueda);
+
+                SqlParameter Texto_busqueda1 = new SqlParameter
+                {
+                    ParameterName = "@Texto_busqueda1",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = texto_busqueda1.Trim().ToUpper()
+                };
+                Sqlcmd.Parameters.Add(Texto_busqueda1);
+
+                SqlParameter Texto_busqueda2 = new SqlParameter
+                {
+                    ParameterName = "@Texto_busqueda2",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = texto_busqueda2.Trim().ToUpper()
+                };
+                Sqlcmd.Parameters.Add(Texto_busqueda2);
+
+                SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
+                SqlData.Fill(DtResultado);
+
+                if (DtResultado.Rows.Count < 1)
+                {
+                    DtResultado = null;
+                }
+            }
+            catch (SqlException)
+            {
+                DtResultado = null;
+            }
+            catch (Exception)
+            {
+                DtResultado = null;
+            }
+
+            return (rpta, DtResultado);
         }
         #endregion
 

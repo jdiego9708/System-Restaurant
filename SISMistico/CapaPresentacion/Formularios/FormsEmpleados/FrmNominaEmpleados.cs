@@ -75,7 +75,7 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
         {
             EmpleadoNominaBinding empleadoNomina = (EmpleadoNominaBinding)sender;
 
-            string infoEmpleado = "Nombre: " + empleadoNomina.Empleado.Nombre_empleado + 
+            string infoEmpleado = "Nombre: " + empleadoNomina.Empleado.Nombre_empleado + " - Cédula: " + empleadoNomina.Empleado.Identificacion_empleado +
                 " - Celular: " + empleadoNomina.Empleado.Telefono_empleado;
 
             FrmReporteNominaEmpleado frmReporte = new FrmReporteNominaEmpleado

@@ -46,7 +46,7 @@
             this.btnEstadisticasDiarias.Name = "btnEstadisticasDiarias";
             this.btnEstadisticasDiarias.Size = new System.Drawing.Size(191, 49);
             this.btnEstadisticasDiarias.TabIndex = 8;
-            this.btnEstadisticasDiarias.Text = "Estadísticas diarias";
+            this.btnEstadisticasDiarias.Text = "Estadísticas";
             this.btnEstadisticasDiarias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEstadisticasDiarias.UseVisualStyleBackColor = true;
             // 

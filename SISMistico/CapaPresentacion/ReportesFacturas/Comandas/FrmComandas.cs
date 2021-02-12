@@ -72,7 +72,7 @@ namespace CapaPresentacion
         {
             string rpta = "";
             this.TablaDatosPedido =
-                NPedido.BuscarPedidosYDetalle("ID PEDIDO", Convert.ToString(this.Id_pedido),
+                NPedido.BuscarPedidosYDetalle("ID PEDIDO Y DETALLE", Convert.ToString(this.Id_pedido),
                 out this.TablaDetallePedido, out rpta);
         }
 

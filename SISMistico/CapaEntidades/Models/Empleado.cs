@@ -21,6 +21,7 @@ namespace CapaEntidades.Models
                 this.Id_empleado = Convert.ToInt32(row["Id_empleado"]);
                 this.Nombre_empleado = Convert.ToString(row["Nombre_empleado"]);
                 this.Telefono_empleado = Convert.ToString(row["Telefono_empleado"]);
+                this.Identificacion_empleado = Convert.ToString(row["Identificacion_empleado"]);
                 this.Correo_electronico = Convert.ToString(row["Correo_electronico"]);
                 this.Cargo_empleado = Convert.ToString(row["Cargo_empleado"]);
                 this.Password = Convert.ToString(row["Password"]);
@@ -40,6 +41,7 @@ namespace CapaEntidades.Models
                 this.Id_empleado = Convert.ToInt32(dt.Rows[fila]["Id_empleado"]);
                 this.Nombre_empleado = Convert.ToString(dt.Rows[fila]["Nombre_empleado"]);
                 this.Telefono_empleado = Convert.ToString(dt.Rows[fila]["Telefono_empleado"]);
+                this.Identificacion_empleado = Convert.ToString(dt.Rows[fila]["Identificacion_empleado"]);
                 this.Correo_electronico = Convert.ToString(dt.Rows[fila]["Correo_electronico"]);
                 this.Cargo_empleado = Convert.ToString(dt.Rows[fila]["Cargo_empleado"]);
                 this.Password = Convert.ToString(dt.Rows[fila]["Password"]);
@@ -58,6 +60,7 @@ namespace CapaEntidades.Models
         private int _id_empleado;
         private string _nombre_empleado;
         private string _telefono_empleado;
+        private string _identificacion_empleado;
         private string _correo_electronico;
         private string _cargo_empleado;
         private string _password;
@@ -68,6 +71,7 @@ namespace CapaEntidades.Models
         public string Nombre_empleado { get => _nombre_empleado; set => _nombre_empleado = value; }
         public string Correo_electronico { get => _correo_electronico; set => _correo_electronico = value; }
         public string Telefono_empleado { get => _telefono_empleado; set => _telefono_empleado = value; }
+        public string Identificacion_empleado { get => _identificacion_empleado; set => _identificacion_empleado = value; }
         public string Cargo_empleado { get => _cargo_empleado; set => _cargo_empleado = value; }
         public string Password { get => _password; set => _password = value; }
         public int Codigo_maestro { get => _codigo_maestro; set => _codigo_maestro = value; }

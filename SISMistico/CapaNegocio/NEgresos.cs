@@ -39,6 +39,12 @@ namespace CapaNegocio
             return await DEgresos.BuscarEgreso(tipo_busqueda, texto_busqueda);
         }
 
+        public static async Task<(string rpta, DataTable dtEgresos)> BuscarEgresos(string tipo_busqueda, string texto_busqueda1, string texto_busqueda2)
+        {
+            DEgresos DEgresos = new DEgresos();
+            return await DEgresos.BuscarEgreso(tipo_busqueda, texto_busqueda1, texto_busqueda2);
+        }
+
         #endregion
     }
 }

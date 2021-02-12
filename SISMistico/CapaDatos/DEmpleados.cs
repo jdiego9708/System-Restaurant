@@ -105,6 +105,16 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(Telefono_empleado);
                 contador += 1;
 
+                SqlParameter Identificacion_empleado = new SqlParameter
+                {
+                    ParameterName = "@Identificacion_empleado",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = DEmpleados.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Identificacion_empleado);
+                contador += 1;
+
                 SqlParameter Correo_electronico = new SqlParameter
                 {
                     ParameterName = "@Correo_electronico",
@@ -201,6 +211,17 @@ namespace CapaDatos
                 Telefono_empleado.Value = DEmpleados.Variables[contador].Trim().ToUpper();
                 SqlCmd.Parameters.Add(Telefono_empleado);
                 contador += 1;
+
+                SqlParameter Identificacion_empleado = new SqlParameter
+                {
+                    ParameterName = "@Identificacion_empleado",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = DEmpleados.Variables[contador].Trim().ToUpper()
+                };
+                SqlCmd.Parameters.Add(Identificacion_empleado);
+                contador += 1;
+
 
                 SqlParameter Correo_electronico = new SqlParameter();
                 Correo_electronico.ParameterName = "@Correo_electronico";

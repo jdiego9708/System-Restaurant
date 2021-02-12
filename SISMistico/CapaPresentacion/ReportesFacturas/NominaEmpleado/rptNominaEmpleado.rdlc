@@ -26,7 +26,6 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Left>0cm</Left>
             <Height>0.78521cm</Height>
             <Width>7.8cm</Width>
             <Style>
@@ -41,7 +40,6 @@
           </Textbox>
           <Line Name="Line2">
             <Top>0.82049cm</Top>
-            <Left>0cm</Left>
             <Height>0cm</Height>
             <Width>7.77354cm</Width>
             <ZIndex>1</ZIndex>
@@ -151,7 +149,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Nit</Value>
+                    <Value>Nit 1037646184</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -196,7 +194,22 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Dirección</Value>
+                    <Value>Dirección Carrera 11 Calle 18 Esquina # 11 - 09 </Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Barrio campo hermoso -  3115747901</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -226,7 +239,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>0.85576cm</Top>
-            <Left>0cm</Left>
             <Height>2.08083cm</Height>
             <Width>7.8cm</Width>
             <ZIndex>6</ZIndex>

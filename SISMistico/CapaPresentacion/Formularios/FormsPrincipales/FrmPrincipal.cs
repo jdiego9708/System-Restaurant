@@ -20,6 +20,7 @@ using CapaPresentacion.Formularios.FormsEstadisticas;
 using CapaEntidades.Models;
 using System.Text;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CapaPresentacion.Formularios.FormsPrincipales
 {
@@ -62,6 +63,8 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
             container.Show(this.btnAdministracion);
         }
 
+
+
         private void BtnObservarMovimientos_Click(object sender, EventArgs e)
         {
             try
@@ -94,126 +97,13 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
 
         private async void BtnEstadisticasDiarias_Click(object sender, EventArgs e)
         {
-            MensajeEspera.ShowWait("Cargando...");
-
-            DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
-
-            string informacionEmpleado = "Información de empleado que genera el reporte " +
-                datos.Nombre_empleado + " - Teléfono: " + datos.Empleado.Telefono_empleado;
-            string cantidadPedidos = "";
-            DataTable dtPedidos = NPedido.BuscarPedidos("FECHA", DateTime.Now.ToString("yyyy-MM-dd"));
-            if (dtPedidos == null)
-                cantidadPedidos = "No hay ventas el día de hoy";
-            else
-                cantidadPedidos = "Cantidad de ventas el día de hoy: " + dtPedidos.Rows.Count + "";
-
-            string id_turno = "0";
-            StringBuilder resumenResultados = new StringBuilder();
-            var (rpta, dtEstadistica, dtDetalle) =
-                await NNomina.EstadisticasDiarias(datos.Turno.Id_turno, DateTime.Now.ToString("yyyy-MM-dd"));
-            if (dtEstadistica != null)
+            FrmReporteDiario FrmReporteDiario = new FrmReporteDiario
             {
-                Turno turno = new Turno(dtEstadistica.Rows[0]);
-                id_turno = "Identificación del turno: " + turno.Id_turno.ToString();
-                resumenResultados.Append("Valor inicial: ").Append(turno.Valor_inicial.ToString("C")).Append(Environment.NewLine);
-                resumenResultados.Append("Total ingresos: ").Append(turno.Total_ingresos.ToString("C")).Append(Environment.NewLine);
-                resumenResultados.Append("Total egresos: ").Append(turno.Total_egresos.ToString("C")).Append(Environment.NewLine);
-                resumenResultados.Append("Total ventas: ").Append(turno.Total_ventas.ToString("C")).Append(Environment.NewLine);
-                resumenResultados.Append("Total nomina: ").Append(turno.Total_nomina.ToString("C")).Append(Environment.NewLine);
-                resumenResultados.Append("Total diario: ").Append(turno.Total_turno.ToString("C")).Append(Environment.NewLine);
-
-                List<TipoResumen> resumen = new List<TipoResumen>();
-                //PLATOS Y BEBIDAS
-                foreach (DataRow row in dtDetalle.Rows)
-                {
-                    int id_tipo = Convert.ToInt32(row["Id_tipo"]);
-                    int cantidad = Convert.ToInt32(row["Cantidad"]);
-                    string nombre = Convert.ToString(row["Nombre"]);
-                    decimal precio = Convert.ToDecimal(row["Precio"]);
-
-                    List<TipoResumen> results = resumen.Where(x => x.Id_tipo == id_tipo).ToList();
-                    if (results.Count > 0)
-                    {
-                        results[0].Cantidad += cantidad;
-                        results[0].Valor_total += (precio * cantidad);
-                    }
-                    else
-                    {
-                        TipoResumen tipo = new TipoResumen
-                        {
-                            Id_tipo = id_tipo,
-                            Nombre = nombre,
-                            Cantidad = cantidad,
-                            Valor_total = precio * cantidad,
-                        };
-                        resumen.Add(tipo);
-                    }
-                }
-
-                if (resumen.Count > 0)
-                {
-                    resumenResultados.Append("Detalles del día: ").Append(Environment.NewLine);
-
-                    foreach (TipoResumen re in resumen)
-                    {
-                        resumenResultados.Append("* " + re.Nombre + " - Cantidad ").Append(re.Cantidad);
-                        resumenResultados.Append(" - Valor total: ").Append(re.Valor_total.ToString("C"));
-                        resumenResultados.Append(Environment.NewLine);
-                    }
-                }
-                else
-                {
-                    resumenResultados.Append("No se encontraron detalles");
-                }
-
-            }
-            else
-            {
-                resumenResultados.Append("Hubo un error al encontrar los datos de estadísticas diarias");
-            }
-
-            StringBuilder infoEgresos = new StringBuilder();
-
-            var (rptae, dtEgresos) = await NEgresos.BuscarEgresos("FECHA", DateTime.Now.ToString("yyyy-MM-dd"));
-            if (dtEgresos != null)
-            {
-                infoEgresos.Append("Descripción de los egresos: ").Append(Environment.NewLine);
-                int contador = 0;
-                foreach (DataRow row in dtEgresos.Rows)
-                {
-                    contador += 1;
-                    Egresos egreso = new Egresos(row);
-                    infoEgresos.Append(contador + ") Fecha: ").Append(egreso.Fecha_egreso.ToLongDateString()).Append(" - ");
-                    infoEgresos.Append("Valor: ").Append(egreso.Valor_egreso.ToString("C")).Append(" - ");
-                    infoEgresos.Append("Observaciones: ").Append(egreso.Descripcion_egreso).Append(" - ");
-                }
-            }
-            else
-                infoEgresos.Append("No hay descrición adicional");
-
-            FrmReporteDiario frmReporteDiario = new FrmReporteDiario
-            {
-                WindowState = FormWindowState.Maximized,
-                InformacionEmpleado = informacionEmpleado,
-                CantidadPedidos = cantidadPedidos,
-                ResumenResultados = resumenResultados.ToString(),
-                InformacionEgresos = infoEgresos.ToString(),
-                IdentificacionTurno = id_turno,
-                FechaHora = DateTime.Now.ToLongDateString(),
+                WindowState = FormWindowState.Maximized
             };
-            frmReporteDiario.ObtenerReporte();
-            frmReporteDiario.Show();
-            MensajeEspera.CloseForm();
-        }
-
-        public class TipoResumen
-        {
-            public int Id_tipo { get; set; }
-            public string Nombre { get; set; }
-            public int Cantidad { get; set; }
-            public decimal Valor_total { get; set; }
-        }
-
+            await FrmReporteDiario.LoadEstadistica(DateTime.Now, DateTime.Now);
+            FrmReporteDiario.Show();
+        }     
 
         private void BtnFunciones_Click(object sender, EventArgs e)
         {

@@ -36,10 +36,11 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             this.Tag = datos[0];
             this.txtNombre.Text = datos[1];
             this.txtTelefono.Text = datos[2];
-            this.txtCorreo.Text = datos[3];
-            this.ListaCargo.Text = datos[4];
-            this.txtPass1.Text = datos[5];
-            this.txtPass2.Text = datos[5];
+            this.txtCedula.Text = datos[3];
+            this.txtCorreo.Text = datos[4];
+            this.ListaCargo.Text = datos[5];
+            this.txtPass1.Text = datos[6];
+            this.txtPass2.Text = datos[7];
 
             this.txtPass1.Visible = false;
             this.txtPass2.Visible = false;
@@ -56,7 +57,8 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
                 variables = new string[]
                 {
                     Convert.ToString(this.Tag), this.txtNombre.Text,
-                    this.txtTelefono.Text, this.txtCorreo.Text,
+                    this.txtTelefono.Text, this.txtCedula.Text,
+                    this.txtCorreo.Text,
                     this.ListaCargo.Text, this.txtPass2.Text
                 };
             }
@@ -65,7 +67,8 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
                 variables = new string[]
                 {
                     this.txtNombre.Text,
-                    this.txtTelefono.Text, this.txtCorreo.Text,
+                    this.txtTelefono.Text, this.txtCedula.Text,
+                    this.txtCorreo.Text,
                     this.ListaCargo.Text, this.txtPass2.Text
                 };
             }
@@ -78,6 +81,7 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
             List<Control> listaControles = new List<Control>();
             listaControles.Add(this.txtNombre);
             listaControles.Add(this.txtTelefono);
+            listaControles.Add(this.txtCedula);
             listaControles.Add(this.ListaCargo);
             listaControles =
                 ComprobacionesControles.ComprobacionesInsertar(listaControles);

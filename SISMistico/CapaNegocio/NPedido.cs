@@ -61,6 +61,11 @@ namespace CapaNegocio
             return DPedidos.BuscarPedidos(tipo_busqueda, texto_busqueda);
         }
 
+        public async static Task<(string rpta, DataTable dtPedidos)>BuscarPedidos(string tipo_busqueda, string texto_busqueda1, string texto_busqueda2)
+        {
+            return await DPedidos.BuscarPedidos(tipo_busqueda, texto_busqueda1, texto_busqueda2);
+        }
+
         public static DataTable BuscarPedidosEliminados(string tipo_busqueda, string texto_busqueda)
         {
             return DPedidos.BuscarPedidosEliminados(tipo_busqueda, texto_busqueda);
