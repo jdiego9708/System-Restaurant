@@ -27,6 +27,7 @@ namespace CapaPresentacion.ReportesFacturas.NominaEmpleado
         public string OtrosIngresos { get; set; }
         public string Egresos { get; set; }
         public string TotalPagar { get; set; }
+        public string Observaciones { get; set; }
 
         private ReportViewer reportViewer1;
         ControladorImpresion objImpresion = new ControladorImpresion();
@@ -43,7 +44,7 @@ namespace CapaPresentacion.ReportesFacturas.NominaEmpleado
         {
             try
             {
-                ReportParameter[] reportParameters = new ReportParameter[7];
+                ReportParameter[] reportParameters = new ReportParameter[8];
                 reportParameters[0] = new ReportParameter("FechaHora", FechaHora);
                 reportParameters[1] = new ReportParameter("InformacionEmpleado", InformacionEmpleado);
                 reportParameters[2] = new ReportParameter("TotalPropinas", TotalPropinas);
@@ -51,6 +52,7 @@ namespace CapaPresentacion.ReportesFacturas.NominaEmpleado
                 reportParameters[4] = new ReportParameter("OtrosIngresos", OtrosIngresos);
                 reportParameters[5] = new ReportParameter("Egresos", Egresos);
                 reportParameters[6] = new ReportParameter("TotalPagar", TotalPagar);
+                reportParameters[7] = new ReportParameter("Observaciones", Observaciones);
                 this.reportViewer1.LocalReport.SetParameters(reportParameters);
                 this.reportViewer1.RefreshReport();
 

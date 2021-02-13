@@ -100,6 +100,7 @@ namespace CapaEntidades.Models
                 this.Egresos = Convert.ToDecimal(row["Egresos"]);
                 this.Total_nomina = Convert.ToDecimal(row["Total_nomina"]);
                 this.Estado_nomina = Convert.ToString(row["Estado_nomina"]);
+                this.Observaciones = Convert.ToString(row["Observaciones"]);
             }
             catch (Exception ex)
             {
@@ -126,6 +127,8 @@ namespace CapaEntidades.Models
         public decimal Total_nomina { get; set; }
 
         public string Estado_nomina { get; set; }
+
+        public string Observaciones { get; set; }
 
         public event EventHandler OnError;
     }

@@ -98,6 +98,10 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
 
             this.EmpleadoNominaBinding.Total_nomina = total_pagar;
             this.lblTotal.Text = "Total a pagar " + total_pagar.ToString("C");
+
+            if (this.observacion != null)
+                this.EmpleadoNominaBinding.Observaciones = this.observacion.txtObservacion.Text;
+
             return total_pagar;
         }
 

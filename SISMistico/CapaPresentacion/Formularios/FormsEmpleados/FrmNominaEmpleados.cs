@@ -87,6 +87,7 @@ namespace CapaPresentacion.Formularios.FormsEmpleados
                 OtrosIngresos = "Otros ingresos: " + empleadoNomina.Otros_ingresos.ToString("C"),
                 Egresos = "Egresos: " + empleadoNomina.Egresos.ToString("C"),
                 TotalPagar = "Total a pagar: " + empleadoNomina.Total_nomina.ToString("C"),
+                Observaciones = empleadoNomina.Observaciones,
             };
             frmReporte.ObtenerReporte();
             frmReporte.ImprimirFactura(1);

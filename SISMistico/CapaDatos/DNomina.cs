@@ -45,7 +45,7 @@ namespace CapaDatos
             int contador = 0;
             int id_nomina = 0;
             string consulta = "INSERT INTO Nomina_empleado VALUES (@Id_empleado, @Fecha_nomina, @Salario, " +
-                "@Propinas, @Otros_ingresos, @Egresos, @Total_nomina, @Estado_nomina) " +
+                "@Propinas, @Otros_ingresos, @Egresos, @Total_nomina, @Estado_nomina, @Observaciones) " +
                 "SET @Id_nomina_empleado = SCOPE_IDENTITY(); ";
 
             //asignamos a una cadena string la variable rpta y la iniciamos en vacía
@@ -145,6 +145,15 @@ namespace CapaDatos
                 };
                 SqlCmd.Parameters.Add(Estado_nomina);
 
+                SqlParameter Observaciones = new SqlParameter
+                {
+                    ParameterName = "@Observaciones",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = empleadoNomina.Observaciones,
+                };
+                SqlCmd.Parameters.Add(Observaciones);
+
                 //Ejecutamos nuestro comando
                 //Se puede ejecutar este metodo pero ya tenemos el mensaje que devuelve sql
                 rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "NO se Ingreso el Registro";
@@ -192,7 +201,8 @@ namespace CapaDatos
                 "Otros_ingresos = @Otros_ingresos, " +
                 "Egresos = @Egresos, " +
                 "Total_nomina = @Total_nomina, " +
-                "Estado_nomina = @Estado_nomina " +
+                "Estado_nomina = @Estado_nomina, " +
+                "Observaciones = @Observaciones " +
                 "WHERE Id_nomina_empleado = @Id_nomina_empleado ";
 
             //asignamos a una cadena string la variable rpta y la iniciamos en vacía
@@ -283,14 +293,23 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(Total_nomina);
                 contador += 1;
 
-                SqlParameter Password = new SqlParameter
+                SqlParameter Estado_nomina = new SqlParameter
                 {
                     ParameterName = "@Estado_nomina",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
                     Value = empleadoNomina.Estado_nomina,
                 };
-                SqlCmd.Parameters.Add(Password);
+                SqlCmd.Parameters.Add(Estado_nomina);
+
+                SqlParameter Observaciones = new SqlParameter
+                {
+                    ParameterName = "@Observaciones",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = empleadoNomina.Observaciones,
+                };
+                SqlCmd.Parameters.Add(Observaciones);
 
                 //Ejecutamos nuestro comando
                 //Se puede ejecutar este metodo pero ya tenemos el mensaje que devuelve sql
