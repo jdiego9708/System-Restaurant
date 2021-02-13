@@ -134,13 +134,15 @@ namespace CapaPresentacion.Formularios.FormsPedido
 
                 this.SumarPrecios();
                 int total_parcial = this.Total_parcial;
-                FrmRealizarPedido FrmPedido = new FrmRealizarPedido();
-                FrmPedido.StartPosition = FormStartPosition.CenterScreen;
-                FrmPedido.Id_mesa = id_mesa;
-                FrmPedido.Numero_mesa = num_mesa;
-                FrmPedido.Id_empleado = id_empleado;
-                FrmPedido.Id_pedido = id_pedido;
-                FrmPedido.IsEditar = true;
+                FrmRealizarPedido FrmPedido = new FrmRealizarPedido
+                {
+                    StartPosition = FormStartPosition.CenterScreen,
+                    Id_mesa = id_mesa,
+                    Numero_mesa = num_mesa,
+                    Id_empleado = id_empleado,
+                    Id_pedido = id_pedido,
+                    IsEditar = true
+                };
                 FrmPedido.ShowDialog();
                 if (FrmPedido.DialogResult == DialogResult.OK)
                 {

@@ -556,7 +556,7 @@ namespace CapaPresentacion.Formularios.FormsPedido
                         string rpta;
                         DataTable dtDetalle;
                         DataTable dtPedido =
-                            NPedido.BuscarPedidosYDetalle("ID PEDIDO", this.Id_pedido.ToString(), out dtDetalle, out rpta);
+                            NPedido.BuscarPedidosYDetalle("ID PEDIDO Y DETALLE", this.Id_pedido.ToString(), out dtDetalle, out rpta);
                         if (dtPedido != null)
                         {
                             this.lblMesero.Text = "Mesero: " + Convert.ToString(dtPedido.Rows[0]["Nombre_empleado"]);
