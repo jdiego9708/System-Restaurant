@@ -117,13 +117,13 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
                     int id_tipo = Convert.ToInt32(row["Id_tipo"]);
                     int cantidad = Convert.ToInt32(row["Cantidad"]);
                     string nombre = Convert.ToString(row["Nombre"]);
-                    decimal precio = Convert.ToDecimal(row["Precio"]);
+                    decimal precio = Convert.ToDecimal(row["Precio"]) * cantidad;
 
                     List<TipoResumen> results = resumen.Where(x => x.Id_tipo == id_tipo).ToList();
                     if (results.Count > 0)
                     {
                         results[0].Cantidad += cantidad;
-                        results[0].Valor_total += (precio * cantidad);
+                        results[0].Valor_total += precio;
                     }
                     else
                     {
@@ -132,7 +132,7 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
                             Id_tipo = id_tipo,
                             Nombre = nombre,
                             Cantidad = cantidad,
-                            Valor_total = precio * cantidad,
+                            Valor_total = precio,
                         };
                         resumen.Add(tipo);
                     }
