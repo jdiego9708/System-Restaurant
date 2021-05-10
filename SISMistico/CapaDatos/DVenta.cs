@@ -507,7 +507,7 @@ namespace CapaDatos
                 SqlParameter Hora1 = new SqlParameter
                 {
                     ParameterName = "@Hora1",
-                    SqlDbType = SqlDbType.Time,
+                    SqlDbType = SqlDbType.VarChar,
                     Value = hora1
                 };
                 SqlCmd.Parameters.Add(Hora1);
@@ -515,7 +515,7 @@ namespace CapaDatos
                 SqlParameter Hora2 = new SqlParameter
                 {
                     ParameterName = "@Hora2",
-                    SqlDbType = SqlDbType.Time,
+                    SqlDbType = SqlDbType.VarChar,
                     Value = hora2
                 };
                 SqlCmd.Parameters.Add(Hora2);
@@ -529,11 +529,11 @@ namespace CapaDatos
                 }
                 #endregion
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
                 DtResultado = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 DtResultado = null;
             }

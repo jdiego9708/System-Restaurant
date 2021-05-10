@@ -73,7 +73,10 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
 
             DataTable dtEstadistica;
             DataTable dtDetalle;
+            DataTable dtVentas;
             bool isRango = false;
+            decimal total_desechables = 0;
+            decimal total_domicilios = 0;
 
             if (date1.ToString("yyyy-MM-dd") == date2.ToString("yyyy-MM-dd"))
             {
@@ -82,6 +85,8 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
                 await NNomina.EstadisticasDiarias(datos.Turno.Id_turno, date1.ToString("yyyy-MM-dd"));
                 dtEstadistica = result.dtEstadistica;
                 dtDetalle = result.dtDetalle;
+
+                dtVentas = NVentas.BuscarVenta("FECHA VENTA", "", date1.ToString("yyyy-MM-dd"), "", "", "");
             }
             else
             {
@@ -90,8 +95,21 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
                 await NNomina.EstadisticasDiarias(date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd"));
                 dtEstadistica = result.dtEstadistica;
                 dtDetalle = result.dtDetalle;
+
+                dtVentas = NVentas.BuscarVenta("VENTA FECHAS", "", date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd"), "", "");
             }
 
+            if (dtVentas != null)
+            {
+                foreach (DataRow row in dtVentas.Rows)
+                {
+                    decimal desechables = Convert.ToDecimal(row["Desechables"]);
+                    decimal domicilios = Convert.ToDecimal(row["Domicilio"]);
+
+                    total_desechables += desechables;
+                    total_domicilios += domicilios;
+                }
+            }
 
             if (dtEstadistica != null)
             {
@@ -108,6 +126,8 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
                 resumenResultados.Append("Total egresos: ").Append(turno.Total_egresos.ToString("C")).Append(Environment.NewLine);
                 resumenResultados.Append("Total ventas: ").Append(turno.Total_ventas.ToString("C")).Append(Environment.NewLine);
                 resumenResultados.Append("Total nomina: ").Append(turno.Total_nomina.ToString("C")).Append(Environment.NewLine);
+                resumenResultados.Append("Total domicilios: ").Append(total_domicilios.ToString("C")).Append(Environment.NewLine);
+                resumenResultados.Append("Total desechables: ").Append(total_desechables.ToString("C")).Append(Environment.NewLine);
                 resumenResultados.Append("Total: ").Append(turno.Total_turno.ToString("C")).Append(Environment.NewLine);
 
                 List<TipoResumen> resumen = new List<TipoResumen>();
@@ -163,6 +183,8 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
             {
                 resumenResultados.Append("Hubo un error al encontrar los datos de estadísticas diarias");
             }
+
+           
 
             StringBuilder infoEgresos = new StringBuilder();
 
