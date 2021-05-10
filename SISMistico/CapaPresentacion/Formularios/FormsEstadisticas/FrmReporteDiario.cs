@@ -58,15 +58,24 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
 
             DatosInicioSesion datos = DatosInicioSesion.GetInstancia();
 
+            int cantidad_pedidos_cancelados = 0;
             string informacionEmpleado = "Información de empleado que genera el reporte " +
                 datos.Nombre_empleado + " - Teléfono: " + datos.Empleado.Telefono_empleado;
             string cantidadPedidos = "";
             var (rpta, dtPedidos) =
                await NPedido.BuscarPedidos("RANGO FECHAS", date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd"));
-            if (dtPedidos == null)
-                cantidadPedidos = "No hay ventas el día de hoy";
+            if (dtPedidos != null)
+            {
+                cantidadPedidos = "Se encontraron " + dtPedidos.Rows.Count + " pedidos";
+                foreach(DataRow row in dtPedidos.Rows)
+                {
+                    string estado = Convert.ToString(row["Estado_pedido"]);
+                    if (estado.Equals("CANCELADO"))
+                        cantidad_pedidos_cancelados += 1;
+                }
+            }
             else
-                cantidadPedidos = "Cantidad de ventas: " + dtPedidos.Rows.Count + "";
+                cantidadPedidos += "No se encontraron pedidos";
 
             string id_turno = "0";
             StringBuilder resumenResultados = new StringBuilder();
@@ -77,6 +86,8 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
             bool isRango = false;
             decimal total_desechables = 0;
             decimal total_domicilios = 0;
+            int cantidad_domicilos = 0;
+            int cantidad_mesa = 0;
 
             if (date1.ToString("yyyy-MM-dd") == date2.ToString("yyyy-MM-dd"))
             {
@@ -106,16 +117,31 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
                     decimal desechables = Convert.ToDecimal(row["Desechables"]);
                     decimal domicilios = Convert.ToDecimal(row["Domicilio"]);
 
+                    string tipo = Convert.ToString(row["Tipo_pedido"]);
+                    if (tipo.Equals("DOMICILIO"))
+                        cantidad_domicilos += 1;
+                    else
+                        cantidad_mesa += 1;
+
                     total_desechables += desechables;
                     total_domicilios += domicilios;
                 }
+
+                cantidadPedidos += Environment.NewLine + "Cantidad de ventas: " + dtVentas.Rows.Count + "";
+                cantidadPedidos += Environment.NewLine + "Cantidad de domicilios: " + cantidad_domicilos + "";
+                cantidadPedidos += Environment.NewLine + "Cantidad en restaurante: " + cantidad_mesa + "";
+
+                if (cantidad_pedidos_cancelados > 0)
+                    cantidadPedidos += Environment.NewLine + "Cantidad de pedidos cancelados: " + cantidad_pedidos_cancelados + "";
+
             }
+            else
+                cantidadPedidos += Environment.NewLine + "No se encontraron ventas";
 
             if (dtEstadistica != null)
             {
                 Turno turno = new Turno(dtEstadistica.Rows[0]);
                 id_turno = "Identificación del turno: " + turno.Id_turno.ToString();
-
 
                 if (!isRango)
                     resumenResultados.Append("Valor inicial: ").Append(turno.Valor_inicial.ToString("C")).Append(Environment.NewLine);
@@ -161,8 +187,8 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
                 if (resumen.Count > 0)
                 {
                     IOrderedEnumerable<TipoResumen> detallesOrdenados = from s in resumen
-                                            orderby s.Cantidad descending
-                                                  select s;
+                                                                        orderby s.Cantidad descending
+                                                                        select s;
 
                     resumenResultados.Append("Detalles del día: ").Append(Environment.NewLine);
 
@@ -183,8 +209,6 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
             {
                 resumenResultados.Append("Hubo un error al encontrar los datos de estadísticas diarias");
             }
-
-           
 
             StringBuilder infoEgresos = new StringBuilder();
 

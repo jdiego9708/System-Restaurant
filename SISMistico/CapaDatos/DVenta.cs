@@ -486,21 +486,19 @@ namespace CapaDatos
                 };
                 SqlCmd.Parameters.Add(Texto_busqueda);
 
-                DateTime FechaInicio = Convert.ToDateTime(fecha1);
                 SqlParameter Fecha1 = new SqlParameter
                 {
                     ParameterName = "@Fecha1",
-                    SqlDbType = SqlDbType.Date,
-                    Value = FechaInicio.ToString("yyyy-MM-dd")
-                };
+                    SqlDbType = SqlDbType.VarChar,
+                    Value = fecha1
+                };  
                 SqlCmd.Parameters.Add(Fecha1);
 
-                DateTime FechaFin = Convert.ToDateTime(fecha2);
                 SqlParameter Fecha2 = new SqlParameter
                 {
                     ParameterName = "@Fecha2",
-                    SqlDbType = SqlDbType.Date,
-                    Value = FechaFin.ToString("yyyy-MM-dd")
+                    SqlDbType = SqlDbType.VarChar,
+                    Value = fecha2
                 };
                 SqlCmd.Parameters.Add(Fecha2);
 
