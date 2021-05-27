@@ -370,14 +370,23 @@ namespace CapaDatos
                 };
                 Sqlcmd.Parameters.Add(Tipo_busqueda);
 
-                SqlParameter Texto_busqueda = new SqlParameter
+                SqlParameter Texto_busqueda1 = new SqlParameter
                 {
-                    ParameterName = "@Texto_busqueda",
+                    ParameterName = "@Texto_busqueda1",
                     SqlDbType = SqlDbType.VarChar,
                     Size = 50,
                     Value = texto_busqueda.Trim(),
                 };
-                Sqlcmd.Parameters.Add(Texto_busqueda);
+                Sqlcmd.Parameters.Add(Texto_busqueda1);
+
+                SqlParameter Texto_busqueda2 = new SqlParameter
+                {
+                    ParameterName = "@Texto_busqueda2",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = string.Empty,
+                };
+                Sqlcmd.Parameters.Add(Texto_busqueda2);
 
                 SqlParameter Fecha = new SqlParameter
                 {
@@ -388,7 +397,81 @@ namespace CapaDatos
                 Sqlcmd.Parameters.Add(Fecha);
 
                 SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
-                await Task.Run(() => SqlData.Fill(dtNomina));                
+                await Task.Run(() => SqlData.Fill(dtNomina));
+            }
+            catch (SqlException ex)
+            {
+                rpta = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return (rpta, dtNomina);
+        }
+
+        public async Task<(string rpta, DataTable dtNominaEmpleado)> BuscarNomina(string tipo_busqueda, string texto_busqueda1,
+            string texto_busqueda2)
+        {
+            string rpta = "OK";
+            DataTable dtNomina = new DataTable("NominaEmpleado");
+            SqlConnection SqlCon = new SqlConnection();
+            SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
+            SqlCon.FireInfoMessageEventOnUserErrors = true;
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                await SqlCon.OpenAsync();
+                SqlCommand Sqlcmd = new SqlCommand
+                {
+                    Connection = SqlCon,
+                    CommandText = "sp_Buscar_nomina",
+                    CommandType = CommandType.StoredProcedure,
+                };
+
+                SqlParameter Tipo_busqueda = new SqlParameter
+                {
+                    ParameterName = "@Tipo_busqueda",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = tipo_busqueda.Trim(),
+                };
+                Sqlcmd.Parameters.Add(Tipo_busqueda);
+
+                SqlParameter Texto_busqueda1 = new SqlParameter
+                {
+                    ParameterName = "@Texto_busqueda1",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = texto_busqueda1.Trim(),
+                };
+                Sqlcmd.Parameters.Add(Texto_busqueda1);
+
+                SqlParameter Texto_busqueda2 = new SqlParameter
+                {
+                    ParameterName = "@Texto_busqueda2",
+                    SqlDbType = SqlDbType.VarChar,
+                    Size = 50,
+                    Value = texto_busqueda2.Trim(),
+                };
+                Sqlcmd.Parameters.Add(Texto_busqueda2);
+
+                SqlParameter Fecha = new SqlParameter
+                {
+                    ParameterName = "@Fecha",
+                    SqlDbType = SqlDbType.Date,
+                    Value = DateTime.Now.ToString("yyyy-MM-dd"),
+                };
+                Sqlcmd.Parameters.Add(Fecha);
+
+                SqlDataAdapter SqlData = new SqlDataAdapter(Sqlcmd);
+                await Task.Run(() => SqlData.Fill(dtNomina));
             }
             catch (SqlException ex)
             {
@@ -410,12 +493,13 @@ namespace CapaDatos
         #endregion
 
         #region METODO ESTADÍSTICAS DIARIAS
-        public async Task<(string rpta, DataTable dtEstadistica, DataTable dtDetalle)> BuscarEstadistica(int id_turno, string fecha)
+        public async Task<(string rpta, DataTable dtEstadistica, DataTable dtDetalle, DataTable dtPagos)> BuscarEstadistica(int id_turno, string fecha)
         {
             string rpta = "OK";
             DataSet dsResultados = new DataSet();
             DataTable dtNomina = new DataTable("EstadisticaDiaria");
             DataTable dtDetalles = new DataTable("Detalles");
+            DataTable dtPagos = new DataTable("Pagos");
             SqlConnection SqlCon = new SqlConnection();
             SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
             SqlCon.FireInfoMessageEventOnUserErrors = true;
@@ -458,18 +542,21 @@ namespace CapaDatos
                 {
                     dtNomina = dsResultados.Tables[0];
                     dtDetalles = dsResultados.Tables[1];
+                    dtPagos = dsResultados.Tables[2];
                 }
             }
             catch (SqlException ex)
             {
                 dtDetalles = null;
                 dtNomina = null;
+                dtPagos = null;
                 rpta = ex.Message;
             }
             catch (Exception ex)
             {
                 dtDetalles = null;
                 dtNomina = null;
+                dtPagos = null;
                 rpta = ex.Message;
             }
             finally
@@ -478,15 +565,16 @@ namespace CapaDatos
                     SqlCon.Close();
             }
 
-            return (rpta, dtNomina, dtDetalles);
+            return (rpta, dtNomina, dtDetalles, dtPagos);
         }
 
-        public async Task<(string rpta, DataTable dtEstadistica, DataTable dtDetalle)> BuscarEstadistica(string fecha1, string fecha2)
+        public async Task<(string rpta, DataTable dtEstadistica, DataTable dtDetalle, DataTable dtPagos)> BuscarEstadistica(string fecha1, string fecha2)
         {
             string rpta = "OK";
             DataSet dsResultados = new DataSet();
             DataTable dtNomina = new DataTable("EstadisticaDiaria");
             DataTable dtDetalles = new DataTable("Detalles");
+            DataTable dtPagos = new DataTable("Pagos");
             SqlConnection SqlCon = new SqlConnection();
             SqlCon.InfoMessage += new SqlInfoMessageEventHandler(SqlCon_InfoMessage);
             SqlCon.FireInfoMessageEventOnUserErrors = true;
@@ -529,18 +617,21 @@ namespace CapaDatos
                 {
                     dtNomina = dsResultados.Tables[0];
                     dtDetalles = dsResultados.Tables[1];
+                    dtPagos = dsResultados.Tables[2];
                 }
             }
             catch (SqlException ex)
             {
                 dtDetalles = null;
                 dtNomina = null;
+                dtPagos = null;
                 rpta = ex.Message;
             }
             catch (Exception ex)
             {
                 dtDetalles = null;
                 dtNomina = null;
+                dtPagos = null;
                 rpta = ex.Message;
             }
             finally
@@ -549,7 +640,7 @@ namespace CapaDatos
                     SqlCon.Close();
             }
 
-            return (rpta, dtNomina, dtDetalles);
+            return (rpta, dtNomina, dtDetalles, dtPagos);
         }
 
         #endregion

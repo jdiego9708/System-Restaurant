@@ -36,6 +36,11 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
             this.date2 = new System.Windows.Forms.DateTimePicker();
             this.date1 = new System.Windows.Forms.DateTimePicker();
             this.gbReporte = new System.Windows.Forms.GroupBox();
+            this.chkDeletePedidos = new System.Windows.Forms.CheckBox();
+            this.chkInfoNomina = new System.Windows.Forms.CheckBox();
+            this.chkInfoDetalleVentas = new System.Windows.Forms.CheckBox();
+            this.chkInfoGastos = new System.Windows.Forms.CheckBox();
+            this.chkInfoPagos = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,13 +48,18 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.chkInfoPagos);
+            this.groupBox1.Controls.Add(this.chkInfoGastos);
+            this.groupBox1.Controls.Add(this.chkInfoDetalleVentas);
+            this.groupBox1.Controls.Add(this.chkInfoNomina);
+            this.groupBox1.Controls.Add(this.chkDeletePedidos);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.date2);
             this.groupBox1.Controls.Add(this.date1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(606, 76);
+            this.groupBox1.Size = new System.Drawing.Size(1029, 76);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Búsqueda por rango de fechas";
@@ -93,17 +103,67 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbReporte.Location = new System.Drawing.Point(12, 94);
             this.gbReporte.Name = "gbReporte";
-            this.gbReporte.Size = new System.Drawing.Size(606, 281);
+            this.gbReporte.Size = new System.Drawing.Size(1029, 281);
             this.gbReporte.TabIndex = 1;
             this.gbReporte.TabStop = false;
             this.gbReporte.Text = "Reporte";
+            // 
+            // chkDeletePedidos
+            // 
+            this.chkDeletePedidos.AutoSize = true;
+            this.chkDeletePedidos.Location = new System.Drawing.Point(361, 16);
+            this.chkDeletePedidos.Name = "chkDeletePedidos";
+            this.chkDeletePedidos.Size = new System.Drawing.Size(234, 21);
+            this.chkDeletePedidos.TabIndex = 32;
+            this.chkDeletePedidos.Text = "Información de pedidos eliminados";
+            this.chkDeletePedidos.UseVisualStyleBackColor = true;
+            // 
+            // chkInfoNomina
+            // 
+            this.chkInfoNomina.AutoSize = true;
+            this.chkInfoNomina.Location = new System.Drawing.Point(601, 16);
+            this.chkInfoNomina.Name = "chkInfoNomina";
+            this.chkInfoNomina.Size = new System.Drawing.Size(162, 21);
+            this.chkInfoNomina.TabIndex = 3;
+            this.chkInfoNomina.Text = "Información de nómina";
+            this.chkInfoNomina.UseVisualStyleBackColor = true;
+            // 
+            // chkInfoDetalleVentas
+            // 
+            this.chkInfoDetalleVentas.AutoSize = true;
+            this.chkInfoDetalleVentas.Location = new System.Drawing.Point(769, 16);
+            this.chkInfoDetalleVentas.Name = "chkInfoDetalleVentas";
+            this.chkInfoDetalleVentas.Size = new System.Drawing.Size(214, 21);
+            this.chkInfoDetalleVentas.TabIndex = 5;
+            this.chkInfoDetalleVentas.Text = "Información detallada de ventas";
+            this.chkInfoDetalleVentas.UseVisualStyleBackColor = true;
+            // 
+            // chkInfoGastos
+            // 
+            this.chkInfoGastos.AutoSize = true;
+            this.chkInfoGastos.Location = new System.Drawing.Point(601, 43);
+            this.chkInfoGastos.Name = "chkInfoGastos";
+            this.chkInfoGastos.Size = new System.Drawing.Size(158, 21);
+            this.chkInfoGastos.TabIndex = 3;
+            this.chkInfoGastos.Text = "Información de gastos";
+            this.chkInfoGastos.UseVisualStyleBackColor = true;
+            // 
+            // chkInfoPagos
+            // 
+            this.chkInfoPagos.AutoSize = true;
+            this.chkInfoPagos.Location = new System.Drawing.Point(769, 43);
+            this.chkInfoPagos.Name = "chkInfoPagos";
+            this.chkInfoPagos.Size = new System.Drawing.Size(225, 21);
+            this.chkInfoPagos.TabIndex = 33;
+            this.chkInfoPagos.Text = "Información de métodos de pago";
+            this.chkInfoPagos.UseVisualStyleBackColor = true;
             // 
             // FrmReporteDiario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(630, 387);
+            this.ClientSize = new System.Drawing.Size(1053, 387);
             this.Controls.Add(this.gbReporte);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -126,5 +186,10 @@ namespace CapaPresentacion.Formularios.FormsEstadisticas
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker date2;
         private System.Windows.Forms.GroupBox gbReporte;
+        private System.Windows.Forms.CheckBox chkInfoPagos;
+        private System.Windows.Forms.CheckBox chkInfoGastos;
+        private System.Windows.Forms.CheckBox chkInfoDetalleVentas;
+        private System.Windows.Forms.CheckBox chkInfoNomina;
+        private System.Windows.Forms.CheckBox chkDeletePedidos;
     }
 }

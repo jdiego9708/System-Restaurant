@@ -381,6 +381,13 @@
     <Compile Include="Formularios\FormsPedido\FrmRealizarPedido.Designer.cs">
       <DependentUpon>FrmRealizarPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FormsPedido\MetodoPagoModel.cs" />
+    <Compile Include="Formularios\FormsPedido\MetodoPagoSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormsPedido\MetodoPagoSmall.designer.cs">
+      <DependentUpon>MetodoPagoSmall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FormsPedido\Platos\EPlatos.cs" />
     <Compile Include="Formularios\FormsPedido\Platos\FrmPedidoPlatos.cs">
       <SubType>Form</SubType>
@@ -772,6 +779,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsPedido\FrmRealizarPedido.resx">
       <DependentUpon>FrmRealizarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormsPedido\MetodoPagoSmall.resx">
+      <DependentUpon>MetodoPagoSmall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormsPedido\Platos\FrmPedidoPlatos.resx">
       <DependentUpon>FrmPedidoPlatos.cs</DependentUpon>
