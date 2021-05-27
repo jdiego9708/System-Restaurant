@@ -162,7 +162,7 @@ namespace CapaPresentacion.Formularios.FormsPrincipales
 
             string rpta;
             DataTable tablaEmpleados =
-                NEmpleados.BuscarEmpleados("COMPLETO", "", out rpta);
+                NEmpleados.BuscarEmpleados("COMPLETO ACTIVO", "", out rpta);
             if (tablaEmpleados != null)
             {
                 this.ListaEmpleados.DataSource = tablaEmpleados;
